@@ -1,0 +1,84 @@
+section{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.search-container{
+  display: flex;
+}
+
+.search{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  
+}
+
+.addhead{
+flex-direction: row;
+margin: 10px;
+border-bottom: 1px solid gray;
+width: 100%;
+}
+
+.addbody {
+display: flex;
+flex-direction: row;
+padding:10px;
+border-bottom: 1px solid gray;
+width: 100%;
+background-color: #f8f8f8;
+}
+
+.check {
+/*flex-grow: 1;*/
+width: 30px;
+margin-left: 10px;
+margin-right: 10px;
+
+}
+
+.date {
+/*flex-grow: 2;*/
+width: 100px;
+}
+
+.title {
+/*flex-grow: 5;*/
+width: 400px;
+text-align: left;
+}
+
+.price {
+/*flex-grow: 2;*/
+margin-right: 50px;
+
+}
+
+.status {
+/*flex-grow: 2;*/
+margin-right: 50px;
+padding-right: auto;
+padding-left: auto;
+
+}
+
+.addfoot{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+margin: 10px;
+width: 100%;
+}
+.adfooterdata{
+  padding: 0px 10px; border-right: 1px solid gray;
+}

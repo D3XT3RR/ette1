@@ -1,0 +1,128 @@
+
+
+body {
+background-color: #98817b;
+}
+a span {
+  display: inline-block;
+}
+
+.modal-content{
+
+}
+
+.modal-header {
+
+}
+
+.modal-body {
+  background-color: navy;
+}
+
+.modal-footer {
+
+}
+
+.logo {
+  font-size: 42px;
+  font-weight: bold;
+  font-style: italic;
+  max-height: 50px;
+  flex-shrink: 0;
+}
+
+.logo-login {
+  font-size: 24px;
+  font-weight: bold;
+  font-style: italic;
+  max-height: 50px;
+}
+
+.page-header {
+  background-color: white;
+  position: relative;
+  height: 50px;
+  width: 100%;
+  padding: 10px 10px;
+  align-self:  center;
+}
+
+.flexnav{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flexbtngrp{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navA{
+flex: 1 2 content;
+color: black;
+max-height: 50px;
+align-self: center;
+}
+
+
+
+.flexbtngrp button {
+    background-color: #b44136; /* Green background */
+    border: 3px solid #002e63; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: right; /* Float the buttons side by side */
+    min-height: auto;
+    max-height: 50px;
+}
+
+.flexbtngrp button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.flexbtngrp:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.flexbtngrp button:hover {
+  transition: all 0.6s ease;
+    background-color: #9cbadd;
+}
+
+.register {
+  position: fixed;
+  left: 70%;
+}
+
+.panel-search{
+  background-color: #b44136;
+  padding: 10px 25px;
+  border: 2px solid #002e63;
+}
+
+.search{
+  background-color: #9cbadd;
+  transition: all 0.4s ease;
+  border: 1px solid black;
+}
+
+.btnhead {
+position: absolute;
+top: 5px;
+border: 2px ridge #229655;
+color: black;
+}
+
+.search:hover{
+  background-color: #98ff98;
+  transition: all 0.4s ease;
+  border: 1px solid black;
+}
