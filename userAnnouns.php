@@ -35,7 +35,11 @@ require 'php/session.php';
     <div class="header"> 
     <div class="auto"> 
       <div class="menu">
-        <div class="logo"></div>
+        <div class="logo">
+          <div class="blue">E</div>
+          <div class="red">TT</div>
+          <div class="blue">E</div>
+        </div>
         <div class="buttonPanel">
           <div id="1Button" class="button color"></div>
           <div id="2Button" class="button color"></div>
