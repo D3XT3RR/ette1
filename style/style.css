@@ -44,7 +44,22 @@ header{
 
 
 .logo{
+  display: flex;
+  justify-content: flex-start;
+  flex: 3;
+  line-height: 50px;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: bold;
+  margin-left: 10px;
+}
 
+.blue{
+  color: #3300cc;
+}
+
+.red{
+  color: #ff6666;
 }
 
 .menu{
