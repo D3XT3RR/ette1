@@ -6,10 +6,10 @@
 
        echo "<script type='text/javascript'>
           document.getElementById('2Button').innerHTML = 
-          '<a class=\'button \'onclick=location.href=\'/index.php\'>Strona Główna';
+          '<a class=\'button \'onclick=location.href=\'index.php\'>Strona Główna';
 
           document.getElementById('3Button').innerHTML = 
-          '<a class=\'button \'onclick=location.href=\'/announAdd.php\'>Dodaj Ogłoszenie!';
+          '<a class=\'button \'onclick=location.href=\'announAdd.php\'>Dodaj Ogłoszenie!';
 
           document.getElementById('4Button').innerHTML = 
           '<a class=\'button \' >Twój profil';
@@ -29,9 +29,9 @@
     else{
       echo "<script type='text/javascript'>
           document.getElementById('2Button').innerHTML = 
-          '<a class=\'button \'onclick=location.href=\'/index.php\'>Strona Główna';
+          '<a class=\'button \'onclick=location.href=\'index.php\'>Strona Główna';
 
-          document.getElementById('3Button').innerHTML = '<a class=\'button \'onclick=location.href=\'/announAdd.php\'>Dodaj Ogłoszenie!';
+          document.getElementById('3Button').innerHTML = '<a class=\'button \'onclick=location.href=\'announAdd.php\'>Dodaj Ogłoszenie!';
 
           document.getElementById('4Button').innerHTML = '<a class=\'button \'>Mój profil';
 
