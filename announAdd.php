@@ -12,12 +12,13 @@ session_start();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="AnnounAdd.js"></script>
 
   <!-- CSS -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/index.css">
-  <link rel="stylesheet"  href="style/announAdd.css">
+  <link rel="stylesheet" href="style/announAdd.css">
   <link rel="stylesheet" type="text/css" href="style/search.css">
 </head>
 
@@ -79,11 +80,11 @@ session_start();
 
   <section>
     <div class="auto">
-
+      <div class="container">
     <form method="post" action="php/announAdd.php" enctype="multipart/form-data">
       <label>Zaczynamy!</label>
       <div id="title">
-        <div id="titleTXT">Wpisz tytuł<span id="red">*</span></div>
+        <div id="titleTXT">Wpisz tytuł<span class="red">*</span></div>
         <div id="tTXT"><input type="text" placeholder="Tytuł" name="AdTitle" required></div>
 
 
@@ -120,17 +121,21 @@ session_start();
       </div>
       <div id="photos">
         <div id="fotoName">Dodaj zdjęcia</div>
-        <div id="1"><input type="file" id="imgInp"  name="image1" accept="image/png, image/jpeg"></div>
-        <div id="2"><input type="file" id="imgInp" name="image1" accept="image/png, image/jpeg"></div>
-        <div id="3"><input type="file" id="imgInp" name="image1" accept="image/png, image/jpeg"></div>
-        <div id="4"><input type="file" id="imgInp" name="image1" accept="image/png, image/jpeg"></div>
-        <div id="5"><input type="file" id="imgInp" name="image1" accept="image/png, image/jpeg"></div>
+        <div id="1" class="uploadBTN"><input type="file" id="imgInp" name="image1" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+        <div id="2" class="uploadBTN"><input type="file" id="imgInp" name="image2" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+        <div id="3" class="uploadBTN"><input type="file" id="imgInp" name="image3" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+        <div id="4" class="uploadBTN"><input type="file" id="imgInp" name="image4" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+        <div id="5" class="uploadBTN"><input type="file" id="imgInp" name="image5" accept="image/png, image/jpeg"><img id='img-upload'/></div>
 
       </div>
 
       <div><input type="submit" value="Dodaj Ogłoszenie"></div>
     </form>
   </div>
+</form>
+</div>
+</div>
+
   </section>
   <footer>
     <div class="auto">
@@ -164,6 +169,7 @@ session_start();
         </div>
       </div>
     </div>
+
   </footer>
 
 
