@@ -184,7 +184,7 @@ function DisplayResults($connectionLink, $query){
           <div class=price>".$date_of_ad."</div>\
           <div class=status>\
             <button> Aktywuj </button>\
-            <a href=\"../AnnounEdit.php?id=".$id_of_ad."\" target=\"_parent\"><button> Edytuj </button></a>\
+            <a href=\"AnnounEdit.php?id=".$id_of_ad."\" target=\"_parent\"><button> Edytuj </button></a>\
           </div>\
         </div>\
         <div class=addfoot>\
