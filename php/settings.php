@@ -1,16 +1,6 @@
 <?php
-  require '../php/connect.php';
-
+  require 'connect.php';
   $session_user_id = $_SESSION['user']; 
-  function random_str($length, $keyspace = '0123456789abcde')
-  {
-    $pieces = array();
-    $max = mb_strlen($keyspace, '8bit') - 1;
-    for ($i = 0; $i < $length; ++$i) {
-        $pieces []= $keyspace[random_int(0, $max)];
-    }
-    return implode('', $pieces);
-  }
   //set current data to fields
   $raw_login_result = mysqli_query($link, "SELECT * FROM login WHERE ID = '$session_user_id'") or die(mysqli_error($link));
   if(mysqli_num_rows($raw_login_result) > 0)      

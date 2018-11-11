@@ -93,21 +93,21 @@ session_start();
             <div class='flexContact'>
               <label>Imię</label>
               <div id=imieLBL class="contactLBL">
-                <div class="edit"><input type="text" name=""></div>
+                <div class="edit"><input id="nameInput" type="text" name=""></div>
               </div>
             </div>
 
             <div class='flexContact'>
               <label>Numer Telefonu</label>
               <div id=telefonLBL class="contactLBL">
-                <div class="edit"><input type="text" name=""></div>
+                <div class="edit"><input id="numberInput" type="text" name=""></div>
               </div>
             </div>
 
             <div class='flexContact'>
               <label>E-mail</label>
               <div id=mailLBL class="contactLBL">
-                <div class="edit"><input type="text" name=""></div>
+                <div class="edit"><input id="emailInput" type="text" name=""></div>
               </div>
             </div>
 
@@ -300,10 +300,10 @@ session_start();
 
 
 <?php
+  require 'php/settings.php';
   require 'php/page_format.php';
   require 'php/reg.php';
   require 'php/search.php';
-  require 'php/settings.php';
   ?>
 </body>
 </html>
