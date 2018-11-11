@@ -19,6 +19,7 @@ require 'php/session.php';
   <link rel="stylesheet" href="style/index.css">
   <link rel="stylesheet" href="style/search.css">
   <link rel="stylesheet" href="style/userAnnouns.css">
+  <link rel="stylesheet" type="text/css" href="style/announAdd.css">
 
     <script type="text/javascript">
   function toggle(source) {
@@ -90,29 +91,62 @@ require 'php/session.php';
 
   <section>
 
-    <div id="search-container" class="auto">
-      <div class="addbody">
-        <div class="check">
-          <input type="checkbox" name="checkall" onClick="toggle(this)">
-        </div>
+    <div class="auto">
+      <div class="container">
+    <form method="post" action="php/announAdd.php" enctype="multipart/form-data">
+      <label>Zaczynamy!</label>
+      <div id="title">
+        <div id="titleTXT">Wpisz tytuł<span class="red">*</span></div>
+        <div id="tTXT"><input type="text" placeholder="Tytuł" name="AdTitle" required></div>
 
-        <div class="date">
-          Data
-        </div>
 
-        <div class="title">
-          Tytuł
-        </div>
-
-        <div class="price">
-          Data utworzenia
-        </div>
-
-        <div class="status">
-          Status
-        </div>
       </div>
-    </div>
+      <div  id="category">
+        <div id="categoryTXT">Wybierz kategorię<span class="red">*</span></div>
+        <div id="cTXT">
+          <select name="Category">
+          <option value="Praca">Praca</option>
+          <option value="Nieruchomości">Nieruchomości</option>
+          <option value="Motoryzacja">Motoryzacja</option>
+          <option value="Elektronika">Elektronika</option>
+          <option value="Dom i Ogród">Dom i Ogród</option>
+          <option value="Moda">Moda</option>
+          <option value="Zwierzęta">Zwierzęta</option>
+          <option value="Rolnictwo">Rolnictwo</option>
+          <option value="Dla Dzieci">Dla Dzieci</option>
+          <option value="Hobby i Sport">Hobby i Sport</option>
+          <option value="Muzyka">Muzyka</option>
+          <option value="Edukacja">Edukacja</option>
+          <option value="Firmy i Usługi">Firmy i Usługi</option>
+          <option value="Oddam za Darmo">Oddam za Darmo</option>
+          <option value="Zamienię">Zamienię</option>
+          <option value="Różne">Różne</option>
+        </select>
+      </div>
+
+
+      </div>
+      <div id="desc">
+        <div id="descTXT">Opis<span class="red">*</span></div>
+        <div id="dTXT"><textarea type="text" placeholder="Opis..." name="AdText" required></textarea>
+
+      </div>
+      <div id="photos">
+        <div id="fotoName">Dodaj zdjęcia</div>
+        <div id="1" class="uploadBTN"><input type="file" id="imgInp" name="image1" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+        <div id="2" class="uploadBTN"><input type="file" id="imgInp" name="image2" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+        <div id="3" class="uploadBTN"><input type="file" id="imgInp" name="image3" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+        <div id="4" class="uploadBTN"><input type="file" id="imgInp" name="image4" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+        <div id="5" class="uploadBTN"><input type="file" id="imgInp" name="image5" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+
+      </div>
+
+      <div><input type="submit" value="Zaaktualizuj ogłoszenie!"></div>
+    </form>
+  </div>
+</form>
+</div>
+</div>
 
   </section>
   <footer>
@@ -151,65 +185,52 @@ require 'php/session.php';
 
 
   <?php
-require 'php/connect.php';
-$session_user_id = $_SESSION['user']; 
-mysqli_set_charset($link,"utf8");
-
-function DisplayResults($connectionLink, $query){
-    $raw_results = mysqli_query($connectionLink,$query) or die(mysqli_error($connectionLink));
-    
-    if(mysqli_num_rows($raw_results) > 0)      
-    {
-        while($row = mysqli_fetch_assoc($raw_results))
+      require 'php/connect.php';
+      require 'php/page_format.php';
+      if(isset($_GET['id'])){
+        $link->set_charset("utf8");
+        $ad_id = $_GET['id'];
+        $raw_results = mysqli_query($link,"SELECT * FROM adverts WHERE id = '$ad_id'") or die(mysqli_error($link));
+        if(mysqli_num_rows($raw_results) > 0)      
         {
-          $id_of_ad = $row['id'];
-          $title_of_ad = $row['title'];
-          $text_of_ad = $row['text'];
-          $image_of_ad = $row['image1'];
-          $views_of_ad = $row['views'];
-          $date_of_ad = $row['posting_date'];
-          //echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['image1'] ).'"/>';
-          echo("<script type='text/javascript'>document.getElementById('search-container').innerHTML += '<div class=add>\
-        <div class=addbody>\
-          <div class=check>\
-            <input type=checkbox name=checkadd>\
-          </div>\
-          <div class=date>\
-            Od: TBA <br>\
-            Do: TBA\
-          </div>\
-          <div class=title>\
-            <h4> ".$title_of_ad."</h4>\
-          </div>\
-          <div class=price>".$date_of_ad."</div>\
-          <div class=status>\
-            <button> Aktywuj </button>\
-            <a href=\"AnnounEdit.php?id=".$id_of_ad."\" target=\"_parent\"><button> Edytuj </button></a>\
-          </div>\
-        </div>\
-        <div class=addfoot>\
-          <div style=\"padding: 0px 10px; border-right: 1px solid gray;\">Statystyki</div>\
-          <div style=\"padding: 0px 10px; border-right: 1px solid gray;\">Wyświetleń: ".$views_of_ad."</div>\
-          <div style=\"padding: 0px 10px; border-right: 1px solid gray;\">Telefony:</div>\
-          <div style=\"padding: 0px 10px;\">Obserwuje:</div>\
-        </div>';</script>");
+          while($row = mysqli_fetch_assoc($raw_results))
+          {
+            if($_SESSION['user'] != $row['poster_id']){
+              die();
+            }
+            if(isset($_POST['AdText']) && isset($_POST['AdTitle']) && isset($_POST['Category'])){
+            $ad_text = preg_replace( "/\r\n/", "</br>", $_POST['AdText']);
+            $ad_title = $_POST['AdTitle'];
+            $ad_image1 = @addslashes(file_get_contents($_FILES['image1']['tmp_name']));
+            $ad_image2 = @addslashes(file_get_contents($_FILES['image2']['tmp_name']));
+            $ad_image3 = @addslashes(file_get_contents($_FILES['image3']['tmp_name']));
+            $ad_image4 = @addslashes(file_get_contents($_FILES['image4']['tmp_name']));
+            $ad_image5 = @addslashes(file_get_contents($_FILES['image5']['tmp_name']));
+            $ad_category = $_POST['Category'];
+            $user_session_id = $_SESSION['user'];
 
+            date_default_timezone_set('Europe/Berlin'); // CDT
+            $current_date = date('Y-m-d');
+
+            $link->set_charset("utf8");
+
+            $result = mysqli_query($link, "UPDATE adverts SET title='$ad_title', text='$ad_text', category='$ad_category' WHERE id='$ad_id'") or die(mysqli_error($link));
+            $message = "Post został zaktualizowany!";
+            echo "<script type='text/javascript'>alert('$message');window.location.href = 'index.php';</script>";
+            }
+            else{
+            $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
+            $ad_title = $row['title'];
+            $ad_image1 = @addslashes(base64_encode($row['image1']));
+            $ad_category = $row['category'];
+            $post_date = $row['posting_date'];
+            echo("<script>document.getElementsByName('AdTitle')[0].value='".$ad_title."';document.getElementsByName('Category')[0].value = '".$ad_category."';document.getElementsByName('AdText')[0].innerHTML = '".$ad_text."';</script>");
+           }
+          }
         }
-              
-    }
-    else
-    {
-        echo("<script type='text/javascript'>document.getElementById('search-container').innerHTML += 'Brak wyników wyszukiwania'</script>");
-    }
-}
-if(!isset($_GET['search_query'])){
-  DisplayResults($link, "SELECT * FROM adverts WHERE poster_id = '$session_user_id'");
-}
-else{
-  $query = $_GET['search_query'];
-  DisplayResults($link, "SELECT * FROM adverts WHERE (LOWER(title) LIKE LOWER('%".$query."%')) AND poster_id = '$session_user_id'");
-}
-?>
+      }
+
+    ?>
 
 
 <!-- Modal Login -->

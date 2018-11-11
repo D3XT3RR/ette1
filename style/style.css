@@ -177,7 +177,7 @@ a {
 /* TREŚĆ STRONY */
 
 section{
-  position: relative;
+  
   background-color: #f2f2f2;
   min-height: 80vh;
   padding-bottom: 20px;
@@ -243,17 +243,3 @@ footer .auto {
 
 
 
-section:before,
-section:after {
-    content:"";
-    display:table;
-}
-
-section {
-    clear:both;
-}
-
-/* For IE 6/7 (trigger hasLayout) */
-section {
-    zoom:1;
-}
