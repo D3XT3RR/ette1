@@ -1,5 +1,5 @@
 //Uploading photos.
-
+/*
 $(document).ready( function() {
     	$(document).on('change', '.uploadBTN :file', function() {
 		var input = $(this),
@@ -37,3 +37,4 @@ $(document).ready( function() {
 	});
 
   // The end of Uploading photos.
+*/
