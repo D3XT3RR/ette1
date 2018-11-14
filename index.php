@@ -90,23 +90,19 @@ session_start();
             <div class="row">
               <div class="col-sm-3">
                   <div class="titleBOX"><a class="categoryA" href="search.php?kat=Praca">Praca </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <img class="index_cat_photo" src="style/image/index/work.png">
               </div>
               <div class="col-sm-3">
                   <div class="titleBOX"><a class="categoryA" href="search.php?kat=Nieruchomości">Nieruchomości </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <img class="index_cat_photo" src="style/image/index/house.png">
               </div>
               <div class="col-sm-3">
                   <div class="titleBOX"><a class="categoryA" href="search.php?kat=Motoryzacja"> Motoryzacja </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <img class="index_cat_photo" src="style/image/index/car.png">
               </div>
               <div class="col-sm-3">
                   <div class="titleBOX"><a class="categoryA" href="search.php?kat=Elektronika"> Elektronika </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <img class="index_cat_photo" src="style/image/index/electronics.png">
               </div>
             </div>
             <!-- Drugi Rząd -->
