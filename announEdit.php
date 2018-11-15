@@ -15,11 +15,9 @@ require 'php/session.php';
 
   <!-- CSS -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="style/index.css">
-  <link rel="stylesheet" href="style/search.css">
+  <link rel="stylesheet" href="style/style.css">  
   <link rel="stylesheet" href="style/userAnnouns.css">
-  <link rel="stylesheet" type="text/css" href="style/announAdd.css">
+  <link rel="stylesheet" type="text/css" href="style/announAddtest.css">
 
     <script type="text/javascript">
   function toggle(source) {
@@ -95,12 +93,12 @@ require 'php/session.php';
         <form method="post" action="php/announAdd.php" enctype="multipart/form-data">
           <label>Zaczynamy!</label>
           <div id="title">
-            <div id="titleTXT">Wpisz tytuł<span class="red">*</span></div>
+            <div id="titleTXT">Wpisz tytuł<span class="required">*</span></div>
             <div id="tTXT"><input type="text" placeholder="Tytuł" name="AdTitle" required></div>
           </div>
 
           <div  id="category">
-            <div id="categoryTXT">Wybierz kategorię<span class="red">*</span></div>
+            <div id="categoryTXT">Wybierz kategorię<span class="required">*</span></div>
             <div id="cTXT">
               <select name="Category">
                 <option value="Praca">Praca</option>
@@ -124,18 +122,20 @@ require 'php/session.php';
           </div>
 
           <div id="desc">
-            <div id="descTXT">Opis<span class="red">*</span></div>
+            <div id="descTXT">Opis<span class="required">*</span></div>
             <div id="dTXT">
               <textarea type="text" placeholder="Opis..." name="AdText" required></textarea>
             </div>
 
             <div id="photos">
               <div id="fotoName">Dodaj zdjęcia</div>
-              <div id="1" class="uploadBTN"><input type="file" id="imgInp" name="image1" accept="image/png, image/jpeg"><img id='img-upload'/></div>
-              <div id="2" class="uploadBTN"><input type="file" id="imgInp" name="image2" accept="image/png, image/jpeg"><img id='img-upload'/></div>
-              <div id="3" class="uploadBTN"><input type="file" id="imgInp" name="image3" accept="image/png, image/jpeg"><img id='img-upload'/></div>
-              <div id="4" class="uploadBTN"><input type="file" id="imgInp" name="image4" accept="image/png, image/jpeg"><img id='img-upload'/></div>
-              <div id="5" class="uploadBTN"><input type="file" id="imgInp" name="image5" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+              <div id="fileUpload">
+                <div id="1" class="uploadBTN"><input type="file" id="imgInp" name="image1" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+                <div id="2" class="uploadBTN"><input type="file" id="imgInp" name="image2" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+                <div id="3" class="uploadBTN"><input type="file" id="imgInp" name="image3" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+                <div id="4" class="uploadBTN"><input type="file" id="imgInp" name="image4" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+                <div id="5" class="uploadBTN"><input type="file" id="imgInp" name="image5" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+              </div>
             </div>
             <div>
               <input type="submit" value="Zaaktualizuj ogłoszenie!">
