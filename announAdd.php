@@ -10,7 +10,6 @@ session_start();
 
 	  <!-- FlexBox -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="js/announAdd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="AnnounAdd.js"></script>
@@ -250,9 +249,9 @@ session_start();
   </div></div>
 
 <!-- Modal END -->
-
+<script src="js/announAdd.js?5"></script>
 <!-- PHP -->
-
+  
 
   <?php
     require 'php/session.php';

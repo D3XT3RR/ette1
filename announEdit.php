@@ -90,7 +90,7 @@ require 'php/session.php';
   <section>
     <div class="auto">
       <div class="container">
-        <form method="post" action="php/announAdd.php" enctype="multipart/form-data">
+        <form method="post" action="" enctype="multipart/form-data">
           <label>Zaczynamy!</label>
           <div id="title">
             <div id="titleTXT">Wpisz tytuł<span class="required">*</span></div>
@@ -199,20 +199,36 @@ require 'php/session.php';
             if(isset($_POST['AdText']) && isset($_POST['AdTitle']) && isset($_POST['Category'])){
             $ad_text = preg_replace( "/\r\n/", "</br>", $_POST['AdText']);
             $ad_title = $_POST['AdTitle'];
+            $ad_category = $_POST['Category'];
+            $user_session_id = $_SESSION['user'];
             $ad_image1 = @addslashes(file_get_contents($_FILES['image1']['tmp_name']));
             $ad_image2 = @addslashes(file_get_contents($_FILES['image2']['tmp_name']));
             $ad_image3 = @addslashes(file_get_contents($_FILES['image3']['tmp_name']));
             $ad_image4 = @addslashes(file_get_contents($_FILES['image4']['tmp_name']));
             $ad_image5 = @addslashes(file_get_contents($_FILES['image5']['tmp_name']));
-            $ad_category = $_POST['Category'];
-            $user_session_id = $_SESSION['user'];
-
             date_default_timezone_set('Europe/Berlin'); // CDT
             $current_date = date('Y-m-d');
 
             $link->set_charset("utf8");
 
             $result = mysqli_query($link, "UPDATE adverts SET title='$ad_title', text='$ad_text', category='$ad_category' WHERE id='$ad_id'") or die(mysqli_error($link));
+            //update photos
+            if($ad_image1 != null){
+              $result1 = mysqli_query($link, "UPDATE adverts SET image1='$ad_image1' WHERE id='$ad_id'") or die(mysqli_error($link));
+            }
+             if($ad_image2 != null){
+              $result2 = mysqli_query($link, "UPDATE adverts SET image2='$ad_image2' WHERE id='$ad_id'") or die(mysqli_error($link));
+            }
+             if($ad_image3 != null){
+              $result3 = mysqli_query($link, "UPDATE adverts SET image3='$ad_image3' WHERE id='$ad_id'") or die(mysqli_error($link));
+            }
+             if($ad_image4 != null){
+              $result4 = mysqli_query($link, "UPDATE adverts SET image4='$ad_image4' WHERE id='$ad_id'") or die(mysqli_error($link));
+            }
+             if($ad_image5 != null){
+              $result5 = mysqli_query($link, "UPDATE adverts SET image5='$ad_image5' WHERE id='$ad_id'") or die(mysqli_error($link));
+            }
+
             $message = "Post został zaktualizowany!";
             echo "<script type='text/javascript'>alert('$message');window.location.href = 'index.php';</script>";
             }
@@ -220,9 +236,18 @@ require 'php/session.php';
             $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
             $ad_title = $row['title'];
             $ad_image1 = @addslashes(base64_encode($row['image1']));
+            $ad_image2 = @addslashes(base64_encode($row['image2']));
+            $ad_image3 = @addslashes(base64_encode($row['image3']));
+            $ad_image4 = @addslashes(base64_encode($row['image4']));
+            $ad_image5 = @addslashes(base64_encode($row['image5']));
             $ad_category = $row['category'];
             $post_date = $row['posting_date'];
             echo("<script>document.getElementsByName('AdTitle')[0].value='".$ad_title."';document.getElementsByName('Category')[0].value = '".$ad_category."';document.getElementsByName('AdText')[0].innerHTML = '".$ad_text."';</script>");
+            echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
+            echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
+            echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
+            echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
+            echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
            }
           }
         }
@@ -311,7 +336,7 @@ require 'php/session.php';
 </div>
 
 <!-- Modal END -->
-
+<script src="js/announAdd.js?5"></script>
 
 <?php
   require 'php/page_format.php';
