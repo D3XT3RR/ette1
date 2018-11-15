@@ -126,6 +126,7 @@ require 'php/session.php';
             <div id="dTXT">
               <textarea type="text" placeholder="Opis..." name="AdText" required></textarea>
             </div>
+          </div>
 
             <div id="photos">
               <div id="fotoName">Dodaj zdjęcia</div>
