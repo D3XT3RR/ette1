@@ -122,12 +122,12 @@ session_start();
         <div id="photos">
           <div id="fotoName">Dodaj zdjęcia</div>
           <div id="fileUpload">
-            <div id="1" class="uploadBTN"><input type="file" class="imgInp" name="image1" accept="image/png, image/jpeg"><img id='img-upload' src="style/image/img.png"/></div>
-            <div id="2" class="uploadBTN"><input type="file" class="imgInp" name="image2" accept="image/png, image/jpeg"><img id='img-upload' src="style/image/img.png"/></div>
-            <div id="3" class="uploadBTN"><input type="file" class="imgInp" name="image3" accept="image/png, image/jpeg"><img id='img-upload' src="style/image/img.png"/></div>
-            <div id="4" class="uploadBTN"><input type="file" class="imgInp" name="image4" accept="image/png, image/jpeg"><img id='img-upload' src="style/image/img.png"/></div>
-            <div id="5" class="uploadBTN"><input type="file" class="imgInp" name="image5" accept="image/png, image/jpeg"><img id='img-upload' src="style/image/img.png"/></div>
-            <div id="6" class="uploadBTN"><input type="file" class="imgInp" name="image5" accept="image/png, image/jpeg"><img id='img-upload' src="style/image/img.png"/></div>
+            <div id="1" class="uploadBTN"><input type="file" class="imgInp" name="image1" accept="image/png, image/jpeg"><img id='img-upload1' src="style/image/img.png"/></div>
+            <div id="2" class="uploadBTN"><input type="file" class="imgInp" name="image2" accept="image/png, image/jpeg"><img id='img-upload2' src="style/image/img.png"/></div>
+            <div id="3" class="uploadBTN"><input type="file" class="imgInp" name="image3" accept="image/png, image/jpeg"><img id='img-upload3' src="style/image/img.png"/></div>
+            <div id="4" class="uploadBTN"><input type="file" class="imgInp" name="image4" accept="image/png, image/jpeg"><img id='img-upload4' src="style/image/img.png"/></div>
+            <div id="5" class="uploadBTN"><input type="file" class="imgInp" name="image5" accept="image/png, image/jpeg"><img id='img-upload5' src="style/image/img.png"/></div>
+            <div id="6" class="uploadBTN"><input type="file" class="imgInp" name="image6" accept="image/png, image/jpeg"><img id='img-upload6' src="style/image/img.png"/></div>
 
           </div>
         </div>
