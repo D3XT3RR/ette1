@@ -24,8 +24,9 @@ session_start();
 </head>
 
 <body>
-	  <header>
-      <div class="header auto">  
+	<header>
+    <div class="header"> 
+      <div class="auto"> 
         <div class="menu">
           <div class="logo">
             <div class="blue">E</div>
@@ -36,46 +37,48 @@ session_start();
             <div id="1Button" class="button color"></div>
             <div id="2Button" class="button color"></div>
             <div id="3Button" class="button color"> </div>
-            <div id="profmenu">
+            <div id="profmenu" class="sub-menu-parent">
               <div id="4Button" class="button color"></div>
-              <ul>
+              <ul class=sub-menu>
                 <li id="aButton" class="profBtn"></li>
                 <li id="bButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
-                <li id="cButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li>
-              </ul>
-            </div>
+                <li id="cButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li></li>
+              </ul></div>
           </div>
+      </div>
+    </div>
+    <div id="search" class="auto">
+      <form method="get" action="search.php">
+        <div id="sBar" class="auto">
+          <div id="sText">
+            <input type="text" name="search" placeholder="Czego szukasz?">
+          </div>
+
+          <div id="sCat">
+            <select name="kat">
+              <option value="Praca">Praca</option>
+              <option value="Nieruchomości">Nieruchomości</option>
+              <option value="Motoryzacja">Motoryzacja</option>
+              <option value="Elektronika">Elektronika</option>
+              <option value="Dom i Ogród">Dom i Ogród</option>
+              <option value="Moda">Moda</option>
+              <option value="Zwierzęta">Zwierzęta</option>
+              <option value="Rolnictwo">Rolnictwo</option>
+              <option value="Dla Dzieci">Dla Dzieci</option>
+              <option value="Hobby i Sport">Hobby i Sport</option>
+              <option value="Muzyka">Muzyka</option>
+              <option value="Edukacja">Edukacja</option>
+              <option value="Firmy i Usługi">Firmy i Usługi</option>
+              <option value="Oddam za Darmo">Oddam za Darmo</option>
+              <option value="Zamienię">Zamienię</option>
+              <option value="Różne">Różne</option>
+            </select>
+          </div>
+          <div id="sSubmit"><input type="submit" name="Szukaj" value="Szukaj"></div>
         </div>
-      </div>
-      <div id="search">
-        <form method="get" action="search.php">
-          <div id="sBar">
-            <div id="sText"><input type="text" name="search" placeholder="Czego szukasz?"></div>
-            <div id="sCat">
-              <select name="kat">
-                <option value="Praca">Praca</option>
-                <option value="Nieruchomości">Nieruchomości</option>
-                <option value="Motoryzacja">Motoryzacja</option>
-                <option value="Elektronika">Elektronika</option>
-                <option value="Dom i Ogród">Dom i Ogród</option>
-                <option value="Moda">Moda</option>
-                <option value="Zwierzęta">Zwierzęta</option>
-                <option value="Rolnictwo">Rolnictwo</option>
-                <option value="Dla Dzieci">Dla Dzieci</option>
-                <option value="Hobby i Sport">Hobby i Sport</option>
-                <option value="Muzyka">Muzyka</option>
-                <option value="Edukacja">Edukacja</option>
-                <option value="Firmy i Usługi">Firmy i Usługi</option>
-                <option value="Oddam za Darmo">Oddam za Darmo</option>
-                <option value="Zamienię">Zamienię</option>
-                <option value="Różne">Różne</option>
-              </select>
-            </div>
-            <div id="sSubmit"><input type="submit" name="Szukaj" value="Szukaj"></div>
-          </div>
-        </form>
-      </div>
-    </header>
+      </form>
+    </div>
+  </header>
 
   <section>
     <div class=" container auto">

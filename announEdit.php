@@ -23,43 +23,45 @@ require 'php/session.php';
 
     <script type="text/javascript">
   function toggle(source) {
-  checkboxes = document.getElementsByName('checkadd');
-  for(var i=0, n=checkboxes.length;i<n;i++) {
-    checkboxes[i].checked = source.checked;
+    checkboxes = document.getElementsByName('checkadd');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = source.checked;
+    }
   }
-}
   </script>
 </head>
 
 <body>
   <header>
     <div class="header"> 
-    <div class="auto"> 
-      <div class="menu">
-        <div class="logo">
-          <div class="blue">E</div>
-          <div class="red">TT</div>
-          <div class="blue">E</div>
-        </div>
-        <div class="buttonPanel">
-          <div id="1Button" class="button color"></div>
-          <div id="2Button" class="button color"></div>
-          <div id="3Button" class="button color"> </div>
-          <div id="profmenu">
-            <div id="4Button" class="button color"></div>
-            <ul>
-              <li id="aButton" class="profBtn"></li>
-              <li id="bButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
-              <li id="cButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li></li>
-            </ul></div>
-        </div>
+      <div class="auto"> 
+        <div class="menu">
+          <div class="logo">
+            <div class="blue">E</div>
+            <div class="red">TT</div>
+            <div class="blue">E</div>
+          </div>
+          <div class="buttonPanel">
+            <div id="1Button" class="button color"></div>
+            <div id="2Button" class="button color"></div>
+            <div id="3Button" class="button color"> </div>
+            <div id="profmenu" class="sub-menu-parent">
+              <div id="4Button" class="button color"></div>
+              <ul class=sub-menu>
+                <li id="aButton" class="profBtn"></li>
+                <li id="bButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
+                <li id="cButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li></li>
+              </ul></div>
+          </div>
       </div>
     </div>
     <div id="search" class="auto">
       <form method="get" action="search.php">
         <div id="sBar" class="auto">
+          <div id="sText">
+            <input type="text" name="search" placeholder="Czego szukasz?">
+          </div>
 
-          <div id="sText"><input type="text" name="search" placeholder="Czego szukasz?"></div>
           <div id="sCat">
             <select name="kat">
               <option value="Praca">Praca</option>
@@ -79,76 +81,71 @@ require 'php/session.php';
               <option value="Zamienię">Zamienię</option>
               <option value="Różne">Różne</option>
             </select>
+          </div>
+          <div id="sSubmit"><input type="submit" name="Szukaj" value="Szukaj"></div>
         </div>
-        <div id="sSubmit"><input type="submit" name="Szukaj" value="Szukaj"></div>
-      </div>
-
-      
-    </form>
-  </div>
+      </form>
+    </div>
   </header>
 
 
   <section>
-
     <div class="auto">
       <div class="container">
-    <form method="post" action="php/announAdd.php" enctype="multipart/form-data">
-      <label>Zaczynamy!</label>
-      <div id="title">
-        <div id="titleTXT">Wpisz tytuł<span class="red">*</span></div>
-        <div id="tTXT"><input type="text" placeholder="Tytuł" name="AdTitle" required></div>
+        <form method="post" action="php/announAdd.php" enctype="multipart/form-data">
+          <label>Zaczynamy!</label>
+          <div id="title">
+            <div id="titleTXT">Wpisz tytuł<span class="red">*</span></div>
+            <div id="tTXT"><input type="text" placeholder="Tytuł" name="AdTitle" required></div>
+          </div>
 
+          <div  id="category">
+            <div id="categoryTXT">Wybierz kategorię<span class="red">*</span></div>
+            <div id="cTXT">
+              <select name="Category">
+                <option value="Praca">Praca</option>
+                <option value="Nieruchomości">Nieruchomości</option>
+                <option value="Motoryzacja">Motoryzacja</option>
+                <option value="Elektronika">Elektronika</option>
+                <option value="Dom i Ogród">Dom i Ogród</option>
+                <option value="Moda">Moda</option>
+                <option value="Zwierzęta">Zwierzęta</option>
+                <option value="Rolnictwo">Rolnictwo</option>
+                <option value="Dla Dzieci">Dla Dzieci</option>
+                <option value="Hobby i Sport">Hobby i Sport</option>
+                <option value="Muzyka">Muzyka</option>
+                <option value="Edukacja">Edukacja</option>
+                <option value="Firmy i Usługi">Firmy i Usługi</option>
+                <option value="Oddam za Darmo">Oddam za Darmo</option>
+                <option value="Zamienię">Zamienię</option>
+                <option value="Różne">Różne</option>
+              </select>
+            </div>
+          </div>
 
+          <div id="desc">
+            <div id="descTXT">Opis<span class="red">*</span></div>
+            <div id="dTXT">
+              <textarea type="text" placeholder="Opis..." name="AdText" required></textarea>
+            </div>
+
+            <div id="photos">
+              <div id="fotoName">Dodaj zdjęcia</div>
+              <div id="1" class="uploadBTN"><input type="file" id="imgInp" name="image1" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+              <div id="2" class="uploadBTN"><input type="file" id="imgInp" name="image2" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+              <div id="3" class="uploadBTN"><input type="file" id="imgInp" name="image3" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+              <div id="4" class="uploadBTN"><input type="file" id="imgInp" name="image4" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+              <div id="5" class="uploadBTN"><input type="file" id="imgInp" name="image5" accept="image/png, image/jpeg"><img id='img-upload'/></div>
+            </div>
+            <div>
+              <input type="submit" value="Zaaktualizuj ogłoszenie!">
+            </div>
+        </form>
       </div>
-      <div  id="category">
-        <div id="categoryTXT">Wybierz kategorię<span class="red">*</span></div>
-        <div id="cTXT">
-          <select name="Category">
-          <option value="Praca">Praca</option>
-          <option value="Nieruchomości">Nieruchomości</option>
-          <option value="Motoryzacja">Motoryzacja</option>
-          <option value="Elektronika">Elektronika</option>
-          <option value="Dom i Ogród">Dom i Ogród</option>
-          <option value="Moda">Moda</option>
-          <option value="Zwierzęta">Zwierzęta</option>
-          <option value="Rolnictwo">Rolnictwo</option>
-          <option value="Dla Dzieci">Dla Dzieci</option>
-          <option value="Hobby i Sport">Hobby i Sport</option>
-          <option value="Muzyka">Muzyka</option>
-          <option value="Edukacja">Edukacja</option>
-          <option value="Firmy i Usługi">Firmy i Usługi</option>
-          <option value="Oddam za Darmo">Oddam za Darmo</option>
-          <option value="Zamienię">Zamienię</option>
-          <option value="Różne">Różne</option>
-        </select>
-      </div>
-
-
-      </div>
-      <div id="desc">
-        <div id="descTXT">Opis<span class="red">*</span></div>
-        <div id="dTXT"><textarea type="text" placeholder="Opis..." name="AdText" required></textarea>
-
-      </div>
-      <div id="photos">
-        <div id="fotoName">Dodaj zdjęcia</div>
-        <div id="1" class="uploadBTN"><input type="file" id="imgInp" name="image1" accept="image/png, image/jpeg"><img id='img-upload'/></div>
-        <div id="2" class="uploadBTN"><input type="file" id="imgInp" name="image2" accept="image/png, image/jpeg"><img id='img-upload'/></div>
-        <div id="3" class="uploadBTN"><input type="file" id="imgInp" name="image3" accept="image/png, image/jpeg"><img id='img-upload'/></div>
-        <div id="4" class="uploadBTN"><input type="file" id="imgInp" name="image4" accept="image/png, image/jpeg"><img id='img-upload'/></div>
-        <div id="5" class="uploadBTN"><input type="file" id="imgInp" name="image5" accept="image/png, image/jpeg"><img id='img-upload'/></div>
-
-      </div>
-
-      <div><input type="submit" value="Zaaktualizuj ogłoszenie!"></div>
-    </form>
-  </div>
-</form>
-</div>
-</div>
-
+    </div>
   </section>
+
+
   <footer>
     <div class="auto">
       <div class="column">

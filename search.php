@@ -16,39 +16,40 @@ session_start();
   <!-- CSS -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="style/index.css">
   <link rel="stylesheet" href="style/search.css">
 </head>
 
 <body>
   <header>
     <div class="header"> 
-    <div class="auto"> 
-      <div class="menu">
-        <div class="logo">
-          <div class="blue">E</div>
-          <div class="red">TT</div>
-          <div class="blue">E</div>
-        </div>
-        <div class="buttonPanel">
-          <div id="1Button" class="button color"></div>
-          <div id="2Button" class="button color"></div>
-          <div id="3Button" class="button color"> </div>
-          <div id="profmenu">
-            <div id="4Button" class="button color"></div>
-            <ul>
-              <li id="aButton" class="profBtn"></li>
-              <li id="bButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
-              <li id="cButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li></li>
-            </ul></div>
-        </div>
+      <div class="auto"> 
+        <div class="menu">
+          <div class="logo">
+            <div class="blue">E</div>
+            <div class="red">TT</div>
+            <div class="blue">E</div>
+          </div>
+          <div class="buttonPanel">
+            <div id="1Button" class="button color"></div>
+            <div id="2Button" class="button color"></div>
+            <div id="3Button" class="button color"> </div>
+            <div id="profmenu" class="sub-menu-parent">
+              <div id="4Button" class="button color"></div>
+              <ul class=sub-menu>
+                <li id="aButton" class="profBtn"></li>
+                <li id="bButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
+                <li id="cButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li></li>
+              </ul></div>
+          </div>
       </div>
     </div>
     <div id="search" class="auto">
       <form method="get" action="search.php">
         <div id="sBar" class="auto">
+          <div id="sText">
+            <input type="text" name="search" placeholder="Czego szukasz?">
+          </div>
 
-          <div id="sText"><input type="text" name="search" placeholder="Czego szukasz?"></div>
           <div id="sCat">
             <select name="kat">
               <option value="Praca">Praca</option>
@@ -68,13 +69,11 @@ session_start();
               <option value="Zamienię">Zamienię</option>
               <option value="Różne">Różne</option>
             </select>
+          </div>
+          <div id="sSubmit"><input type="submit" name="Szukaj" value="Szukaj"></div>
         </div>
-        <div id="sSubmit"><input type="submit" name="Szukaj" value="Szukaj"></div>
-      </div>
-
-      
-    </form>
-  </div>
+      </form>
+    </div>
   </header>
 
   <section>
@@ -127,6 +126,8 @@ else
     </div>
     
   </section>
+
+  
   <footer>
     <div class="auto">
       <div class="column">
