@@ -15,6 +15,13 @@
 	margin: 5px;
 }
 
+.col-sm-3:hover .categoryA{
+	font-size: 23px;
+	text-shadow: 2px 2px 5px #595959;
+	transition: all 0.8s ease;
+
+}
+
 .index_cat_photo{
 	width: 140px;
 	height: auto;

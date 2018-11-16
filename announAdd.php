@@ -82,7 +82,7 @@ session_start();
   <section>
     <div class=" container auto">
       <form id="announdAdd" method="post" action="php/announAdd.php" enctype="multipart/form-data">
-        <label>Zaczynamy!</label>
+        <h2>Zaczynamy!</h2>
 
         <div id="title">
           <div id="titleTXT">Wpisz tytuł<span class="red">*</span></div>
