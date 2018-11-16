@@ -171,46 +171,6 @@ session_start();
         {
           while($row = mysqli_fetch_assoc($raw_results))
           {
-            if($_SESSION['user'] != $row['poster_id']){
-              die();
-            }
-            if(isset($_POST['AdText']) && isset($_POST['AdTitle']) && isset($_POST['Category'])){
-            $ad_text = preg_replace( "/\r\n/", "</br>", $_POST['AdText']);
-            $ad_title = getElementById('tTXT');
-            $ad_category = $_POST['Category'];
-            $user_session_id = $_SESSION['user'];
-            $ad_image1 = @addslashes(file_get_contents($_FILES['image1']['tmp_name']));
-            $ad_image2 = @addslashes(file_get_contents($_FILES['image2']['tmp_name']));
-            $ad_image3 = @addslashes(file_get_contents($_FILES['image3']['tmp_name']));
-            $ad_image4 = @addslashes(file_get_contents($_FILES['image4']['tmp_name']));
-            $ad_image5 = @addslashes(file_get_contents($_FILES['image5']['tmp_name']));
-            date_default_timezone_set('Europe/Berlin'); // CDT
-            $current_date = date('Y-m-d');
-
-            $link->set_charset("utf8");
-
-            $result = mysqli_query($link, "UPDATE adverts SET title='$ad_title', text='$ad_text', category='$ad_category' WHERE id='$ad_id'") or die(mysqli_error($link));
-            //update photos
-            if($ad_image1 != null){
-              $result1 = mysqli_query($link, "UPDATE adverts SET image1='$ad_image1' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
-             if($ad_image2 != null){
-              $result2 = mysqli_query($link, "UPDATE adverts SET image2='$ad_image2' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
-             if($ad_image3 != null){
-              $result3 = mysqli_query($link, "UPDATE adverts SET image3='$ad_image3' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
-             if($ad_image4 != null){
-              $result4 = mysqli_query($link, "UPDATE adverts SET image4='$ad_image4' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
-             if($ad_image5 != null){
-              $result5 = mysqli_query($link, "UPDATE adverts SET image5='$ad_image5' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
-
-            $message = "Post został zaktualizowany!";
-            echo "<script type='text/javascript'>alert('$message');window.location.href = 'index.php';</script>";
-            }
-            else{
             $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
             $ad_title = $row['title'];
             $ad_image1 = @addslashes(base64_encode($row['image1']));
@@ -221,12 +181,37 @@ session_start();
             $ad_category = $row['category'];
             $post_date = $row['posting_date'];
             echo("<script>document.getElementById('tTXT').innerHTML='".$ad_title."';document.getElementById('cTXT').innerHTML = '".$ad_category."';document.getElementById('dTXT').innerHTML = '".$ad_text."';</script>");
-            echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
-            echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
-            echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
-            echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
-            echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
-           }
+            if($ad_image1 != null){
+              echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
+            }
+            else{
+              echo('<script>document.getElementById("img-upload1").parentElement.outerHTML = "";</script>');
+            }
+            if($ad_image2 != null){
+              echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
+            }
+            else{
+              echo('<script>document.getElementById("img-upload2").parentElement.outerHTML = "";</script>');
+            }
+            if($ad_image3 != null){
+              echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
+            }
+            else{
+              echo('<script>document.getElementById("img-upload3").parentElement.outerHTML = "";</script>');
+            }
+            if($ad_image4 != null){
+              echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
+            }
+            else{
+              echo('<script>document.getElementById("img-upload4").parentElement.outerHTML = "";</script>');
+            }
+            if($ad_image5 != null){
+              echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
+            }
+            else{
+              echo('<script>document.getElementById("img-upload5").parentElement.outerHTML = "";</script>');
+            }
+            echo('<script>document.getElementById("img-upload6").parentElement.outerHTML = "";</script>');
           }
         }
       }
