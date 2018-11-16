@@ -1,19 +1,6 @@
 <?php
   require 'connect.php';
   $session_user_id = $_SESSION['user']; 
-  //set current data to fields
-  $raw_login_result = mysqli_query($link, "SELECT * FROM login WHERE ID = '$session_user_id'") or die(mysqli_error($link));
-  if(mysqli_num_rows($raw_login_result) > 0)      
-  {
-    while($row = mysqli_fetch_assoc($raw_login_result))
-    {
-      $currentName = $row['Contact_Name'];
-      $currentNumber = $row['Contact_Phone_Number'];
-      $currentEmail = $row['Contact_Email'];
-      echo("<script type='text/javascript'>document.getElementById('nameInput').value = '$currentName';document.getElementById('numberInput').value = '$currentNumber';document.getElementById('emailInput').value = '$currentEmail';</script>");
-    }
-  }
-
   if(isset($_POST['oldpasswd']) && isset($_POST['newpasswd']) && isset($_POST['newpasswd2'])){
     $oldpasswd = $_POST['oldpasswd'];
     $newpasswd = $_POST['newpasswd'];
@@ -52,5 +39,17 @@
     if($data_changed){
        echo("<script type='text/javascript'>alert('Dane kontaktowe zostały zaktualizowane');</script>");
     }
+  //set current data to fields
+  $raw_login_result = mysqli_query($link, "SELECT * FROM login WHERE ID = '$session_user_id'") or die(mysqli_error($link));
+  if(mysqli_num_rows($raw_login_result) > 0)      
+  {
+    while($row = mysqli_fetch_assoc($raw_login_result))
+    {
+      $currentName = $row['Contact_Name'];
+      $currentNumber = $row['Contact_Phone_Number'];
+      $currentEmail = $row['Contact_Email'];
+      echo("<script type='text/javascript'>document.getElementById('nameInput').value = '$currentName';document.getElementById('numberInput').value = '$currentNumber';document.getElementById('emailInput').value = '$currentEmail';</script>");
+    }
+  }
   
 ?>

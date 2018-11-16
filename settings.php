@@ -87,27 +87,27 @@ session_start();
         </div>
         <div id="settings">
 
-          <form action="php/setting.php">
+          <form action="settings.php" method="post">
           <div id="contact">
             <h2>Dane Kontaktowe</h2>
             <div class='flexContact'>
               <label>Imię</label>
               <div id=imieLBL class="contactLBL">
-                <div class="edit"><input id="nameInput" type="text" name=""></div>
+                <div class="edit"><input id="nameInput" type="text" name="name"></div>
               </div>
             </div>
 
             <div class='flexContact'>
               <label>Numer Telefonu</label>
               <div id=telefonLBL class="contactLBL">
-                <div class="edit"><input id="numberInput" type="text" name=""></div>
+                <div class="edit"><input id="numberInput" type="text" name="number"></div>
               </div>
             </div>
 
             <div class='flexContact'>
               <label>E-mail</label>
               <div id=mailLBL class="contactLBL">
-                <div class="edit"><input id="emailInput" type="text" name=""></div>
+                <div class="edit"><input id="emailInput" type="text" name="email"></div>
               </div>
             </div>
 
@@ -118,19 +118,19 @@ session_start();
             <div class='flexContact'>
               <label>Stare hasło</label>
               <div id=oldLBL class="contactLBL">
-                <div  id="1edit" class="edit"><input type="password" name="" ></div>
+                <div  id="1edit" class="edit"><input type="password" name="oldpasswd" ></div>
               </div>
             </div>
             <div class='flexContact'>
               <label>Nowe hasło</label>
               <div id=newLBL class="contactLBL">
-                <div id="2edit" class="edit"><input type="password" name="" ></div>
+                <div id="2edit" class="edit"><input type="password" name="newpasswd" ></div>
               </div>
             </div>
             <div class='flexContact'>
               <label>Powtórz nowe hasło</label>
               <div id=newRLBL class="contactLBL">
-                <div id="3edit" class="edit"><input type="password" name="" ></div>
+                <div id="3edit" class="edit"><input type="password" name="newpasswd2" ></div>
                 
               </div>
             </div>
@@ -176,7 +176,7 @@ session_start();
 
           </div>
         </div>
-        
+        <div><br><input type="submit" value="Aktualizuj"></div>
         </form>
       </div>
       </div>
