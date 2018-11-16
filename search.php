@@ -92,15 +92,17 @@ function DisplayResults($connectionLink, $query){
     {
         while($row = mysqli_fetch_assoc($raw_results))
         {
+          if(($row['visibility'] == 'active') && ($row['status'] == 'approved')){
             echo('<a href="AnnounView.php?id='.$row['id'].'"; >
               <div class="announ"><div class="announTit"><p><h3>'.$row['title'].'</h3>'.$row['category'].'</p></div>');
             echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.base64_encode( $row['image1'] ).'"/></div></div></a><hr>');
+          }
         }
               
     }
     else
     {
-        echo "No results";
+        echo "Brak ogłoszeń";
     }
 }
 if($category != null && $search != null)
