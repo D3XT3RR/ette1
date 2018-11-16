@@ -119,7 +119,7 @@ session_start();
         </div>
 
         <div id="photos">
-          <div id="fotoName">Dodaj zdjęcia</div>
+          <div id="photoTXT">Dodaj zdjęcia</div>
           <div id="fileUpload">
             <div id="1" class="uploadBTN"><input type="file" class="imgInp" name="image1" accept="image/png, image/jpeg"><img id='img-upload1' src="style/image/img.png"/></div>
             <div id="2" class="uploadBTN"><input type="file" class="imgInp" name="image2" accept="image/png, image/jpeg"><img id='img-upload2' src="style/image/img.png"/></div>
@@ -130,8 +130,7 @@ session_start();
 
           </div>
         </div>
-
-        <div><input type="submit" value="Dodaj Ogłoszenie"></div>
+        <div class="announ_sub_Button"><div class="subBTN"><input type="submit" value="Dodaj ogłoszenie!"></div>
       </form>
     </div>
   </section>

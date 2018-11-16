@@ -139,9 +139,11 @@ require 'php/session.php';
             <div id="6" class="uploadBTN"><input type="file" class="imgInp" name="image6" accept="image/png, image/jpeg"><img id='img-upload6' src="style/image/img.png"/></div>
               </div>
             </div>
-            <div>
-              <input type="submit" value="Zaaktualizuj ogłoszenie!">
+            <div class="announ_sub_Button">
+              <div class="canBTN"><input type="submit" value="Usuń ogłoszenie"></div>
+              <div class="subBTN"><input type="submit" value="Aktualizuj ogłoszenie"></div>
             </div>
+
         </form>
       </div>
     </div>
