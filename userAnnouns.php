@@ -168,6 +168,15 @@ function DisplayResults($connectionLink, $query){
           $image_of_ad = $row['image1'];
           $views_of_ad = $row['views'];
           $date_of_ad = $row['posting_date'];
+          $visible;
+          $verify = mysqli_query($connectionLink,"SELECT * FROM adverts WHERE id = '$id_of_ad'") or die(mysqli_error($link));
+          $row2 = mysqli_fetch_assoc($verify);
+          //  $active = mysqli_query($connectionLink, "UPDATE adverts SET visibility = 'active' WHERE id = '$id_of_ad'");
+          //  $inactive = mysqli_query($connectionLink, "UPDATE adverts SET visibility = 'inactive' WHERE id = '$id_of_ad'");
+          if ($row2['visibility'] == 'active')
+              $visible = "Dezaktywuj";
+          else if ($row2['visibility'] == 'inactive')
+              $visible = "Aktywuj";
           //echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['image1'] ).'"/>';
           echo("<script type='text/javascript'>document.getElementById('search-container').innerHTML += '<div class=add>\
         <div class=addbody>\
@@ -183,7 +192,7 @@ function DisplayResults($connectionLink, $query){
           </div>\
           <div class=price>".$date_of_ad."</div>\
           <div class=status>\
-            <button> Aktywuj </button>\
+            <button> ".$visible."</button>\
             <a href=\"AnnounEdit.php?id=".$id_of_ad."\" target=\"_parent\"><button> Edytuj </button></a>\
           </div>\
         </div>\
