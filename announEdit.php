@@ -140,7 +140,7 @@ require 'php/session.php';
               </div>
             </div>
             <div class="announ_sub_Button">
-              <div class="canBTN"><input type="submit" value="Usuń ogłoszenie"></div>
+              <!--<div class="canBTN"><input type="submit" value="Usuń ogłoszenie"></div>-->
               <div class="subBTN"><input type="submit" value="Aktualizuj ogłoszenie"></div>
             </div>
 
@@ -209,6 +209,7 @@ require 'php/session.php';
             $ad_image3 = @addslashes(file_get_contents($_FILES['image3']['tmp_name']));
             $ad_image4 = @addslashes(file_get_contents($_FILES['image4']['tmp_name']));
             $ad_image5 = @addslashes(file_get_contents($_FILES['image5']['tmp_name']));
+            $ad_image5 = @addslashes(file_get_contents($_FILES['image6']['tmp_name']));
             date_default_timezone_set('Europe/Berlin'); // CDT
             $current_date = date('Y-m-d');
 
@@ -231,6 +232,9 @@ require 'php/session.php';
              if($ad_image5 != null){
               $result5 = mysqli_query($link, "UPDATE adverts SET image5='$ad_image5' WHERE id='$ad_id'") or die(mysqli_error($link));
             }
+            if($ad_image6 != null){
+              $result5 = mysqli_query($link, "UPDATE adverts SET image5='$ad_image6' WHERE id='$ad_id'") or die(mysqli_error($link));
+            }
 
             $message = "Post został zaktualizowany!";
             echo "<script type='text/javascript'>alert('$message');window.location.href = 'index.php';</script>";
@@ -243,6 +247,7 @@ require 'php/session.php';
             $ad_image3 = @addslashes(base64_encode($row['image3']));
             $ad_image4 = @addslashes(base64_encode($row['image4']));
             $ad_image5 = @addslashes(base64_encode($row['image5']));
+            $ad_image6 = @addslashes(base64_encode($row['image6']));
             $ad_category = $row['category'];
             $post_date = $row['posting_date'];
             echo("<script>document.getElementsByName('AdTitle')[0].value='".$ad_title."';document.getElementsByName('Category')[0].value = '".$ad_category."';document.getElementsByName('AdText')[0].innerHTML = '".$ad_text."';</script>");
@@ -251,6 +256,7 @@ require 'php/session.php';
             echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
             echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
             echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
+             echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
            }
           }
         }

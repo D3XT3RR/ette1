@@ -14,6 +14,7 @@
             $ad_image3 = @addslashes(file_get_contents($_FILES['image3']['tmp_name']));
             $ad_image4 = @addslashes(file_get_contents($_FILES['image4']['tmp_name']));
             $ad_image5 = @addslashes(file_get_contents($_FILES['image5']['tmp_name']));
+            $ad_image6 = @addslashes(file_get_contents($_FILES['image6']['tmp_name']));
             $ad_category = $_POST['Category'];
             $user_session_id = $_SESSION['user'];
             //$current_user_id = $_SESSION['user_id'];
@@ -24,7 +25,11 @@
             $link->set_charset("utf8");
 
             //Insert our ad into the database
-            $result = mysqli_query($link, "INSERT INTO adverts (title,text,image1,image2,image3,image4,image5,category,poster_id,posting_date,views,status,visibility) VALUES ('$ad_title','$ad_text','$ad_image1', '$ad_image2', '$ad_image3', '$ad_image4', '$ad_image5', '$ad_category', '$user_session_id', '$current_date', 0, 'pending', 'active')") or die(mysqli_error($link));
+            $status = 'approved';
+            if($ad_category == "Praca"){
+                $status = 'pending';
+            }
+            $result = mysqli_query($link, "INSERT INTO adverts (title,text,image1,image2,image3,image4,image5,image6,category,poster_id,posting_date,views,status,visibility) VALUES ('$ad_title','$ad_text','$ad_image1', '$ad_image2', '$ad_image3', '$ad_image4', '$ad_image5', '$ad_image6', '$ad_category', '$user_session_id', '$current_date', 0, '$status', 'active')") or die(mysqli_error($link));
             $message = "Post został opublikowany!";
             echo "<script type='text/javascript'>alert('$message');window.location.href = '../index.php';</script>";
         }

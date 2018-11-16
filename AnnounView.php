@@ -178,6 +178,7 @@ session_start();
             $ad_image3 = @addslashes(base64_encode($row['image3']));
             $ad_image4 = @addslashes(base64_encode($row['image4']));
             $ad_image5 = @addslashes(base64_encode($row['image5']));
+            $ad_image6 = @addslashes(base64_encode($row['image6']));
             $ad_category = $row['category'];
             $post_date = $row['posting_date'];
             echo("<script>document.getElementById('tTXT').innerHTML='".$ad_title."';document.getElementById('cTXT').innerHTML = '".$ad_category."';document.getElementById('dTXT').innerHTML = '".$ad_text."';</script>");
@@ -211,7 +212,12 @@ session_start();
             else{
               echo('<script>document.getElementById("img-upload5").parentElement.outerHTML = "";</script>');
             }
-            echo('<script>document.getElementById("img-upload6").parentElement.outerHTML = "";</script>');
+            if($ad_image6 != null){
+              echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
+            }
+            else{
+              echo('<script>document.getElementById("img-upload6").parentElement.outerHTML = "";</script>');
+            }
           }
         }
       }
