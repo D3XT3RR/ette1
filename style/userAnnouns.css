@@ -54,19 +54,19 @@ width: 100px;
 
 .title {
 /*flex-grow: 5;*/
-width: 400px;
+width: 340px;
 text-align: left;
 }
 
 .price {
 /*flex-grow: 2;*/
-margin-right: 50px;
+margin-right: 40px;
 
 }
 
 .status {
 /*flex-grow: 2;*/
-margin-right: 50px;
+margin-right: 0px;
 padding-right: auto;
 padding-left: auto;
 
