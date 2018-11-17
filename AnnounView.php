@@ -171,6 +171,7 @@ session_start();
         {
           while($row = mysqli_fetch_assoc($raw_results))
           {
+            if(($row['visibility'] == 'active' || $row['poster_id'] == @$_SESSION['user']) && (($row['status'] == 'approved') || (@$_SESSION['user'] == 1) || $row['poster_id'] == @$_SESSION['user'])){
             $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
             $ad_title = $row['title'];
             $ad_image1 = @addslashes(base64_encode($row['image1']));
@@ -217,6 +218,10 @@ session_start();
             }
             else{
               echo('<script>document.getElementById("img-upload6").parentElement.outerHTML = "";</script>');
+            }
+            }
+            else{
+
             }
           }
         }

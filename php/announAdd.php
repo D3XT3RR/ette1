@@ -25,11 +25,12 @@ if(isset($_SESSION['user'])){
         if($ad_category == "Praca"){
             $result = mysqli_query($link, "INSERT INTO adverts (title,text,image1,image2,image3,image4,image5,image6,category,poster_id,posting_date,views,status,visibility) VALUES ('$ad_title','$ad_text','$ad_image1', '$ad_image2', '$ad_image3', '$ad_image4', '$ad_image5', '$ad_image6', '$ad_category', '$user_session_id', '$current_date', 0, 'pending', 'active')") or die(mysqli_error($link));
             $message = "Twoj post został wysłany do weryfikacji. Dostaniesz informacje, gdy zostanie zatwierdzony.";
-                
+            $last_id = mysqli_insert_id($link);
+
             $to="ette.de@onet.eu";
-            $subject="Nowe og³oszenie z kategorii: praca";
+            $subject="Nowe ogłoszenie z kategorii: praca";
             $from = 'noreply@i-ette.de';
-            $body="Testing";
+            $body="Nowe ogłoszenie o tytule: ".$ad_title.", zostało dodane w kategorii Praca <br><a target='_blank' href=http://i-ette.de/page/announView?id=".$last_id.">Link do ogłoszenia</a>";
             $headers = "From:".$from;
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
