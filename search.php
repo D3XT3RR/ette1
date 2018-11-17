@@ -142,9 +142,9 @@ else
 
       <div class="column">
         <h5>Kontakt</h5>
-        <div class="row"><a href="mailto:ette.help@ette.jp">ette.help@ette.jp</a></div>
-        <div class="row"><a href="https://goo.gl/maps/5LZFTEMNkh22" target="_blank"> ul.Jana Pawła Ósmego 21/37 <br>
-        02-137 Wadowice</a></div>
+        <div class="row"><a href="mailto:przykladowy.email@ette.de">przykladowy.email@ette.de</a></div>
+        <div class="row"><a href="https://goo.gl/maps/oMKDB2XsR8D2" target="_blank">rondo Wiatraczna<br>
+        03-982 Warszawa</a></div>
 
       </div>
 

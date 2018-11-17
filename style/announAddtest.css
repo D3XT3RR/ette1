@@ -87,8 +87,13 @@ margin: 10px 0px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    /*background-color: #f7f7f7;*/
 }
 
+/*#dTXT > textarea[type=text]:focus{
+    background-color: white;
+}
+/*
 
 /*=========================================== ZDJĘCIA ===========================================*/
 
@@ -110,7 +115,7 @@ margin: 10px 0px;
 
 
 .imgInp{
-    max-width: 10px;
+    max-width: 100px;
     overflow-wrap: break-word;
 }
 
