@@ -1,0 +1,207 @@
+section{
+    min-height: 120vh;
+}
+
+.container.auto{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#announdAdd{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*=========================================== TYTUŁ  ===========================================*/
+
+#title{
+width: 50%;
+height: 10vh;
+margin: 10px 0px;
+}
+
+#titleTXT{
+    font-size: 22px;
+}
+
+#tTXT input[type=text]{
+    width: 95%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+
+/*=========================================== KATEGORIA ===========================================*/
+
+#category{
+	width: 30%;
+	height: 10vh;
+	margin: 10px 0px;
+}
+
+#categoryTXT{
+    font-size: 22px;
+}
+
+#cTXT > select {
+	width: 95%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+
+
+/*=========================================== OPIS ===========================================*/
+
+
+#desc{
+	width: 100%;
+	min-height: 10vh;
+	margin: 10px 0px;
+}
+
+#descTXT{
+    font-size: 22px;
+}
+
+#dTXT > textarea[type=text]{
+	word-break: break-word;
+    width: 100%;
+    height: 30vh;
+    padding: 6px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /*background-color: #f7f7f7;*/
+}
+
+/*#dTXT > textarea[type=text]:focus{
+    background-color: white;
+}
+/*
+
+/*=========================================== ZDJĘCIA ===========================================*/
+
+#photos{
+    
+}
+
+#photoTXT{
+    font-size: 22px;
+
+}
+
+#fileUpload{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.imgInp{
+    max-width: 100px;
+    overflow-wrap: break-word;
+}
+
+
+.uploadBTN{
+    display: flex;
+    flex-direction: column;
+	width: 290px;
+	height: 290px;
+	/*margin: 5px;*/ 
+	padding: 10px 10px;
+    margin-bottom: 20px;
+	
+
+	background-color: white;
+	color: #a6a6a6;
+	border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+
+.uploadBTN img{
+    width: 100%;
+    height: auto;
+    height: 90%;
+    width: auto;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 90%;
+}
+
+
+
+
+/*=========================================== SUBMIT ===========================================*/
+.announ_sub_Button{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.announ_sub_Button .subBTN input[type=submit]{
+    max-width: 200px;
+    height: 40px;
+    padding: 6px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #2eb82e;
+    border-radius: 2px;
+    box-sizing: border-box;
+    background-color: ;
+    color: #2eb82e;
+    font-weight: bold;
+    transition: 0.3s ease-out;
+
+}
+
+
+.announ_sub_Button .subBTN input[type=submit]:hover{
+    background-color: #2eb82e;
+    color: white;
+    transition: 0.3s ease-in;
+}
+
+
+.announ_sub_Button .canBTN input[type=submit]{
+    max-width: 200px;
+    height: 40px;
+    padding: 6px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ff0000;
+    border-radius: 2px;
+    box-sizing: border-box;
+    background-color: ;
+    color: #ff0000;
+    font-weight: bold;
+    transition: 0.3s ease-out;
+    margin-right: 20px;
+
+}
+
+
+.announ_sub_Button .canBTN input[type=submit]:hover{
+    background-color: #ff0000;
+    color: white;
+    transition: 0.3s ease-in;
+}

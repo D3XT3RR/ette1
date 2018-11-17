@@ -17,7 +17,7 @@ require 'php/session.php';
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style/style.css">  
   <link rel="stylesheet" href="style/userAnnouns.css">
-  <link rel="stylesheet" type="text/css" href="style/announAddtest.css">
+  <link rel="stylesheet" type="text/css" href="style/announAdd.css">
 
     <script type="text/javascript">
   function toggle(source) {

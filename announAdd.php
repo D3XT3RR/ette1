@@ -17,9 +17,9 @@ session_start();
   <!-- CSS -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="style/index.css">
-  <link rel="stylesheet" href="style/announAddtest.css">
-  <link rel="stylesheet" href="style/search.css">
+  
+  <link rel="stylesheet" href="style/announAdd.css">
+  
 </head>
 
 <body>
