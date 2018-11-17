@@ -19,7 +19,7 @@ $passwordDB = substr($row[0], 32);
 
 if (($loginDB == 'no') || ($passwordDB !== $password))
 {
-    echo "<script type='text/javascript'>alert('Invaild login/email or password');window.location = '../Register.php?redirected=true';</script>";
+    echo "<script type='text/javascript'>alert('Nieprawidłowy login/email lub hasło');window.location = '../index.php';</script>";
 }
 
 else
@@ -28,7 +28,7 @@ else
     $row2 = mysqli_fetch_assoc($verification);
     if ($row2['EmailStatus'] == 'not verified')
     {
-        echo "<script type='text/javascript'>alert('Musisz aktywować swoje konto przed logowaniem');window.location = '../Register.php?redirected=true';</script>";
+        echo "<script type='text/javascript'>alert('Musisz aktywować swoje konto przed logowaniem');window.location = '../index.php';</script>";
     }
     else if ($row2['ToBeDeletedDate'] != null){
         date_default_timezone_set('Europe/Berlin'); // CDT
@@ -36,7 +36,7 @@ else
         $del_date = strtotime($row2['ToBeDeletedDate']);
         $date_difference = ($del_date - $current_date)/24/60/60;
         $_SESSION['recover_id'] = $row2['ID'];
-        echo "<script type='text/javascript'>var avert = confirm('Twoje konto jest nieaktywne i będzie usunięte za ".(int)$date_difference." dni, czy chcesz anlować ten proces?'); if(avert){window.location = '../php/account_recovery.php'}else{window.location = '../index.php'};</script>";
+        echo "<script type='text/javascript'>var avert = confirm('Twoje konto jest nieaktywne i będzie usunięte za ".(int)$date_difference." dni, czy chcesz anlować ten proces?'); if(avert){window.location = 'account_recovery.php'}else{window.location = '../index.php'};</script>";
     }
     else if (($loginDB == 'yes') && ($passwordDB == $password) && ($row2['EmailStatus'] == 'verified') )
     {
