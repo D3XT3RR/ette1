@@ -28,9 +28,9 @@ if(isset($_SESSION['user'])){
             $last_id = mysqli_insert_id($link);
 
             $to="ette.de@onet.eu";
-            $subject="Nowe ogłoszenie z kategorii: praca";
+            $subject="Nowe ogloszenie z kategorii: Praca";
             $from = 'noreply@i-ette.de';
-            $body="Nowe ogłoszenie o tytule: ".$ad_title.", zostało dodane w kategorii Praca <br><a target='_blank' href=http://i-ette.de/page/announView?id=".$last_id.">Link do ogłoszenia</a>";
+            $body="Nowe ogłoszenie o tytule: '".$ad_title."', zostało dodane w kategorii 'Praca' <br><a target='_blank' href=http://i-ette.de/page/AnnounView.php?id=".$last_id.">Link do ogłoszenia</a>";
             $headers = "From:".$from;
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
