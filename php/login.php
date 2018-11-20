@@ -19,7 +19,7 @@ $passwordDB = substr($row[0], 32);
 
 if (($loginDB == 'no') || ($passwordDB !== $password))
 {
-    echo "<script type='text/javascript'>alert('Nieprawidłowy login/email lub hasło');window.location = '../index.php';</script>";
+    echo "<script type='text/javascript'>window.location = '../index.php?redirected=true&error=badloginpasswd';</script>";
 }
 
 else
@@ -28,7 +28,7 @@ else
     $row2 = mysqli_fetch_assoc($verification);
     if ($row2['EmailStatus'] == 'not verified')
     {
-        echo "<script type='text/javascript'>alert('Musisz aktywować swoje konto przed logowaniem');window.location = '../index.php';</script>";
+        echo "<script type='text/javascript'>window.location = '../index.php?redirected=true&error=unconfirmedaccount';</script>";
     }
     else if ($row2['ToBeDeletedDate'] != null){
         date_default_timezone_set('Europe/Berlin'); // CDT

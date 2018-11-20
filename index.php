@@ -226,6 +226,7 @@ session_start();
           <label><b>Hasło</b></label>
           <input class="w3-input w3-border" type="password" placeholder="Wpisz Hasło" name="password" required>
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Zaloguj</button>
+          <div id="login-panel-message"></div>
           <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Zapamiętaj mnie
         </div>
       </form>
@@ -291,6 +292,21 @@ session_start();
 
 
 <?php
+  if(isset($_GET['redirected'])){
+    $red = $_GET['redirected'];
+    if($red == "true"){
+      echo "<script type='text/javascript'>document.getElementById('login').style.display='block'</script>";
+    }
+  }
+  if(isset($_GET['error'])){
+    $err = $_GET['error'];
+    if($err == "badloginpasswd"){
+      echo "<script type='text/javascript'>document.getElementById('login-panel-message').innerHTML='Nieprawidłowy login lub hasło'</script>";
+    }
+    else if($err == "unconfirmedaccount"){
+      echo "<script type='text/javascript'>document.getElementById('login-panel-message').innerHTML='Twoje konto nie zostało aktywowane - sprawdź swoją skrzynkę email'</script>";
+    }
+  }
   require 'php/page_format.php';
   require 'php/reg.php';
   require 'php/search.php';

@@ -41,3 +41,6 @@
 	transition: all 0.8s ease;
 }
 
+#login-panel-message{
+	color: red !important;
+}

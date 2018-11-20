@@ -115,18 +115,18 @@ else
     $to=$email;
     $subject="Activation Code For i-ette.de";
     $from = 'noreply@i-ette.de';
-    $body="Thanks for singing up, ".$login."!<br/> Your Activation Code is ".$verificationCode."<br/> <a target='_blank' href='http://i-ette.de/page/php/verify.php?code=".$verificationCode."'>Please Click On This link to activate your account</a>";
+    $body="Dziękujemy za rejestrację, ".$login."!<br/> Twój kod aktywacyjny to ".$verificationCode."<br/> <a target='_blank' href='http://i-ette.de/page/php/verify.php?code=".$verificationCode."'>Skorzystaj z tego linku alby aktywować swoje konto</a>";
     $headers = "From:".$from;
   $headers .= "MIME-Version: 1.0\r\n";
   $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
     mail($to,$subject,$body,$headers);
     //echo "You are registered! :) <br />";
-    echo "<script type='text/javascript'>alert('Kod weryfikujący został wysłany na twoje konto');window.location = '../index.php';</script>";
+    echo "<script type='text/javascript'>alert('Kod weryfikujący został wysłany na twoje konto');window.location = 'index.php';</script>";
     //mail($email, "Registration confirmation", "to be added");
     mysqli_close($link);
 }
 
 else
-    echo "<script type='text/javascript'>alert('Ups! Coś poszło nie tak :(');window.location = '../index.php';</script>";
+    echo "<script type='text/javascript'>alert('Ups! Coś poszło nie tak :(');window.location = 'index.php';</script>";
 }
 ?>
