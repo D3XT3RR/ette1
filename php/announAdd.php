@@ -23,7 +23,11 @@ if(isset($_SESSION['user'])){
 
         //Insert our ad into the database
         if($ad_category == "Praca"){
-            $result = mysqli_query($link, "INSERT INTO adverts (title,text,image1,image2,image3,image4,image5,image6,category,poster_id,posting_date,views,status,visibility) VALUES ('$ad_title','$ad_text','$ad_image1', '$ad_image2', '$ad_image3', '$ad_image4', '$ad_image5', '$ad_image6', '$ad_category', '$user_session_id', '$current_date', 0, 'pending', 'active')") or die(mysqli_error($link));
+            //old version: $result = mysqli_query($link, "INSERT INTO adverts (title,text,image1,image2,image3,image4,image5,image6,category,poster_id,posting_date,views,status,visibility) VALUES ('$ad_title','$ad_text','$ad_image1', '$ad_image2', '$ad_image3', '$ad_image4', '$ad_image5', '$ad_image6', '$ad_category', '$user_session_id', '$current_date', 0, 'pending', 'active')") or die(mysqli_error($link));
+            $adstatus = 'pending';
+            $advisibility = 'active';
+            $startviews = 0;
+            $result = secure_query($link, "INSERT INTO adverts (title,text,image1,image2,image3,image4,image5,image6,category,poster_id,posting_date,views,status,visibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $t = array("ssbbbbbbsisiss"), $a = array(&$ad_title,&$ad_text,&$ad_image1, &$ad_image2, &$ad_image3, &$ad_image4, &$ad_image5, &$ad_image6, &$ad_category, &$user_session_id, &$current_date, &$startviews, &$adstatus, &$advisibility));
             $message = "Twoj post został wysłany do weryfikacji. Dostaniesz informacje, gdy zostanie zatwierdzony.";
             $last_id = mysqli_insert_id($link);
 
@@ -39,7 +43,11 @@ if(isset($_SESSION['user'])){
             echo "<script type='text/javascript'>alert('$message');window.location.href = '../index.php';</script>";
         }
         else{
-            $result = mysqli_query($link, "INSERT INTO adverts (title,text,image1,image2,image3,image4,image5,image6,category,poster_id,posting_date,views,status,visibility) VALUES ('$ad_title','$ad_text','$ad_image1', '$ad_image2', '$ad_image3', '$ad_image4', '$ad_image5', '$ad_image6', '$ad_category', '$user_session_id', '$current_date', 0, 'approved', 'active')") or die(mysqli_error($link));
+            //old version: $result = mysqli_query($link, "INSERT INTO adverts (title,text,image1,image2,image3,image4,image5,image6,category,poster_id,posting_date,views,status,visibility) VALUES ('$ad_title','$ad_text','$ad_image1', '$ad_image2', '$ad_image3', '$ad_image4', '$ad_image5', '$ad_image6', '$ad_category', '$user_session_id', '$current_date', 0, 'approved', 'active')") or die(mysqli_error($link));
+            $adstatus = 'approved';
+            $advisibility = 'active';
+            $startviews = 0;
+            $result = secure_query($link, "INSERT INTO adverts (title,text,image1,image2,image3,image4,image5,image6,category,poster_id,posting_date,views,status,visibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $t = array("ssbbbbbbsisiss"), $a = array(&$ad_title,&$ad_text,&$ad_image1, &$ad_image2, &$ad_image3, &$ad_image4, &$ad_image5, &$ad_image6, &$ad_category, &$user_session_id, &$current_date, &$startviews, &$adstatus, &$advisibility));
             $message = "Post został opublikowany!";
             echo "<script type='text/javascript'>alert('$message');window.location.href = '../index.php';</script>";
         }

@@ -1,6 +1,7 @@
 <?php
-  require 'php/page_format.php';
-  require 'php/connect.php';
+  require 'page_format.php';
+  require 'connect.php';
+  require 'secure_query.php';
 
 
 if(!isset($_POST['RegLogin']) || !isset($_POST['RegPasswd']) || !isset($_POST['RegPasswd2']) || !isset($_POST['RegMail']) || !isset($_POST['RegPhone'])){
@@ -27,13 +28,13 @@ function random_str($length, $keyspace = '0123456789abcde')
     return implode('', $pieces);
 }
 $encrypt = random_str(32); 
-$result = mysqli_query($link,"SELECT Login FROM login WHERE Login='$login'");
+$result = secure_query($link,"SELECT Login FROM login WHERE Login=?", $t = array('s'), $a = array(&$login));
 $checkLogin = mysqli_num_rows($result) > 0 ? 'yes' : 'no';
-$result2 = mysqli_query($link,"SELECT Email FROM login WHERE Email='$email'");
+$result2 = secure_query($link,"SELECT Email FROM login WHERE Email=?", $t = array('s'), $a = array(&$email));
 $checkEmail = mysqli_num_rows($result2) > 0 ? 'yes' : 'no';
 while (true){
     $verificationCode = md5(rand(0,10000));
-    $result = mysqli_query($link, "SELECT 1 FROM login WHERE ActivationCode = '$verificationCode' LIMIT 1");
+    $result = secure_query($link, "SELECT 1 FROM login WHERE ActivationCode = ? LIMIT 1", $t = array('s'), $a = array(&$verificationCode));
     if (mysqli_num_rows($result) == 0) {
         break;
     }
@@ -106,11 +107,11 @@ else
     {
         die("ERROR: Could not connect. ".mysqli_connect_error());
     }
+    //old version: $sql = "INSERT INTO login (Login, Password, Email, Contact_Phone_Number, Contact_Email, Phone, ActivationCode, EmailStatus) VALUES ('$login', '$password', '$email', '$phone', '$email', '$phone', '$verificationCode', 'not verified')";
+    $sql = "INSERT INTO login (Login, Password, Email, Contact_Phone_Number, Contact_Email, Phone, ActivationCode, EmailStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $sql = "INSERT INTO login (Login, Password, Email, Contact_Phone_Number, Contact_Email, Phone, ActivationCode, EmailStatus) VALUES ('$login', '$password', '$email', '$phone', '$email', '$phone', '$verificationCode', 'not verified')";
-
-
-    if(mysqli_query($link, $sql))
+    $default_status = 'not verified';
+    if(secure_query($link, $sql, $t = array("sssisiss"), $a = array(&$login, &$password, &$email, &$phone, &$email, &$phone, &$verificationCode, &$default_status)))
     {
     $to=$email;
     $subject="Activation Code For i-ette.de";
@@ -127,6 +128,6 @@ else
 }
 
 else
-    echo "<script type='text/javascript'>alert('Ups! Coś poszło nie tak :(');window.location = 'index.php';</script>";
+    echo "<script type='text/javascript'>alert('Ups! Coś poszło nie tak :(');window.location = '../index.php';</script>";
 }
 ?>
