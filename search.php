@@ -79,15 +79,14 @@ session_start();
   <section>
     <div class="auto">
 <?php
-require('php/connect.php');
+require_once 'php/connect.php';
+require_once 'php/secure_query.php';
 mysqli_set_charset($link,"utf8");
 
 $search = @$_GET['search'];
 $category = @$_GET['kat'];
 
-function DisplayResults($connectionLink, $query){
-    $raw_results = mysqli_query($connectionLink,$query) or die(mysqli_error($connectionLink));
-    
+function DisplayResults($raw_results){    
     if(mysqli_num_rows($raw_results) > 0)      
     {
         while($row = mysqli_fetch_assoc($raw_results))
@@ -107,19 +106,20 @@ function DisplayResults($connectionLink, $query){
 }
 if($category != null && $search != null)
 {
-    DisplayResults($link, "SELECT * FROM adverts WHERE (((LOWER(title) LIKE LOWER('%".$search."%')) OR (LOWER(text) LIKE LOWER('%".$search."%'))) AND (LOWER(category) = LOWER('".$category."')))");
+    $search = "%".$search."%";
+    DisplayResults(secure_query($link, "SELECT * FROM adverts WHERE (((LOWER(title) LIKE LOWER(?)) OR (LOWER(text) LIKE LOWER(?))) AND (LOWER(category) = LOWER(?)))", $t = array('sss'), $a = array(&$search, &$search, &$category)));
 }
 else if ($search != null)
 {
-    DisplayResults($link, "SELECT * FROM adverts WHERE (LOWER(title) LIKE LOWER('%".$search."%')) OR (LOWER(text) LIKE LOWER('%".$search."%'))");
-    
+  $search = "%".$search."%";
+    DisplayResults(secure_query($link, "SELECT * FROM adverts WHERE (LOWER(title) LIKE LOWER(?)) OR (LOWER(text) LIKE LOWER(?))", $t = array('ss'), $a = array(&$search, &$search)));
 }
 else if($category != null){
-    DisplayResults($link, "SELECT * FROM adverts WHERE (LOWER(category) = LOWER('".$category."'))");
+    DisplayResults(secure_query($link, "SELECT * FROM adverts WHERE (LOWER(category) = LOWER(?))", $t = array('s'), $a = array(&$category)));
 }
 else 
 {
-    echo "<script type='text/javascript'>alert('Insert word');window.location = '../index.php';</script>";
+    echo "<script type='text/javascript'>alert('Brak kryteriów wyszukiwania');window.location = '../index.php';</script>";
 }
 
 
@@ -252,7 +252,6 @@ else
 <?php
   require 'php/page_format.php';
   require 'php/reg.php';
-  require 'php/search.php';
   ?>
 </body>
 </html>

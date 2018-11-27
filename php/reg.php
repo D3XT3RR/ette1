@@ -1,7 +1,7 @@
 <?php
-  require 'page_format.php';
-  require 'connect.php';
-  require 'secure_query.php';
+  require_once 'page_format.php';
+  require_once 'connect.php';
+  require_once 'secure_query.php';
 
 
 if(!isset($_POST['RegLogin']) || !isset($_POST['RegPasswd']) || !isset($_POST['RegPasswd2']) || !isset($_POST['RegMail']) || !isset($_POST['RegPhone'])){

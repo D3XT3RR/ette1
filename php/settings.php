@@ -1,6 +1,6 @@
 <?php
-  require 'connect.php';
-  require 'secure_query.php';
+  require_once 'connect.php';
+  require_once 'secure_query.php';
   function random_str2($length, $keyspace = '0123456789abcde')
 {
     $pieces = array();
