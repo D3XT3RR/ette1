@@ -2,17 +2,20 @@
 session_start();
 
 require_once 'connect.php';
+require_once 'secure_query.php';
 
 if($link === false)
 {
-    die("ERROR: Could not connect. ".mysqli_connect_error());
+    die("ERROR: Could not connect: ".mysqli_connect_error());
 }
 
 $login = $_POST['login'];
 $password = SHA1($_POST['password']);
-$result = mysqli_query($link,"SELECT Login FROM login WHERE Login='$login' OR Email='$login'");
+//old version: $result = mysqli_query($link,"SELECT Login FROM login WHERE Login='$login' OR Email='$login'");
+$result = secure_query($link,"SELECT Login FROM login WHERE Login=? OR Email=?", $t = array('ss'), $a = array(&$login, &$login));
 $loginDB = mysqli_num_rows($result) > 0 ? 'yes' : 'no';
-$result2 = mysqli_query($link,"SELECT Password FROM login WHERE Login='$login' OR Email='$login'");
+//old version: $result2 = mysqli_query($link,"SELECT Password FROM login WHERE Login='$login' OR Email='$login'");
+$result2 = secure_query($link,"SELECT Password FROM login WHERE Login=? OR Email=?", $t = array('ss'), $a = array(&$login, &$login));
 $row = mysqli_fetch_row($result2);
 $passwordDB = substr($row[0], 32);
 
@@ -24,7 +27,8 @@ if (($loginDB == 'no') || ($passwordDB !== $password))
 
 else
 {
-    $verification = mysqli_query($link,"SELECT * FROM login WHERE Login='$login' OR Email='$login'") or die(mysqli_error($link));
+    //old version: $verification = mysqli_query($link,"SELECT * FROM login WHERE Login='$login' OR Email='$login'") or die(mysqli_error($link));
+    $verification = secure_query($link,"SELECT * FROM login WHERE Login=? OR Email=?", $t = array('ss'), $a = array(&$login, &$login));
     $row2 = mysqli_fetch_assoc($verification);
     if ($row2['EmailStatus'] == 'not verified')
     {
@@ -40,7 +44,8 @@ else
     }
     else if (($loginDB == 'yes') && ($passwordDB == $password) && ($row2['EmailStatus'] == 'verified') )
     {
-        $result3 = mysqli_query($link,"SELECT ID FROM login WHERE Login='$login' OR Email='$login'");
+        //old version: $result3 = mysqli_query($link,"SELECT ID FROM login WHERE Login='$login' OR Email='$login'");
+        $result3 = secure_query($link,"SELECT ID FROM login WHERE Login=? OR Email=?", $t = array('ss'), $a = array(&$login, &$login));
         $user_id = mysqli_fetch_row($result3);
         $_SESSION['user'] = $user_id[0];
         echo "<script type='text/javascript'>window.location = '../index.php';</script>";

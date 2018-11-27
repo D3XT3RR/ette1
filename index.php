@@ -309,7 +309,6 @@ session_start();
   }
   require 'php/page_format.php';
   require 'php/reg.php';
-  require 'php/search.php';
   ?>
 </body>
 </html>
