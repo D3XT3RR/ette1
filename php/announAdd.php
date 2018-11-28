@@ -2,7 +2,7 @@
 require_once 'connect.php';
 require_once 'session.php';
 require_once 'page_format.php';
-require_once 'secure_query.php'
+require_once 'secure_query.php';
 if(isset($_SESSION['user'])){
     if(isset($_POST['AdText']) && isset($_POST['AdTitle']) && isset($_POST['Category'])){
         $ad_text = preg_replace( "/\r\n/", "</br>", $_POST['AdText']);
