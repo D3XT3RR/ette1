@@ -107,15 +107,15 @@ function DisplayResults($raw_results){
 if($category != null && $search != null)
 {
     $search = "%".$search."%";
-    DisplayResults(secure_query($link, "SELECT * FROM adverts WHERE (((LOWER(title) LIKE LOWER(?)) OR (LOWER(text) LIKE LOWER(?))) AND (LOWER(category) = LOWER(?)))", $t = array('sss'), $a = array(&$search, &$search, &$category)));
+    DisplayResults(secure_query($link, "SELECT * FROM adverts WHERE (((LOWER(title) LIKE LOWER(?)) OR (LOWER(text) LIKE LOWER(?))) AND (LOWER(category) = LOWER(?))) ORDER BY posting_date DESC", $t = array('sss'), $a = array(&$search, &$search, &$category)));
 }
 else if ($search != null)
 {
   $search = "%".$search."%";
-    DisplayResults(secure_query($link, "SELECT * FROM adverts WHERE (LOWER(title) LIKE LOWER(?)) OR (LOWER(text) LIKE LOWER(?))", $t = array('ss'), $a = array(&$search, &$search)));
+    DisplayResults(secure_query($link, "SELECT * FROM adverts WHERE (LOWER(title) LIKE LOWER(?)) OR (LOWER(text) LIKE LOWER(?)) ORDER BY posting_date DESC", $t = array('ss'), $a = array(&$search, &$search)));
 }
 else if($category != null){
-    DisplayResults(secure_query($link, "SELECT * FROM adverts WHERE (LOWER(category) = LOWER(?))", $t = array('s'), $a = array(&$category)));
+    DisplayResults(secure_query($link, "SELECT * FROM adverts WHERE (LOWER(category) = LOWER(?)) ORDER BY posting_date DESC", $t = array('s'), $a = array(&$category)));
 }
 else 
 {

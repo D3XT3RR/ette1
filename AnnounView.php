@@ -189,10 +189,12 @@ session_start();
     <?php
       require 'php/connect.php';
       require 'php/page_format.php';
+      require_once 'php/secure_query.php';
       if(isset($_GET['id'])){
         $link->set_charset("utf8");
         $ad_id = $_GET['id'];
-        $raw_results = mysqli_query($link,"SELECT * FROM adverts WHERE id = '$ad_id'") or die(mysqli_error($link));
+        //old version: $raw_results = mysqli_query($link,"SELECT * FROM adverts WHERE id = '$ad_id'") or die(mysqli_error($link));
+        $raw_results = secure_query($link,"SELECT * FROM adverts WHERE id = ?", $t = array('i'), $a = array(&$ad_id));
         if(mysqli_num_rows($raw_results) > 0)      
         {
           while($row = mysqli_fetch_assoc($raw_results))
