@@ -234,6 +234,7 @@ session_start();
           <label><b>Numer telefonu</b></label>
           <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Numer telefonu" name="RegPhone" required>
           <div id="phoneErr" class="err"></div><br>
+       
 
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Zakończ rejestrację!</button>
         </div>

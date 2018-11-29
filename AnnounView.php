@@ -97,23 +97,49 @@ session_start();
           </div>
 
             <div id="photos">
-              <div id="fileUpload">
+            	<!-- 
+            		<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+					<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+					<img class='mySlides' id='img-upload1' src='' >
+					<img class='mySlides' id='img-upload2' src='' >
+					<img class='mySlides' id='img-upload3' src='' >
+					<img class='mySlides' id='img-upload4' src='' >
+					<img class='mySlides' id='img-upload5' src='' >
+					<img class='mySlides' id='img-upload6' src='' >
+					
+					   echo "var slideIndex = 1;
+                            showDivs(slideIndex);
+                            function plusDivs(n) {
+                                showDivs(slideIndex += n);
+                            }
+                            function showDivs(n) {
+                                var i;
+                                var x = document.getElementsByClassName('mySlides');
+                                if (n > x.length) {slideIndex = 1} 
+                                if (n < 1) {slideIndex = x.length} ;
+                                    for (i = 0; i < x.length; i++) {
+                                       x[i].style.display = 'none'; 
+                                    }
+                                x[slideIndex-1].style.display = 'block'; 
+                            }"
+                    
+				-->
+            
+           <div id="fileUpload">
                 <div class="photoBox"><img id='img-upload1' src=""/></div>
                 <div class="photoBox"><img id='img-upload2' src=""/></div>
                 <div class="photoBox"><img id='img-upload3' src=""/></div>
                 <div class="photoBox"><img id='img-upload4' src=""/></div>
                 <div class="photoBox"><img id='img-upload5' src=""/></div>
                 <div class="photoBox"><img id='img-upload6' src=""/></div>
-                
-                
-                
-                
-                
-                
-            </div>
+    
+            </div> 
+            
+           
         </div>
       </div>
-    </div>
+	</div>
+    
   </section>
 
 
@@ -183,7 +209,7 @@ session_start();
             $ad_category = $row['category'];
             $post_date = $row['posting_date'];
             echo("<script>document.getElementById('tTXT').innerHTML='".$ad_title."';document.getElementById('cTXT').innerHTML = '".$ad_category."';document.getElementById('dTXT').innerHTML = '".$ad_text."';</script>");
-            if($ad_image1 != null){
+        if($ad_image1 != null){
               echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
             }
             else{
@@ -219,7 +245,7 @@ session_start();
             else{
               echo('<script>document.getElementById("img-upload6").parentElement.outerHTML = "";</script>');
             }
-            }
+           }
             else{
 
             }
