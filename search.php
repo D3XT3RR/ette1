@@ -92,8 +92,16 @@ function DisplayResults($raw_results){
         while($row = mysqli_fetch_assoc($raw_results))
         {
           if(($row['visibility'] == 'active') && ($row['status'] == 'approved')){
+            $oDate = new DateTime($row['posting_date']);
+            $sDate = $oDate->format("d M");
             echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; >
-              <div class="announTit"><p><h3>'.$row['title'].'</h3>'.$row['category'].'</p></div>');
+                  <div class="announTit">
+                    <h3>'.$row['title'].'</h3>
+                    <div class="category">'.$row['category'].'</div>
+                    <div class="date">'.$sDate.'</div>
+                  </div>');
+
+
             echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.base64_encode( $row['image1'] ).'"/></div></a><hr>');
           }
         }
