@@ -195,14 +195,12 @@ function DisplayResults($connectionLink, $query){
           </div>\
           <div class=status>\
             <a href=\"php/activate.php?id=".$id_of_ad."&action=".$action."\" target=\"_parent\">".$visible."</a>\
-            <a href=\"announEdit.php?id=".$id_of_ad."\" target=\"_parent\"><button class=\"edit button\" data-hover=\"EDYTUJ\"><span><img src=\"style/image/userAnnoun/pen.png\"></span> </button></a>\
-            <a href=\"AnnounView.php?id=".$id_of_ad."\" target=\"_parent\"><button class=\"button\"> Wyświetl </button></a>\
+            <a href=\"announEdit.php?id=".$id_of_ad."\" target=\"_parent\"><button class=\"edit button\" data-hover=\"EDYTUJ\"><span><img src=\"style/image/userAnnoun/pen.png\"></span> </button ></a>\
+            <a href=\"AnnounView.php?id=".$id_of_ad."\" target=\"_parent\"><button class=\"view button\" data-hover=\"WYŚWIETL\"><span><img src=\"style/image/userAnnoun/view.png\"></span></button></a>\
           </div>\
         </div>\
         <div class=addfoot>\
-          <div style=\"padding: 0px 10px; border-right: 1px solid gray;\">Statystyki</div>\
           <div style=\"padding: 0px 10px; border-right: 1px solid gray;\">Wyświetleń: ".$views_of_ad."</div>\
-          <div style=\"padding: 0px 10px; border-right: 1px solid gray;\">Telefony:</div>\
           <div style=\"padding: 0px 10px;\">Obserwuje:</div>\
         </div>';</script>");
 

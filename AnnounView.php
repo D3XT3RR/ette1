@@ -17,6 +17,10 @@ session_start();
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/announView.css">
+  <link rel="stylesheet" href="style/gallery.css">
+
+
+  <script type="text/javascript" src="js/gallery.js"></script>
   </head>
 
 <body>
@@ -92,22 +96,18 @@ session_start();
             <div id="cTXT"></div>
           </div>
 
-          <div id="desc">
-            <div id="dTXT"></div>
-          </div>
-
-            <div id="photos">
-            	<!-- 
-            		<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-					<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
-					<img class='mySlides' id='img-upload1' src='' >
-					<img class='mySlides' id='img-upload2' src='' >
-					<img class='mySlides' id='img-upload3' src='' >
-					<img class='mySlides' id='img-upload4' src='' >
-					<img class='mySlides' id='img-upload5' src='' >
-					<img class='mySlides' id='img-upload6' src='' >
-					
-					   echo "var slideIndex = 1;
+          <div id="photos">
+              <!-- 
+                <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+          <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+          <img class='mySlides' id='img-upload1' src='' >
+          <img class='mySlides' id='img-upload2' src='' >
+          <img class='mySlides' id='img-upload3' src='' >
+          <img class='mySlides' id='img-upload4' src='' >
+          <img class='mySlides' id='img-upload5' src='' >
+          <img class='mySlides' id='img-upload6' src='' >
+          
+             echo "var slideIndex = 1;
                             showDivs(slideIndex);
                             function plusDivs(n) {
                                 showDivs(slideIndex += n);
@@ -123,8 +123,8 @@ session_start();
                                 x[slideIndex-1].style.display = 'block'; 
                             }"
                     
-				-->
-            
+        -->
+            <!--
            <div id="fileUpload">
                 <div class="photoBox"><img id='img-upload1' src=""/></div>
                 <div class="photoBox"><img id='img-upload2' src=""/></div>
@@ -135,10 +135,77 @@ session_start();
     
             </div> 
             
-           
+           -->
+           <div class="container">
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+    <img id="img-upload1" src=""/>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 6</div>
+    <img id="img-upload2" src=""/>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+    <img id="img-upload3" src=""/>
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+    <img id="img-upload4" src=""/>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+    <img id="img-upload5" src=""/>
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+    <img id="img-upload6" src=""/>
+  </div>
+    
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" id="img-BIGupload1" src="" style="width:100%" onclick="currentSlide(1)">
+    </div>
+    <div class="column">
+      <img class="demo cursor" id="img-BIGupload2" src="" style="width:100%" onclick="currentSlide(2)">
+    </div>
+    <div class="column">
+      <img class="demo cursor" id="img-BIGupload3" src="" style="width:100%" onclick="currentSlide(3)">
+    </div>
+    <div class="column">
+      <img class="demo cursor" id="img-BIGupload4" src="" style="width:100%" onclick="currentSlide(4)">
+    </div>
+    <div class="column">
+      <img class="demo cursor" id="img-BIGupload5" src="" style="width:100%" onclick="currentSlide(5)">
+    </div>    
+    <div class="column">
+      <img class="demo cursor" id="img-BIGupload6" src="" style="width:100%" onclick="currentSlide(6)">
+    </div>
+  </div>
+</div>
+
+          <div id="desc">
+            <div id="dTXT"></div>
+          </div>
+
+
         </div>
       </div>
+
+
 	</div>
+
+
+  
     
   </section>
 
@@ -200,6 +267,12 @@ session_start();
           while($row = mysqli_fetch_assoc($raw_results))
           {
             if(($row['visibility'] == 'active' || $row['poster_id'] == @$_SESSION['user']) && (($row['status'] == 'approved') || (@$_SESSION['user'] == 1) || $row['poster_id'] == @$_SESSION['user'])){
+
+              if($row['poster_id'] != @$_SESSION['user']){
+                $newViews = $row['views'] + 1;
+                mysqli_query($link, "UPDATE adverts SET views = '$newViews' WHERE id = '$ad_id'");
+              }
+            
             $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
             $ad_title = $row['title'];
             $ad_image1 = @addslashes(base64_encode($row['image1']));
@@ -213,39 +286,52 @@ session_start();
             echo("<script>document.getElementById('tTXT').innerHTML='".$ad_title."';document.getElementById('cTXT').innerHTML = '".$ad_category."';document.getElementById('dTXT').innerHTML = '".$ad_text."';</script>");
         if($ad_image1 != null){
               echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
+              echo('<script>document.getElementById("img-BIGupload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
             }
             else{
               echo('<script>document.getElementById("img-upload1").parentElement.outerHTML = "";</script>');
+              echo('<script>document.getElementById("img-BIGupload1").parentElement.innerHTML = "";</script>');
             }
             if($ad_image2 != null){
               echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
+              echo('<script>document.getElementById("img-BIGupload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
             }
             else{
               echo('<script>document.getElementById("img-upload2").parentElement.outerHTML = "";</script>');
+              echo('<script>document.getElementById("img-BIGupload2").parentElement.innerHTML = "";</script>');
             }
             if($ad_image3 != null){
               echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
+              echo('<script>document.getElementById("img-BIGupload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
             }
             else{
               echo('<script>document.getElementById("img-upload3").parentElement.outerHTML = "";</script>');
+              echo('<script>document.getElementById("img-BIGupload3").parentElement.innerHTML = "";</script>');
             }
             if($ad_image4 != null){
               echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
+              echo('<script>document.getElementById("img-BIGupload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
             }
             else{
               echo('<script>document.getElementById("img-upload4").parentElement.outerHTML = "";</script>');
+              echo('<script>document.getElementById("img-BIGupload4").parentElement.innerHTML = "";</script>');
             }
             if($ad_image5 != null){
               echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
+              echo('<script>document.getElementById("img-BIGupload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
             }
             else{
               echo('<script>document.getElementById("img-upload5").parentElement.outerHTML = "";</script>');
+              echo('<script>document.getElementById("img-BIGupload5").parentElement.innerHTML = "";</script>');
             }
-            if($ad_image6 != null){
+            if($ad_image6 != ""){
               echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
+              echo('<script>document.getElementById("img-BIGupload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
             }
             else{
-              echo('<script>document.getElementById("img-upload6").parentElement.outerHTML = "";</script>');
+              echo('<script>document.getElementById("img-upload6").parentElement.innerHTML = "";</script>');
+              echo('<script>document.getElementById("img-BIGupload6").parentElement.innerHTML = "";</script>');
+              echo "NO NO JAK CHUJ";
             }
            }
             else{
