@@ -92,7 +92,7 @@ function DisplayResults($raw_results){
         while($row = mysqli_fetch_assoc($raw_results))
         {
           if(($row['visibility'] == 'active') && ($row['status'] == 'approved')){
-            $mon = array("Sty ","Lut ","Mar ","Kwi ","Maj ","Cze ","Lip ","Sie ","Wrz ","Paź ","Lis ","Gru ");
+            $mon = array("Stycznia ","Lutego ","Marca ","Kwietnia ","Maja ","Czerwca ","Lipca ","Sierpnia ","Września ","Października ","Listopada ","Grudnia ");
             $oDate = new DateTime($row['posting_date']);
             $dDate = $oDate->format("d ");
             $mDate = $mon[$oDate->format("n")-1];
