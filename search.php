@@ -92,13 +92,15 @@ function DisplayResults($raw_results){
         while($row = mysqli_fetch_assoc($raw_results))
         {
           if(($row['visibility'] == 'active') && ($row['status'] == 'approved')){
+            $mon = array("Sty ","Lut ","Mar ","Kwi ","Maj ","Cze ","Lip ","Sie ","Wrz ","Paź ","Lis ","Gru ");
             $oDate = new DateTime($row['posting_date']);
-            $sDate = $oDate->format("d M");
+            $dDate = $oDate->format("d ");
+            $mDate = $mon[$oDate->format("n")-1];
             echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; >
                   <div class="announTit">
                     <h3>'.$row['title'].'</h3>
                     <div class="category">'.$row['category'].'</div>
-                    <div class="date">'.$sDate.'</div>
+                    <div class="date">'.$dDate.''.$mDate.'</div>
                   </div>');
 
 
