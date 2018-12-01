@@ -58,7 +58,7 @@ width: 100%;
 
 .check {
 
-width: 30px;
+width: 20px;
 margin-left: 10px;
 margin-right: 10px;
 
@@ -66,12 +66,12 @@ margin-right: 10px;
 
 .date {
 
-width: 100px;
+width: 130px;
 }
 
 .title {
 
-width: 300px;
+width: 400px;
 text-align: left;
 }
 
@@ -82,10 +82,71 @@ margin-right: 50px;
 }
 
 .status {
-
-margin-right: 50px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 280px;
+margin-right: 0px;
 padding-right: auto;
 padding-left: auto;
-
 }
+
+
+.status > a > .inactive{
+  width: 110px;
+  border-color: #2eb82e;
+  background-color: ;
+  color: #2eb82e;
+  transition: all 0.1s ease;
+}
+
+.status > a > .active{
+  width: 110px;  
+  border-color: #ff471a;
+  background-color: ;
+  color: #ff471a;
+  transition: all 0.1s ease;
+  
+}
+
+
+.status > a > .active:hover{
+  border-color: #2eb82e;
+  background-color: #2eb82e;
+  color: white;
+  transition: all 0.1s ease;
+}
+
+.status > a > .inactive:hover{  
+  border-color: #ff471a;
+  background-color: #ff471a;
+  color: white;
+  transition: all 0.1s ease;
+  
+}
+
+
+.status > a > .edit{  
+  width: 70px;
+  border-color: black;
+  background-color: ;
+  color:    #00BFFF;
+  transition: all 0.1s ease;
+  
+}
+
+span > img{  
+  height: 50%;
+  width: auto;
+  
+}
+
+.status > a > .edit:hover{  
+  border-color:   #00BFFF;
+  background-color:   #00BFFF;
+  color: white;
+  transition: all 0.1s ease;
+  
+}
+
 

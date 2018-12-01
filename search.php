@@ -108,7 +108,11 @@ function DisplayResults($raw_results){
                   if ($file == '') {
                     $file = base64_encode( $row['image5']);
                     if ($file =='') {
-                      echo('<div class="announPic">BRAK ZDJĘCIA</div></a><hr> ');
+                      $file = base64_encode( $row['image6']);
+                      if ($file =='') {
+                        echo('<div class="announPic">BRAK ZDJĘCIA</div></a><hr> ');
+                      }
+                      else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a><hr>');}
                     }
                     else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a><hr>');}
                   }

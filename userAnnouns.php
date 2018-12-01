@@ -17,6 +17,7 @@ require 'php/session.php';
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style/style.css">  
   <link rel="stylesheet" href="style/userAnnouns.css">
+  <link rel="stylesheet" href="style/button.css">
 
     <script type="text/javascript">
   function toggle(source) {
@@ -95,15 +96,11 @@ require 'php/session.php';
         </div>
 
         <div class="date">
-          Data
+          Okres ważności
         </div>
 
         <div class="title">
           Tytuł
-        </div>
-
-        <div class="price">
-          Data utworzenia
         </div>
 
         <div class="status">
@@ -166,7 +163,9 @@ function DisplayResults($connectionLink, $query){
           $text_of_ad = $row['text'];
           $image_of_ad = $row['image1'];
           $views_of_ad = $row['views'];
-          $date_of_ad = $row['posting_date'];
+          $date = $row['posting_date'];
+          $date_of_ad = Date("d.m.Y", strtotime($date));
+          $date_of_expire = Date("d.m.Y",strtotime("+14 day", strtotime($date_of_ad)));
           $visible;
           $action;
           $verify = mysqli_query($connectionLink,"SELECT * FROM adverts WHERE id = '$id_of_ad'") or die(mysqli_error($link));
@@ -174,11 +173,11 @@ function DisplayResults($connectionLink, $query){
           //  $active = mysqli_query($connectionLink, "UPDATE adverts SET visibility = 'active' WHERE id = '$id_of_ad'");
           //  $inactive = mysqli_query($connectionLink, "UPDATE adverts SET visibility = 'inactive' WHERE id = '$id_of_ad'");
           if ($row2['visibility'] == 'active'){
-              $visible = "Dezaktywuj";
+              $visible = "<button class=\"inactive button\" data-hover=\"DEZAKTYWUJ\"><span>&#x2713</span></button>";
               $action = "inactive";
           }
           else if ($row2['visibility'] == 'inactive'){
-              $visible = "Aktywuj";
+              $visible = "<button class=\"active button\" data-hover=\"AKTYWUJ\"><span>&#935</span></button>";
               $action = "active";
             }
           //echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['image1'] ).'"/>';
@@ -188,17 +187,16 @@ function DisplayResults($connectionLink, $query){
             <input type=checkbox name=checkadd>\
           </div>\
           <div class=date>\
-            Od: TBA <br>\
-            Do: TBA\
+            Od: ".$date_of_ad."<br>\
+            Do: ".$date_of_expire."\
           </div>\
           <div class=title>\
             <h4> ".$title_of_ad."</h4>\
           </div>\
-          <div class=price>".$date_of_ad."</div>\
           <div class=status>\
-            <a href=\"php/activate.php?id=".$id_of_ad."&action=".$action."\" target=\"_parent\"><button> ".$visible."</button></a>\
-            <a href=\"announEdit.php?id=".$id_of_ad."\" target=\"_parent\"><button> Edytuj </button></a>\
-            <a href=\"AnnounView.php?id=".$id_of_ad."\" target=\"_parent\"><button> Wyświetl </button></a>\
+            <a href=\"php/activate.php?id=".$id_of_ad."&action=".$action."\" target=\"_parent\">".$visible."</a>\
+            <a href=\"announEdit.php?id=".$id_of_ad."\" target=\"_parent\"><button class=\"edit button\" data-hover=\"EDYTUJ\"><span><img src=\"style/image/userAnnoun/pen.png\"></span> </button></a>\
+            <a href=\"AnnounView.php?id=".$id_of_ad."\" target=\"_parent\"><button class=\"button\"> Wyświetl </button></a>\
           </div>\
         </div>\
         <div class=addfoot>\
