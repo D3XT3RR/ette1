@@ -96,19 +96,29 @@ function DisplayResults($raw_results){
             $oDate = new DateTime($row['posting_date']);
             $dDate = $oDate->format("d ");
             $mDate = $mon[$oDate->format("n")-1];
-            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; >
-                  <div class="announTit">
-                    <h3>'.$row['title'].'</h3>
-                    <div class="category">'.$row['category'].'</div>
-                    <div class="date">'.$dDate.''.$mDate.'</div>
-                  </div>');
-              $file = base64_encode( $row['image1']);
-            if($file == ''){
-              echo('<div class="announPic">BRAK ZDJĘCIA</div></a><hr> ');
+            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; ><div class="announTit"><h3>'.$row['title'].'</h3><div class="category">'.$row['category'].'</div><div class="date">'.$dDate.''.$mDate.'</div></div>');
+
+            $file = base64_encode( $row['image1']);
+            if($file == '') {
+              $file = base64_encode( $row['image2']);
+              if($file == '') {
+                $file = base64_encode( $row['image3']);
+                if($file == '') {
+                  $file = base64_encode( $row['image4']);
+                  if ($file == '') {
+                    $file = base64_encode( $row['image5']);
+                    if ($file =='') {
+                      echo('<div class="announPic">BRAK ZDJĘCIA</div></a><hr> ');
+                    }
+                    else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a><hr>');}
+                  }
+                  else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a><hr>');}
+                }
+                else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a><hr>');}
+              }
+              else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a><hr>');}
             }
-            else {
-              echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.base64_encode( $row['image1'] ).'"/></div></a><hr>');
-            }
+            else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a><hr>');}
             
           }
         }
