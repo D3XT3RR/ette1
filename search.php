@@ -102,9 +102,14 @@ function DisplayResults($raw_results){
                     <div class="category">'.$row['category'].'</div>
                     <div class="date">'.$dDate.''.$mDate.'</div>
                   </div>');
-
-
-            echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.base64_encode( $row['image1'] ).'"/></div></a><hr>');
+              $file = base64_encode( $row['image1']);
+            if($file == ''){
+              echo('<div class="announPic">BRAK ZDJĘCIA</div></a><hr> ');
+            }
+            else {
+              echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.base64_encode( $row['image1'] ).'"/></div></a><hr>');
+            }
+            
           }
         }
               
