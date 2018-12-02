@@ -200,63 +200,83 @@ require 'php/session.php';
               die();
             }
             if(isset($_POST['AdText']) && isset($_POST['AdTitle']) && isset($_POST['Category'])){
-            $ad_text = preg_replace( "/\r\n/", "</br>", $_POST['AdText']);
-            $ad_title = $_POST['AdTitle'];
-            $ad_category = $_POST['Category'];
-            $user_session_id = $_SESSION['user'];
-            $ad_image1 = @addslashes(file_get_contents($_FILES['image1']['tmp_name']));
-            $ad_image2 = @addslashes(file_get_contents($_FILES['image2']['tmp_name']));
-            $ad_image3 = @addslashes(file_get_contents($_FILES['image3']['tmp_name']));
-            $ad_image4 = @addslashes(file_get_contents($_FILES['image4']['tmp_name']));
-            $ad_image5 = @addslashes(file_get_contents($_FILES['image5']['tmp_name']));
-            $ad_image5 = @addslashes(file_get_contents($_FILES['image6']['tmp_name']));
-            date_default_timezone_set('Europe/Berlin'); // CDT
-            $current_date = date('Y-m-d');
+              $ad_text = preg_replace( "/\r\n/", "</br>", $_POST['AdText']);
+              $ad_title = $_POST['AdTitle'];
+              $ad_category = $_POST['Category'];
+              $user_session_id = $_SESSION['user'];
+              $ad_image1 = @addslashes(file_get_contents($_FILES['image1']['tmp_name']));
+              $ad_image2 = @addslashes(file_get_contents($_FILES['image2']['tmp_name']));
+              $ad_image3 = @addslashes(file_get_contents($_FILES['image3']['tmp_name']));
+              $ad_image4 = @addslashes(file_get_contents($_FILES['image4']['tmp_name']));
+              $ad_image5 = @addslashes(file_get_contents($_FILES['image5']['tmp_name']));
+              $ad_image5 = @addslashes(file_get_contents($_FILES['image6']['tmp_name']));
+              date_default_timezone_set('Europe/Berlin'); // CDT
+              $current_date = date('Y-m-d');
 
-            $link->set_charset("utf8");
+              $link->set_charset("utf8");
 
-            $result = mysqli_query($link, "UPDATE adverts SET title='$ad_title', text='$ad_text', category='$ad_category' WHERE id='$ad_id'") or die(mysqli_error($link));
-            //update photos
-            if($ad_image1 != null){
-              $result1 = mysqli_query($link, "UPDATE adverts SET image1='$ad_image1' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
-             if($ad_image2 != null){
-              $result2 = mysqli_query($link, "UPDATE adverts SET image2='$ad_image2' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
-             if($ad_image3 != null){
-              $result3 = mysqli_query($link, "UPDATE adverts SET image3='$ad_image3' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
-             if($ad_image4 != null){
-              $result4 = mysqli_query($link, "UPDATE adverts SET image4='$ad_image4' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
-             if($ad_image5 != null){
-              $result5 = mysqli_query($link, "UPDATE adverts SET image5='$ad_image5' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
-            if($ad_image6 != null){
-              $result5 = mysqli_query($link, "UPDATE adverts SET image5='$ad_image6' WHERE id='$ad_id'") or die(mysqli_error($link));
-            }
+              $result = mysqli_query($link, "UPDATE adverts SET title='$ad_title', text='$ad_text', category='$ad_category' WHERE id='$ad_id'") or die(mysqli_error($link));
+              //update photos
+              if($ad_image1 != null){
+                $result1 = mysqli_query($link, "UPDATE adverts SET image1='$ad_image1' WHERE id='$ad_id'") or die(mysqli_error($link));
+              }
+               if($ad_image2 != null){
+                $result2 = mysqli_query($link, "UPDATE adverts SET image2='$ad_image2' WHERE id='$ad_id'") or die(mysqli_error($link));
+              }
+               if($ad_image3 != null){
+                $result3 = mysqli_query($link, "UPDATE adverts SET image3='$ad_image3' WHERE id='$ad_id'") or die(mysqli_error($link));
+              }
+               if($ad_image4 != null){
+                $result4 = mysqli_query($link, "UPDATE adverts SET image4='$ad_image4' WHERE id='$ad_id'") or die(mysqli_error($link));
+              }
+               if($ad_image5 != null){
+                $result5 = mysqli_query($link, "UPDATE adverts SET image5='$ad_image5' WHERE id='$ad_id'") or die(mysqli_error($link));
+              }
+              if($ad_image6 != null){
+                $result5 = mysqli_query($link, "UPDATE adverts SET image5='$ad_image6' WHERE id='$ad_id'") or die(mysqli_error($link));
+              }
 
-            $message = "Post został zaktualizowany!";
-            echo "<script type='text/javascript'>alert('$message');window.location.href = 'index.php';</script>";
+              if($ad_category == "Praca" && $row['visibility'] == 'active'){
+                $adstatus = 'pending';
+                $null = "";
+                $result = mysqli_query($link, "UPDATE adverts SET status='adstatus' WHERE id='$ad_id'") or die(mysqli_error($link));
+                $message = "Twoj post został wysłany do weryfikacji. Dostaniesz informacje, gdy zostanie zatwierdzony.";
+                $last_id = mysqli_insert_id($link);
+
+                $to="ette.de@onet.eu";
+                $subject="Nowe ogloszenie z kategorii: Praca";
+                $from = 'noreply@i-ette.de';
+                $body="Nowe ogłoszenie o tytule: '".$ad_title."', zostało dodane w kategorii 'Praca' <br><a target='_blank' href=http://i-ette.de/page/AnnounView.php?id=".$last_id.">Link do ogłoszenia</a>";
+                $headers = "From:".$from;
+                $headers .= "MIME-Version: 1.0\r\n";
+                $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+                mail($to,$subject,$body,$headers);
+                echo "<script type='text/javascript'>alert('$message');window.location.href = 'index.php';</script>";
+              }
+              else{
+                $message = "Post został zaktualizowany!";
+                echo "<script type='text/javascript'>alert('$message');window.location.href = 'index.php';</script>";
+              }
             }
-            else{
-            $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
-            $ad_title = $row['title'];
-            $ad_image1 = @addslashes(base64_encode($row['image1']));
-            $ad_image2 = @addslashes(base64_encode($row['image2']));
-            $ad_image3 = @addslashes(base64_encode($row['image3']));
-            $ad_image4 = @addslashes(base64_encode($row['image4']));
-            $ad_image5 = @addslashes(base64_encode($row['image5']));
-            $ad_image6 = @addslashes(base64_encode($row['image6']));
-            $ad_category = $row['category'];
-            $post_date = $row['posting_date'];
-            echo("<script>document.getElementsByName('AdTitle')[0].value='".$ad_title."';document.getElementsByName('Category')[0].value = '".$ad_category."';document.getElementsByName('AdText')[0].innerHTML = '".$ad_text."';</script>");
-            echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
-            echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
-            echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
-            echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
-            echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
-             echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
+            else
+            {
+              $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
+              $ad_title = $row['title'];
+              $ad_image1 = @addslashes(base64_encode($row['image1']));
+              $ad_image2 = @addslashes(base64_encode($row['image2']));
+              $ad_image3 = @addslashes(base64_encode($row['image3']));
+              $ad_image4 = @addslashes(base64_encode($row['image4']));
+              $ad_image5 = @addslashes(base64_encode($row['image5']));
+              $ad_image6 = @addslashes(base64_encode($row['image6']));
+              $ad_category = $row['category'];
+              $post_date = $row['posting_date'];
+              echo("<script>document.getElementsByName('AdTitle')[0].value='".$ad_title."';document.getElementsByName('Category')[0].value = '".$ad_category."';document.getElementsByName('AdText')[0].innerHTML = '".$ad_text."';</script>");
+              echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
+              echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
+              echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
+              echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
+              echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
+              echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
            }
           }
         }
