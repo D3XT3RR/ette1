@@ -267,11 +267,6 @@ session_start();
           while($row = mysqli_fetch_assoc($raw_results))
           {
             if(($row['visibility'] == 'active' || $row['poster_id'] == @$_SESSION['user']) && (($row['status'] == 'approved') || (@$_SESSION['user'] == 1) || $row['poster_id'] == @$_SESSION['user'])){
-
-              if($row['poster_id'] != @$_SESSION['user']){
-                $newViews = $row['views'] + 1;
-                mysqli_query($link, "UPDATE adverts SET views = '$newViews' WHERE id = '$ad_id'");
-              }
             
             $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
             $ad_title = $row['title'];
@@ -331,12 +326,12 @@ session_start();
             else{
               echo('<script>document.getElementById("img-upload6").parentElement.innerHTML = "";</script>');
               echo('<script>document.getElementById("img-BIGupload6").parentElement.innerHTML = "";</script>');
-              echo "NO NO JAK CHUJ";
             }
+            if($row['poster_id'] != @$_SESSION['user']){
+                $newViews = $row['views'] + 1;
+                mysqli_query($link, "UPDATE adverts SET views = '$newViews' WHERE id = '$ad_id'");
+              }
            }
-            else{
-
-            }
           }
         }
       }
