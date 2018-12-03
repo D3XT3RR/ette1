@@ -195,8 +195,8 @@ session_start();
 
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
         <button onclick="document.getElementById('login').style.display='none'" type="button" class="w3-button w3-red">Anuluj</button>
-        <span class="w3-right w3-padding w3-hide-small"><a onclick=location.href=/php/account_recovery.php>Nie pamiętasz hasła?</a></span>
-        <span class="w3-right w3-padding w3-hide-small"><a onclick="document.getElementById('login').style.display='none'; document.getElementById('register').style.display='block'">Nie masz konta?</a></span>
+        <span class="w3-right w3-padding w3-hide-small"><a onclick="location.href=/php/account_recovery.php" style="cursor:pointer;">Nie pamiętasz hasła?</a></span>
+        <span class="w3-right w3-padding w3-hide-small"><a onclick="document.getElementById('login').style.display='none'; document.getElementById('register').style.display='block'" style="cursor:pointer;">Nie masz konta?</a></span>
       </div>
 
     </div>
@@ -234,6 +234,10 @@ session_start();
           <label><b>Numer telefonu</b></label>
           <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Numer telefonu" name="RegPhone" required>
           <div id="phoneErr" class="err"></div><br>
+          
+          <input type="checkbox" required><b>Zapoznałem/Zapoznałam się z <a href="pliki/regulamin.pdf" target="_blank" title="Kliknij by zapoznać się z regulamin ETTE">regulaminem</a> strony ETTE</b><br /><br />
+          
+          <input type="checkbox" required><b>Zapoznałem/Zapoznałam się z <a href="pliki/rodo.pdf" target="_blank" title="Kliknij by zapoznać się z RODO">RODO</a></b><br /><br />
        
 
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Zakończ rejestrację!</button>
@@ -242,7 +246,7 @@ session_start();
 
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
         <button onclick="document.getElementById('register').style.display='none'" type="button" class="w3-button w3-red">Anuluj</button>
-        <span class="w3-right w3-padding w3-hide-small"><a onclick="document.getElementById('register').style.display='none'; document.getElementById('login').style.display='block'">Masz już konto?</a></span>
+        <span class="w3-right w3-padding w3-hide-small"><a onclick="document.getElementById('register').style.display='none'; document.getElementById('login').style.display='block'" style="cursor:pointer;">Masz już konto?</a></span>
       </div>
 
     </div>
