@@ -10,6 +10,10 @@
     }
     return implode('', $pieces);
 }
+  if(!isset($_SESSION['user'])){
+    echo "<script type='text/javascript'>window.location.href = 'index.php';</script>";
+    die();
+  }
   $session_user_id = $_SESSION['user']; 
   if(isset($_POST['oldpasswd']) && isset($_POST['newpasswd']) && isset($_POST['newpasswd2'])){
     $oldpasswd = $_POST['oldpasswd'];

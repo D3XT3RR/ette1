@@ -148,6 +148,10 @@ require 'php/session.php';
 
   <?php
 require 'php/connect.php';
+if(!isset($_SESSION['user'])){
+    echo "<script type='text/javascript'>window.location.href = 'index.php';</script>";
+    die();
+}
 $session_user_id = $_SESSION['user']; 
 mysqli_set_charset($link,"utf8");
 

@@ -197,6 +197,7 @@ require 'php/session.php';
           while($row = mysqli_fetch_assoc($raw_results))
           {
             if($_SESSION['user'] != $row['poster_id']){
+              echo "<script type='text/javascript'>window.location.href = 'index.php';</script>";
               die();
             }
             if(isset($_POST['AdText']) && isset($_POST['AdTitle']) && isset($_POST['Category'])){
@@ -279,6 +280,10 @@ require 'php/session.php';
               echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
            }
           }
+        }
+        else{
+          echo "<script type='text/javascript'>window.location.href = 'index.php';</script>";
+          die();
         }
       }
 
