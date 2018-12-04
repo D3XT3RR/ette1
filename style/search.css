@@ -48,6 +48,7 @@
 
 
 .announPic{
+	padding: 0;
 	margin: 10px 0;
 	width: 150px;
 	height: 150px;
@@ -56,6 +57,7 @@
 	line-height: 150px;
 	font-weight: bold;
 	color: #666666;
+	overflow: hidden;
 }
 
 
