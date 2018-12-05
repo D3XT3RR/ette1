@@ -284,6 +284,9 @@ else
 
 
 <?php
+  if(isset($_GET['kat'])){
+		echo("<script type='text/javascript'>document.getElementsByName('kat')[0].value = '".$category."';</script>");
+	}
   require 'php/page_format.php';
   require 'php/reg.php';
   ?>
