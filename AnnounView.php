@@ -19,7 +19,7 @@ session_start();
   <link rel="stylesheet" href="style/announView.css">
   <link rel="stylesheet" href="style/gallery.css">
 
-
+  <script type="text/javascript" src="js/favourites.js"></script>
   <script type="text/javascript" src="js/gallery.js"></script>
   </head>
 
