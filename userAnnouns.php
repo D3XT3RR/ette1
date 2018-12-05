@@ -216,13 +216,7 @@ function DisplayResults($connectionLink, $query){
         echo("<script type='text/javascript'>document.getElementById('search-container').innerHTML += 'Brak wyników wyszukiwania'</script>");
     }
 }
-if(!isset($_GET['search_query'])){
-  DisplayResults($link, "SELECT * FROM adverts WHERE poster_id = '$session_user_id'");
-}
-else{
-  $query = $_GET['search_query'];
-  DisplayResults($link, "SELECT * FROM adverts WHERE (LOWER(title) LIKE LOWER('%".$query."%')) AND poster_id = '$session_user_id'");
-}
+DisplayResults($link, "SELECT * FROM adverts WHERE poster_id = '$session_user_id' ORDER BY posting_date DESC");
 ?>
 
 
