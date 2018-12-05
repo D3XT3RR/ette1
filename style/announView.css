@@ -9,6 +9,13 @@
 
 /*=========================================== POLA TEKSTOWE  ===========================================*/
 
+#title{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+
 #tTXT{
 	font-size: 35px;
 
@@ -47,5 +54,22 @@
 }
 
 
-/*=========================================== BODY & stuff  ===========================================*/
+/*=========================================== ulubione  ===========================================*/
 
+#title button{
+	width: 50px:;
+	height: 50px;
+	border: 0;
+	background-color: transparent;
+}
+
+#title button img{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+
+.numbertext{
+	display: flex;
+	flex-direction: row;
+}

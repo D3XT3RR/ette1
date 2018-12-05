@@ -9,7 +9,7 @@
 
 /* Hide the images by default */
 .mySlides {
-  visibility: none;
+  display: none;
 }
 
 /* Add a pointer when hovering over the thumbnail images */
@@ -63,26 +63,41 @@
   color: white;
 }
 
-.row{
+.rows{
   display: flex;
   flex-direction: row;
+  height: 150px;
 }
 
-.row:after {
+.rows:after {
   content: "";
   display: table;
   clear: both;
 }
 
 /* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
+.columns {
+  padding: 0;
+  margin: 10px 0;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  background-color: #e2e2e2;
+  line-height: 150px;
+  font-weight: bold;
+  color: #666666;
+  overflow: hidden;
 }
 
-.column img{
+.columns img{
   width: 100%;
+  height: auto;
   height: 100%;
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  
 }
 
 /* Add a transparency effect for thumnbail images */
@@ -95,14 +110,14 @@
   opacity: 1;
 }
 
+.mySlides{
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+}
 
 .mySlides img{
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
-
-
-#img-upload1{
-  display: block;
-
-}
-
