@@ -95,7 +95,9 @@ session_start();
           <div  id="category">
             <div id="cTXT"></div>
           </div>
-
+	<?php
+		echo("<button onclick='AddToFavourites(".@$_GET['id'].")'>Dodaj do ulubionych</button>");
+	?>
           <div id="photos">
               <!-- 
                 <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
