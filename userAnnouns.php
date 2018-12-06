@@ -172,7 +172,8 @@ function DisplayResults($connectionLink, $query){
           $date_of_expire = Date("d.m.Y",strtotime("+14 day", strtotime($date_of_ad)));
           $visible;
           $action;
-          $verify = mysqli_query($connectionLink,"SELECT * FROM adverts WHERE id = '$id_of_ad'") or die(mysqli_error($link));
+          $verify = mysqli_query($connectionLink,"SELECT visibility FROM adverts WHERE id = '$id_of_ad'") or die(mysqli_error($link));
+		  $fav_count = mysqli_fetch_row(mysqli_query($connectionLink,"SELECT COUNT(ID) FROM login WHERE Favourites LIKE '".$id_of_ad."' "))[0];
           $row2 = mysqli_fetch_assoc($verify);
           //  $active = mysqli_query($connectionLink, "UPDATE adverts SET visibility = 'active' WHERE id = '$id_of_ad'");
           //  $inactive = mysqli_query($connectionLink, "UPDATE adverts SET visibility = 'inactive' WHERE id = '$id_of_ad'");
@@ -205,7 +206,7 @@ function DisplayResults($connectionLink, $query){
         </div>\
         <div class=addfoot>\
           <div style=\"padding: 0px 10px; border-right: 1px solid gray;\">Wyświetleń: ".$views_of_ad."</div>\
-          <div style=\"padding: 0px 10px;\">Obserwuje:</div>\
+          <div style=\"padding: 0px 10px;\">Obserwuje: ".$fav_count."</div>\
         </div>';</script>");
 
         }
