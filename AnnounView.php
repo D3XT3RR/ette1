@@ -91,7 +91,21 @@ session_start();
           <div id="title">
             <div id="tTXT"></div>
             <?php
-              echo("<button onclick='AddToFavourites(".@$_GET['id'].")'><img src='style/image/ulubione.png'</button>");
+		require_once 'php/secure_query.php';
+		require_once 'php/connect.php';
+		if(isset($_SESSION['user']) && isset($_GET['id'])){
+			$usr = $_SESSION['user'];
+			$result = secure_query($link, "SELECT Favourites FROM login WHERE ID = ?", $t = array('i'), $a=array(&$usr));
+			$row = mysqli_fetch_row($result);
+			$fav_arr = explode(',', $row[0]);
+			if(in_array(@$_GET['id'], $fav_arr)){
+				echo("<button onclick='RemoveFromFavourites(".@$_GET['id'].")'><img src='style/image/ulubione.png'</button>");
+			}
+			else{
+				echo("<button onclick='AddToFavourites(".@$_GET['id'].")'><img src='style/image/ulubione_nie.png'</button>");
+			}
+		}
+              
             ?>
           </div>
 
