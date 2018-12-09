@@ -1,4 +1,75 @@
+.container{
+	display: flex;
+	justify-content: center;
+}
+
+
 #passwdReset{
 	height: 300px;
-	width: 450px;
+	width: 500px;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-top: 100px;
+	border: solid 1px #ffe0cc;
+	border-radius: 5px;
+	
+
+}
+
+
+#reshead{
+	font-size: 26px;
+	line-height: 80px;
+	font-weight: bold;
+	height: 80px;
+	border-bottom: solid 1px #ffe0cc;
+}
+
+#reset{
+	width: 80%;
+	margin: auto;
+	
+}
+
+#reset form{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 80px;
+}
+
+#informacja{
+	padding: 15px;
+}
+
+
+input[type=text]{
+	border: solid 2px #d9d9d9;
+	border-radius: 5px; 
+	padding: 5px;
+	transition: 0.3s ease-out;
+}
+
+input[type=text]:focus{
+	border-color: #80bfff;
+	transition: 0.3s ease-in;
+}
+
+
+input[type=submit]{
+	border: solid 2px #2eb82e;
+	border-radius: 5px; 
+	padding: 5px;
+	background-color: transparent;
+    color: #2eb82e;
+    font-weight: bold;
+    transition: 0.3s ease-out;
+}
+
+input[type=submit]:hover{
+	background-color: #2eb82e;
+    color: white;
+    transition: 0.3s ease-in;
 }

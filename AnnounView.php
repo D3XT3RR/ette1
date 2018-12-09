@@ -143,11 +143,12 @@ session_start();
                 <div class="numbertext">6 / <div class="numberOFslides"></div></div>
                 <img id="img-upload6" src=""/>
               </div>
-    
-              <a id=">" class="prev" onclick="plusSlides(-1)">❮</a>
-              <a id="<" class="next" onclick="plusSlides(1)">❯</a>
-
-
+              
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+              
+            </div>
+            <div>
               <div class="rows">
                 <div class="columns">
                   <img class="demo cursor" id="img-BIGupload1" src="" onclick="currentSlide(1)">
@@ -171,6 +172,7 @@ session_start();
             </div>
           </div>
           <div id="desc">
+            <div id="dD">Opis</div>
             <div id="dTXT"></div>
           </div>
         </div>
@@ -178,10 +180,87 @@ session_start();
 
 
 	</div>
+  <?php
+      require 'php/connect.php';
+      require 'php/page_format.php';
+      require_once 'php/secure_query.php';
+      if(isset($_GET['id'])){
+        $link->set_charset("utf8");
+        $ad_id = $_GET['id'];
+        //old version: $raw_results = mysqli_query($link,"SELECT * FROM adverts WHERE id = '$ad_id'") or die(mysqli_error($link));
+        $raw_results = secure_query($link,"SELECT * FROM adverts WHERE id = ?", $t = array('i'), $a = array(&$ad_id));
+        if(mysqli_num_rows($raw_results) > 0)      
+        {
+          while($row = mysqli_fetch_assoc($raw_results))
+          {
+            if(($row['visibility'] == 'active' || $row['poster_id'] == @$_SESSION['user']) && (($row['status'] == 'approved') || (@$_SESSION['user'] == 1) || $row['poster_id'] == @$_SESSION['user'])){
+            
+            $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
+            $ad_title = $row['title'];
+            $ad_image1 = @addslashes(base64_encode($row['image1']));
+            $ad_image2 = @addslashes(base64_encode($row['image2']));
+            $ad_image3 = @addslashes(base64_encode($row['image3']));
+            $ad_image4 = @addslashes(base64_encode($row['image4']));
+            $ad_image5 = @addslashes(base64_encode($row['image5']));
+            $ad_image6 = @addslashes(base64_encode($row['image6']));
+            $ad_category = $row['category'];
+            $post_date = $row['posting_date'];
+            echo("<script>document.getElementById('tTXT').innerHTML='".$ad_title."';document.getElementById('cTXT').innerHTML = '".$ad_category."';document.getElementById('dTXT').innerHTML = '".$ad_text."';</script>");
+        if($ad_image1 != null){
+              echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'");document.getElementById("img-BIGupload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'");var z = 1;</script>');
+            }
+            else{
+              echo('<script>document.getElementById("slide1").parentNode.removeChild(document.getElementById("slide1"));
+                document.getElementById("img-BIGupload1").innerHTML = "";
+                var z = 0;
+                </script>');
+            }
+            if($ad_image2 != null){
+              echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'");document.getElementById("img-BIGupload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'"); z++;</script>');
+              
+            }
+            else{
+              echo('<script>document.getElementById("slide2").parentNode.removeChild(document.getElementById("slide2"));document.getElementById("img-BIGupload2").innerHTML = "";</script>');
+            }
+            if($ad_image3 != null){
+              echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'");document.getElementById("img-BIGupload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'"); z++;</script>');
+             
+            }
+            else{
+              echo('<script>document.getElementById("slide3").parentNode.removeChild(document.getElementById("slide3"));document.getElementById("img-BIGupload3").innerHTML = "";</script>');
+            }
+            if($ad_image4 != null){
+              echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'");document.getElementById("img-BIGupload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'"); z++;</script>');
+            }
+            else{
+              echo('<script>document.getElementById("slide4").parentNode.removeChild(document.getElementById("slide4"));document.getElementById("img-BIGupload4").innerHTML = "";</script>');
+            }
+            if($ad_image5 != null){
+              echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'");document.getElementById("img-BIGupload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'"); z++;</script>');
+            }
+            else{
+              echo('<script>document.getElementById("slide5").parentNode.removeChild(document.getElementById("slide5"));document.getElementById("img-BIGupload5").innerHTML = "";</script>');
+            }
+            if($ad_image6 != null){
+              echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'");document.getElementById("img-BIGupload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'"); z++;</script>');
+            }
+            else{
+              echo('<script>document.getElementById("slide6").parentNode.removeChild(document.getElementById("slide6"));document.getElementById("img-BIGupload6").innerHTML = "";</script>');
+            }
+            if($row['poster_id'] != @$_SESSION['user']){
+                $newViews = $row['views'] + 1;
+                mysqli_query($link, "UPDATE adverts SET views = '$newViews' WHERE id = '$ad_id'");
+              }
+            }
+          }
+        }
+      }
+    ?>
 <script type="text/javascript">
   
   if(document.readyState = "complete"){
     var number = document.getElementsByClassName("mySlides");
+
 
   var slideIndex = 1;
 showSlides(slideIndex);
@@ -201,6 +280,8 @@ function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("demo");
+
+
   
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
@@ -214,7 +295,10 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 } 
 }
-document.getElementsByClassName("numberOFslides")[0].innerHTML = ' '+number.length;
+for(var x1 = 0; x1 <= z; x1++){
+    document.getElementsByClassName("numberOFslides")[x1].innerHTML = "&nbsp;"+z;
+  }
+
 
 
 </script>
@@ -262,80 +346,7 @@ document.getElementsByClassName("numberOFslides")[0].innerHTML = ' '+number.leng
 
 
 
-    <?php
-      require 'php/connect.php';
-      require 'php/page_format.php';
-      require_once 'php/secure_query.php';
-      if(isset($_GET['id'])){
-        $link->set_charset("utf8");
-        $ad_id = $_GET['id'];
-        //old version: $raw_results = mysqli_query($link,"SELECT * FROM adverts WHERE id = '$ad_id'") or die(mysqli_error($link));
-        $raw_results = secure_query($link,"SELECT * FROM adverts WHERE id = ?", $t = array('i'), $a = array(&$ad_id));
-        if(mysqli_num_rows($raw_results) > 0)      
-        {
-          while($row = mysqli_fetch_assoc($raw_results))
-          {
-            if(($row['visibility'] == 'active' || $row['poster_id'] == @$_SESSION['user']) && (($row['status'] == 'approved') || (@$_SESSION['user'] == 1) || $row['poster_id'] == @$_SESSION['user'])){
-            
-            $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
-            $ad_title = $row['title'];
-            $ad_image1 = @addslashes(base64_encode($row['image1']));
-            $ad_image2 = @addslashes(base64_encode($row['image2']));
-            $ad_image3 = @addslashes(base64_encode($row['image3']));
-            $ad_image4 = @addslashes(base64_encode($row['image4']));
-            $ad_image5 = @addslashes(base64_encode($row['image5']));
-            $ad_image6 = @addslashes(base64_encode($row['image6']));
-            $ad_category = $row['category'];
-            $post_date = $row['posting_date'];
-            echo("<script>document.getElementById('tTXT').innerHTML='".$ad_title."';document.getElementById('cTXT').innerHTML = '".$ad_category."';document.getElementById('dTXT').innerHTML = '".$ad_text."';</script>");
-        if($ad_image1 != ""){
-              echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'");document.getElementById("img-BIGupload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
-            }
-            else{
-              echo('<script>document.getElementById("slide1").innerHTML = "";
-                document.getElementById("img-BIGupload1").innerHTML = "";</script>');
-            }
-            if($ad_image2 != null){
-              echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'");document.getElementById("img-BIGupload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
-              
-            }
-            else{
-              echo('<script>document.getElementById("slide2").innerHTML = "";document.getElementById("img-BIGupload2").innerHTML = "";</script>');
-            }
-            if($ad_image3 != null){
-              echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'");document.getElementById("img-BIGupload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
-             
-            }
-            else{
-              echo('<script>document.getElementById("slide3").innerHTML = "";document.getElementById("img-BIGupload3").innerHTML = "";</script>');
-            }
-            if($ad_image4 != null){
-              echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'");document.getElementById("img-BIGupload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
-            }
-            else{
-              echo('<script>document.getElementById("slide4").innerHTML = "";document.getElementById("img-BIGupload4").innerHTML = "";</script>');
-            }
-            if($ad_image5 != null){
-              echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'");document.getElementById("img-BIGupload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
-            }
-            else{
-              echo('<script>document.getElementById("slide5").innerHTML = "";document.getElementById("img-BIGupload5").innerHTML = "";</script>');
-            }
-            if($ad_image6 != null){
-              echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'");document.getElementById("img-BIGupload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
-            }
-            else{
-              echo('<script>document.getElementById("slide6").innerHTML = "";document.getElementById("img-BIGupload6").innerHTML = "";</script>');
-            }
-            if($row['poster_id'] != @$_SESSION['user']){
-                $newViews = $row['views'] + 1;
-                mysqli_query($link, "UPDATE adverts SET views = '$newViews' WHERE id = '$ad_id'");
-              }
-            }
-          }
-        }
-      }
-    ?>
+    
 
 
 <!-- Modal Login -->

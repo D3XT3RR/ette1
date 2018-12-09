@@ -26,8 +26,23 @@
 	color: #6a6a6a;
 }
 
+#dTXT{
+	padding: 50px 30px;
+	border: solid 1px #ffe0cc;
+	border-radius: 5px;
+	background-color: white;
+}
+
+#dD{
+	font-size: 25px;
+}
+
 
 /*=========================================== ZDJĘCIA  ===========================================*/
+#photos{
+	margin-bottom: 30px;
+}
+
 
 #fileUpload{
 }
@@ -69,7 +84,5 @@
 }
 
 
-.numbertext{
-	display: flex;
-	flex-direction: row;
-}
+
+
