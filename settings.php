@@ -24,11 +24,11 @@ session_start();
     <div class="header"> 
       <div class="auto"> 
         <div class="menu">
-          <div class="logo">
+          <a href="/" class="logo">
             <div class="blue">E</div>
             <div class="red">TT</div>
             <div class="blue">E</div>
-          </div>
+          </a>
           <div class="buttonPanel">
             <div id="1Button" class="button color"></div>
             <div id="2Button" class="button color"></div>

@@ -12,7 +12,6 @@ session_start();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="AnnounAdd.js"></script>
 
   <!-- CSS -->
   <link rel="stylesheet" href="style/w3.css">
@@ -26,11 +25,11 @@ session_start();
     <div class="header"> 
       <div class="auto"> 
         <div class="menu">
-          <div class="logo">
+          <a href="/" class="logo">
             <div class="blue">E</div>
             <div class="red">TT</div>
             <div class="blue">E</div>
-          </div>
+          </a>
           <div class="buttonPanel">
             <div id="1Button" class="button color"></div>
             <div id="2Button" class="button color"></div>
