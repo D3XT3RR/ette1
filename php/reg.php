@@ -35,7 +35,7 @@ $checkEmail = mysqli_num_rows($result2) > 0 ? 'yes' : 'no';
 while (true){
     $verificationCode = md5(rand(0,10000));
     $result = secure_query($link, "SELECT 1 FROM login WHERE ActivationCode = ? LIMIT 1", $t = array('s'), $a = array(&$verificationCode));
-    if (mysqli_stmt_num_rows($result) == 0) {
+    if (mysqli_num_rows($result) == 0) {
         break;
     }
 }
