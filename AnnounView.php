@@ -28,11 +28,11 @@ session_start();
     <div class="header"> 
       <div class="auto"> 
         <div class="menu">
-          <div class="logo">
+          <a href="/" class="logo">
             <div class="blue">E</div>
             <div class="red">TT</div>
             <div class="blue">E</div>
-          </div>
+          </a>
           <div class="buttonPanel">
             <div id="1Button" class="button color"></div>
             <div id="2Button" class="button color"></div>
@@ -109,7 +109,7 @@ session_start();
             ?>
           </div>
 
-          <div  id="category">
+          <div id="category">
             <div id="cTXT"></div>
           </div>
           <div id="photos">
@@ -144,8 +144,8 @@ session_start();
                 <img id="img-upload6" src=""/>
               </div>
     
-              <a class="prev" onclick="plusSlides(-1)">❮</a>
-              <a class="next" onclick="plusSlides(1)">❯</a>
+              <a id=">" class="prev" onclick="plusSlides(-1)">❮</a>
+              <a id="<" class="next" onclick="plusSlides(1)">❯</a>
 
 
               <div class="rows">
@@ -288,69 +288,53 @@ document.getElementsByClassName("numberOFslides")[0].innerHTML = ' '+number.leng
             $ad_category = $row['category'];
             $post_date = $row['posting_date'];
             echo("<script>document.getElementById('tTXT').innerHTML='".$ad_title."';document.getElementById('cTXT').innerHTML = '".$ad_category."';document.getElementById('dTXT').innerHTML = '".$ad_text."';</script>");
-        if($ad_image1 != null){
-              echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
-              echo('<script>document.getElementById("img-BIGupload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
+        if($ad_image1 != ""){
+              echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'");document.getElementById("img-BIGupload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
             }
             else{
-              echo('<script>document.getElementById("slide1").parentElement.outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-upload1").parentElement.outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-BIGupload1").parentElement.innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide1").innerHTML = "";
+                document.getElementById("img-BIGupload1").innerHTML = "";</script>');
             }
             if($ad_image2 != null){
-              echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
-              echo('<script>document.getElementById("img-BIGupload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
+              echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'");document.getElementById("img-BIGupload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
+              
             }
             else{
-              echo('<script>document.getElementById("slide2").parentElement.outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-upload2").parentElement.outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-BIGupload2").parentElement.innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide2").innerHTML = "";document.getElementById("img-BIGupload2").innerHTML = "";</script>');
             }
             if($ad_image3 != null){
-              echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
-              echo('<script>document.getElementById("img-BIGupload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
+              echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'");document.getElementById("img-BIGupload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');
+             
             }
             else{
-              echo('<script>document.getElementById("slide3").outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-upload3").parentElement.outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-BIGupload3").parentElement.innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide3").innerHTML = "";document.getElementById("img-BIGupload3").innerHTML = "";</script>');
             }
             if($ad_image4 != null){
-              echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
-              echo('<script>document.getElementById("img-BIGupload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
+              echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'");document.getElementById("img-BIGupload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'")</script>');
             }
             else{
-              echo('<script>document.getElementById("slide4").outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-upload4").parentElement.outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-BIGupload4").parentElement.innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide4").innerHTML = "";document.getElementById("img-BIGupload4").innerHTML = "";</script>');
             }
             if($ad_image5 != null){
-              echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
-              echo('<script>document.getElementById("img-BIGupload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
+              echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'");document.getElementById("img-BIGupload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'")</script>');
             }
             else{
-              echo('<script>document.getElementById("slide5").outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-upload5").parentElement.outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-BIGupload5").parentElement.innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide5").innerHTML = "";document.getElementById("img-BIGupload5").innerHTML = "";</script>');
             }
-            if($ad_image6 != ""){
-              echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
-              echo('<script>document.getElementById("img-BIGupload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
+            if($ad_image6 != null){
+              echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'");document.getElementById("img-BIGupload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'")</script>');
             }
             else{
-              echo('<script>document.getElementById("slide6").outerHTML = "";</script>');
-              echo('<script>document.getElementById("img-upload6").parentElement.innerHTML = "";</script>');
-              echo('<script>document.getElementById("img-BIGupload6").parentElement.innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide6").innerHTML = "";document.getElementById("img-BIGupload6").innerHTML = "";</script>');
             }
             if($row['poster_id'] != @$_SESSION['user']){
                 $newViews = $row['views'] + 1;
                 mysqli_query($link, "UPDATE adverts SET views = '$newViews' WHERE id = '$ad_id'");
               }
-           }
+            }
           }
         }
       }
-
     ?>
 
 
