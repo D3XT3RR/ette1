@@ -1,4 +1,5 @@
 <?php
+
 function secure_query($dblink, $query, $vartypes = array(), $params = array(), $image_data = array()){
 	$dummy = &$params;
 
@@ -14,9 +15,14 @@ function secure_query($dblink, $query, $vartypes = array(), $params = array(), $
 		}
 	}
 	
-	$stmt->execute();
+	if($stmt->execute()){
+		$result = $stmt->get_result();
+		return $result;
+	}
+	else{
+		return null;
+	}
 
-	$result = $stmt->get_result();
-	return $result;
+	
 }
 ?>

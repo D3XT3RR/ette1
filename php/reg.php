@@ -35,7 +35,7 @@ $checkEmail = mysqli_num_rows($result2) > 0 ? 'yes' : 'no';
 while (true){
     $verificationCode = md5(rand(0,10000));
     $result = secure_query($link, "SELECT 1 FROM login WHERE ActivationCode = ? LIMIT 1", $t = array('s'), $a = array(&$verificationCode));
-    if (mysqli_num_rows($result) == 0) {
+    if (mysqli_stmt_num_rows($result) == 0) {
         break;
     }
 }
@@ -95,39 +95,37 @@ if (($password !== $password2) || (strlen($password) < 6) || (strlen($login) < 4
         echo "<script type='text/javascript'>document.getElementById('phoneErr').innerHTML = 'Wprowadź prawidłowy numer telefonu'; document.getElementById('register').style.display='block';</script>";
     }
 }
-
-//SZYFRUJ HASLO, WPROWADZ UZYTKOWNIKA DO BAZY DANYCH
-
 else
 {
-    $password = SHA1($password);
-    $password = ($encrypt.$password);
+        $password = SHA1($password);
+        $password = ($encrypt.$password);
 
-    if($link === false)
-    {
-        die("ERROR: Could not connect. ".mysqli_connect_error());
-    }
-    //old version: $sql = "INSERT INTO login (Login, Password, Email, Contact_Phone_Number, Contact_Email, Phone, ActivationCode, EmailStatus) VALUES ('$login', '$password', '$email', '$phone', '$email', '$phone', '$verificationCode', 'not verified')";
-    $sql = "INSERT INTO login (Login, Password, Email, Contact_Phone_Number, Contact_Email, Phone, ActivationCode, EmailStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        if($link === false)
+        {
+            die("ERROR: Could not connect. ".mysqli_connect_error());
+        }
+        //old version: $sql = "INSERT INTO login (Login, Password, Email, Contact_Phone_Number, Contact_Email, Phone, ActivationCode, EmailStatus) VALUES ('$login', '$password', '$email', '$phone', '$email', '$phone', '$verificationCode', 'not verified')";
+        $sql = "INSERT INTO login (Login, Password, Email, Contact_Phone_Number, Contact_Email, Phone, ActivationCode, EmailStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $default_status = 'not verified';
-    if(secure_query($link, $sql, $t = array("sssisiss"), $a = array(&$login, &$password, &$email, &$phone, &$email, &$phone, &$verificationCode, &$default_status)))
-    {
-    $to=$email;
-    $subject="Activation Code For i-ette.de";
-    $from = 'noreply@i-ette.de';
-    $body="Dziękujemy za rejestrację, ".$login."!<br/> Twój kod aktywacyjny to ".$verificationCode."<br/> <a target='_blank' href='http://i-ette.de/page/php/verify.php?code=".$verificationCode."'>Skorzystaj z tego linku alby aktywować swoje konto</a>";
-    $headers = "From:".$from;
-  $headers .= "MIME-Version: 1.0\r\n";
-  $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    mail($to,$subject,$body,$headers);
-    //echo "You are registered! :) <br />";
-    echo "<script type='text/javascript'>alert('Kod weryfikujący został wysłany na twoje konto');window.location = 'index.php';</script>";
-    //mail($email, "Registration confirmation", "to be added");
-    mysqli_close($link);
+        $default_status = 'not verified';
+        if(secure_query($link, $sql, $t = array("sssisiss"), $a = array(&$login, &$password, &$email, &$phone, &$email, &$phone, &$verificationCode, &$default_status)) !== null)
+        {
+        $to=$email;
+        $subject="Activation Code For i-ette.de";
+        $from = 'noreply@i-ette.de';
+        $body="Dziękujemy za rejestrację, ".$login."!<br/> Twój kod aktywacyjny to ".$verificationCode."<br/> <a target='_blank' href='http://i-ette.de/page/php/verify.php?code=".$verificationCode."'>Skorzystaj z tego linku alby aktywować swoje konto</a>";
+        $headers = "From:".$from;
+      $headers .= "MIME-Version: 1.0\r\n";
+      $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+        mail($to,$subject,$body,$headers);
+        //echo "You are registered! :) <br />";
+        echo "<script type='text/javascript'>alert('Kod weryfikujący został wysłany na twoje konto');window.location = 'index.php';</script>";
+        //mail($email, "Registration confirmation", "to be added");
+        mysqli_close($link);
+        }
+        else{
+            echo "<script type='text/javascript'>alert('Ups! Coś poszło nie tak :(');window.location = 'index.php';</script>";
+        }
 }
 
-else
-    echo "<script type='text/javascript'>alert('Ups! Coś poszło nie tak :(');window.location = '../index.php';</script>";
-}
 ?>
