@@ -210,7 +210,7 @@ require 'php/session.php';
               $ad_image3 = @addslashes(file_get_contents($_FILES['image3']['tmp_name']));
               $ad_image4 = @addslashes(file_get_contents($_FILES['image4']['tmp_name']));
               $ad_image5 = @addslashes(file_get_contents($_FILES['image5']['tmp_name']));
-              $ad_image5 = @addslashes(file_get_contents($_FILES['image6']['tmp_name']));
+              $ad_image6 = @addslashes(file_get_contents($_FILES['image6']['tmp_name']));
               date_default_timezone_set('Europe/Berlin'); // CDT
               $current_date = date('Y-m-d');
 
@@ -234,7 +234,7 @@ require 'php/session.php';
                 $result5 = mysqli_query($link, "UPDATE adverts SET image5='$ad_image5' WHERE id='$ad_id'") or die(mysqli_error($link));
               }
               if($ad_image6 != null){
-                $result5 = mysqli_query($link, "UPDATE adverts SET image5='$ad_image6' WHERE id='$ad_id'") or die(mysqli_error($link));
+                $result6 = mysqli_query($link, "UPDATE adverts SET image6='$ad_image6' WHERE id='$ad_id'") or die(mysqli_error($link));
               }
 
               if($ad_category == "Praca" && $row['visibility'] == 'active'){
