@@ -46,7 +46,7 @@ session_start();
           <input type="text" name="mail" placeholder="E-mail">
           <input type="submit" value="RESETUJ">
         </form>
-        <div id=informacja>Po kliknięcu zostaniesz przekierowany na następną stronę, gdzie trzeba wpisać kod resetowania hasła, który dostaniesz na maila. </div>
+        <div id="informacja">Po kliknięcu zostaniesz przekierowany na następną stronę, gdzie trzeba wpisać kod resetowania hasła, który dostaniesz na maila. </div>
       </div>
     </div>
   </section>
@@ -90,7 +90,32 @@ session_start();
 
 
 <!-- PHP -->
+<?php
+require 'php/connect.php';
+require 'php/secure_query.php';
+$mail = $_POST['mail'];
+$reset = md5(rand(0, 1000));
+$to=$mail;
+$sql = "SELECT Login FROM login WHERE Email = $mail";
+$query = secure_query($link, $sql);
+$restult = mysqli_fetch_row($query);
 
+
+    $subject="Resetowanie hasla";
+    $from = "noreply@i-ette.de";
+    $body="<h3>Resetowanie hasła do ETTE dla użytkownika: ".$login."</h3><br/> <a target='_blank' href='http://i-ette.de/page/php/reset.php?code=".$reset."'>Skorzystaj z tego linku aby zresetować swoje hasło</a>";
+    $headers = "From:".$from;
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    mail($to,$subject,$body,$headers);
+    //echo "You are registered! :) <br />";
+    echo "<script type='text/javascript'>document.getElementById('informacja').innerHTML = 'Email z linkiem został wysłany na Twoje konto';</script>";
+
+    //echo "<script type='text/javascript'>document.getElementById('informacja').innerHTML = 'Nie ma konta z takim adresem email';</script>";
+    
+
+mysqli_close($link);
+?>
 
 
 </body>
