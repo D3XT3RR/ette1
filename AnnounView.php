@@ -373,7 +373,7 @@ for(var x1 = 0; x1 <= z; x1++){
 
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
         <button onclick="document.getElementById('login').style.display='none'" type="button" class="w3-button w3-red">Anuluj</button>
-        <span class="w3-right w3-padding w3-hide-small"><a onclick=location.href="/php/account_recovery.php" style="cursor:pointer;">Nie pamiętasz hasła?</a></span>
+        <span class="w3-right w3-padding w3-hide-small"><a onclick=location.href="passwordReset.php" style="cursor:pointer;">Nie pamiętasz hasła?</a></span>
         <span class="w3-right w3-padding w3-hide-small"><a onclick="document.getElementById('login').style.display='none'; document.getElementById('register').style.display='block'" style="cursor:pointer;">Nie masz konta?</a></span>
       </div>
 
