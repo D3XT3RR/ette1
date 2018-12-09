@@ -12,7 +12,6 @@ session_start();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="AnnounAdd.js"></script>
 
   <!-- CSS -->
   <link rel="stylesheet" href="style/w3.css">
@@ -26,24 +25,13 @@ session_start();
     <div class="header"> 
       <div class="auto"> 
         <div class="menu">
-          <div class="logo">
+          <a href="/" class="logo">
             <div class="blue">E</div>
             <div class="red">TT</div>
             <div class="blue">E</div>
-          </div>
-          <div class="buttonPanel">
-            <div id="1Button" class="button color"></div>
-            <div id="2Button" class="button color"></div>
-            <div id="3Button" class="button color"> </div>
-            <div id="profmenu" class="sub-menu-parent">
-              <div id="4Button" class="button color"></div>
-              <ul class=sub-menu>
-                <li id="aButton" class="profBtn"></li>
-                
-              </ul></div>
-          </div>
+          </a>
+        </div>
       </div>
-    </div>
     <div id="search" class="auto">
       
     </div>
@@ -102,20 +90,8 @@ session_start();
 
 
 <!-- PHP -->
-  
 
-  <?php
-    require 'php/session.php';
-  ?>
 
-  <?php
-    require 'php/page_format.php';
-    require 'php/connect.php';
-    require 'php/reg.php';
-    require 'php/page_format.php';
-    require 'php/announAdd.php';
-    
-  ?>
 
 </body>
 </html>

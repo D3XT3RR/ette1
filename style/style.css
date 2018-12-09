@@ -49,6 +49,7 @@ font-family: Lato;
 /*=========================================== HEADER(logo)  ===========================================*/
 
 
+
 .logo{
   display: flex;
   justify-content: flex-start;
@@ -58,6 +59,7 @@ font-family: Lato;
   font-style: italic;
   font-weight: bold;
   margin-left: 10px;
+  text-decoration: none;
 }
 
 
