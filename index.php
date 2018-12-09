@@ -254,7 +254,7 @@ session_start();
 
       </div>
 
-      <form method="post" action="">
+      <form method="post" action="php/reg.php">
         <div class="w3-section">
           <label><b>Login</b></label>
           <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Wpisz Login" name="RegLogin" required>
