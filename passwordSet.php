@@ -47,6 +47,7 @@ session_start();
           <input type="password" name="passwd2" placeholder="Powtórz hasło">
           <input type="submit" value="RESETUJ">
         </form>
+        <div id="informacja"></div>
       </div>
     </div>
   </section>
@@ -129,7 +130,7 @@ if(isset($_POST['passwd1']) && isset($_POST['passwd2'])){
     }
   }
   else{
-    echo("<script>alert('Hasła nie są poprawne');</script>");
+    echo "<script type='text/javascript'>document.getElementById('informacja').innerHTML = 'Hasła nie są poprawne';</script>";
   }
 }
 ?>
