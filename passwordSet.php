@@ -40,13 +40,13 @@ session_start();
   <section>
     <div class=" container auto">
       <div id="passwdReset">
-        <div id="reshead"> Resetowanie hasła do ETTE</div>
+        <div id="reshead"> Ustawianie nowego hasła</div>
         <div id="reset">
         <form method="post" target="">
-          <input type="text" name="mail" placeholder="E-mail">
+          <input type="password" name="passwd1" placeholder="Hasło">
+          <input type="password" name="passwd2" placeholder="Powtórz hasło">
           <input type="submit" value="RESETUJ">
         </form>
-        <div id="informacja">Po kliknięcu zostaniesz przekierowany na następną stronę, gdzie trzeba wpisać kod resetowania hasła, który dostaniesz na maila. </div>
       </div>
     </div>
   </section>
@@ -93,41 +93,45 @@ session_start();
 <?php
 require 'php/connect.php';
 require 'php/secure_query.php';
-if(!isset($_POST['mail'])){
-  die();
-}
-$mail = $_POST['mail'];
-$reset = md5(rand(0, 100000000));
-$find_reset = mysqli_query($link, "SELECT Reset FROM login WHERE Reset = '$reset'");
-while(mysqli_num_rows($find_reset) > 0){
-  $reset = md5(rand(0, 100000000));
-  $find_reset = mysqli_query($link, "SELECT Reset FROM login WHERE Reset = '$reset'");
-}
-$to=$mail;
-$sql = "SELECT Login FROM login WHERE Email = ?";
-$query = secure_query($link, $sql, $t = array('s'), $a = array(&$mail));
-if(mysqli_num_rows($query) == 0){
-  echo("<script type='text/javascript'>document.getElementById('informacja').innerHTML = 'Podany email nie istnieje w bazie danych';</script>");
-  die();
-}
-$result = mysqli_fetch_assoc($query);
-$status = 'verified';
-$result2 = secure_query($link,"UPDATE login SET Reset = ?, EmailStatus = ? WHERE Email = ?", $t = array('sss'), $a = array(&$reset, &$status, &$mail));
-if($result2 !== false){
-    $subject="Resetowanie hasla";
-    $from = "noreply@i-ette.de";
-    $body="<h3>Resetowanie hasła do ETTE dla użytkownika: ".$result['Login']."</h3><br/> <a target='_blank' href='http://i-ette.de/page/passwordSet.php?code=".$reset."'>Skorzystaj z tego linku aby zresetować swoje hasło</a>";
-    $headers = "From:".$from."\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    mail($to,$subject,$body,$headers);
-    //echo "You are registered! :) <br />";
-    echo "<script type='text/javascript'>document.getElementById('informacja').innerHTML = 'Email z linkiem został wysłany na Twoje konto';</script>";
-}
-    //echo "<script type='text/javascript'>document.getElementById('informacja').innerHTML = 'Nie ma konta z takim adresem email';</script>";
-    
 
-mysqli_close($link);
+function random_str3($length, $keyspace = '0123456789abcde')
+{
+    $pieces = array();
+    $max = mb_strlen($keyspace, '8bit') - 1;
+    for ($i = 0; $i < $length; ++$i) {
+        $pieces []= $keyspace[rand(0, $max)];
+    }
+    return implode('', $pieces);
+}
+
+if(isset($_POST['passwd1']) && isset($_POST['passwd2'])){
+  $pass1 = $_POST['passwd1'];
+  $pass2 = $_POST['passwd2'];
+  if($pass1 == $pass2 && strlen($pass1) >= 6 && isset($_GET['code'])){
+    $code = $_GET['code'];
+    $sql = "SELECT * FROM login WHERE Reset = ?";
+    $result = secure_query($link, $sql, $t = array('s'), $a = array(&$code));
+    if(mysqli_num_rows($result) > 0){
+      $row = mysqli_fetch_assoc($result);
+      $encrypt = random_str3(32); 
+      $password = SHA1($pass1);
+      $password = ($encrypt.$password);
+      $user_id = $row['ID'];
+      $update = "UPDATE login SET Password = '$password', Reset = '' WHERE ID = '$user_id'";
+      $result2 = mysqli_query($link, $update);
+      if($result2){
+        $_SESSION['user'] = $user_id;
+        echo("<script>window.location='index.php';</script>");
+      }
+      else{
+        echo("<script>alert('Ups, coś poszło nie tak :('); window.location='index.php';</script>");
+      }
+    }
+  }
+  else{
+    echo("<script>alert('Hasła nie są poprawne');</script>");
+  }
+}
 ?>
 
 
