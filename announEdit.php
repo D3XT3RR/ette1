@@ -248,7 +248,7 @@ require 'php/session.php';
                 $subject="Nowe ogloszenie z kategorii: Praca";
                 $from = 'noreply@i-ette.de';
                 $body="Nowe ogłoszenie o tytule: '".$ad_title."', zostało dodane w kategorii 'Praca' <br><a target='_blank' href=http://i-ette.de/page/AnnounView.php?id=".$last_id.">Link do ogłoszenia</a>";
-                $headers = "From:".$from;
+                $headers = "From:".$from."\r\n";
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
                 mail($to,$subject,$body,$headers);

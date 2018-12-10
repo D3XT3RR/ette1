@@ -104,7 +104,7 @@ $restult = mysqli_fetch_row($query);
     $subject="Resetowanie hasla";
     $from = "noreply@i-ette.de";
     $body="<h3>Resetowanie hasła do ETTE dla użytkownika: ".$login."</h3><br/> <a target='_blank' href='http://i-ette.de/page/php/reset.php?code=".$reset."'>Skorzystaj z tego linku aby zresetować swoje hasło</a>";
-    $headers = "From:".$from;
+    $headers = "From:".$from."\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
     mail($to,$subject,$body,$headers);

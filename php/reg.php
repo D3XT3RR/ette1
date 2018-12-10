@@ -114,7 +114,7 @@ else
         $subject="Activation Code For i-ette.de";
         $from = 'noreply@i-ette.de';
         $body="Dziękujemy za rejestrację, ".$login."!<br/> Twój kod aktywacyjny to ".$verificationCode."<br/> <a target='_blank' href='http://i-ette.de/page/php/verify.php?code=".$verificationCode."'>Skorzystaj z tego linku alby aktywować swoje konto</a>";
-        $headers = "From:".$from;
+        $headers = "From:".$from."\r\n";
       $headers .= "MIME-Version: 1.0\r\n";
       $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
         mail($to,$subject,$body,$headers);
