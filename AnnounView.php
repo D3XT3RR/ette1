@@ -150,22 +150,22 @@ session_start();
             </div>
             <div>
               <div class="rows">
-                <div class="columns">
+                <div class="columns" id="img-BIGupload7">
                   <img class="demo cursor" id="img-BIGupload1" src="" onclick="currentSlide(1)">
                 </div>
-                <div class="columns">
+                <div class="columns" id="img-BIGupload8">
                   <img class="demo cursor" id="img-BIGupload2" src="" onclick="currentSlide(2)">
                 </div>
-                <div class="columns">
+                <div class="columns" id="img-BIGupload9">
                   <img class="demo cursor" id="img-BIGupload3" src="" onclick="currentSlide(3)">
                 </div>
-                <div class="columns">
+                <div class="columns" id="img-BIGupload10">
                   <img class="demo cursor" id="img-BIGupload4" src="" onclick="currentSlide(4)">
                 </div>
-                <div class="columns">
+                <div class="columns" id="img-BIGupload11">
                   <img class="demo cursor" id="img-BIGupload5" src="" onclick="currentSlide(5)">
                 </div>    
-                <div class="columns">
+                <div class="columns" id="img-BIGupload12">
                   <img class="demo cursor" id="img-BIGupload6" src="" onclick="currentSlide(6)">
                 </div>
               </div>
@@ -211,7 +211,7 @@ session_start();
             }
             else{
               echo('<script>document.getElementById("slide1").parentNode.removeChild(document.getElementById("slide1"));
-                document.getElementById("img-BIGupload1").innerHTML = "";
+                document.getElementById("img-BIGupload7").parentNode.removeChild(document.getElementById("img-BIGupload7")) = "";;
                 var z = 0;
                 </script>');
             }
@@ -220,32 +220,32 @@ session_start();
               
             }
             else{
-              echo('<script>document.getElementById("slide2").parentNode.removeChild(document.getElementById("slide2"));document.getElementById("img-BIGupload2").innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide2").parentNode.removeChild(document.getElementById("slide2"));document.getElementById("img-BIGupload8").parentNode.removeChild(document.getElementById("img-BIGupload8")) = "";</script>');
             }
             if($ad_image3 != null){
               echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'");document.getElementById("img-BIGupload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'"); z++;</script>');
              
             }
             else{
-              echo('<script>document.getElementById("slide3").parentNode.removeChild(document.getElementById("slide3"));document.getElementById("img-BIGupload3").innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide3").parentNode.removeChild(document.getElementById("slide3"));document.getElementById("img-BIGupload9").parentNode.removeChild(document.getElementById("img-BIGupload9")) = "";</script>');
             }
             if($ad_image4 != null){
               echo('<script>document.getElementById("img-upload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'");document.getElementById("img-BIGupload4").setAttribute("src", "data:image/jpeg;base64,'.$ad_image4.'"); z++;</script>');
             }
             else{
-              echo('<script>document.getElementById("slide4").parentNode.removeChild(document.getElementById("slide4"));document.getElementById("img-BIGupload4").innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide4").parentNode.removeChild(document.getElementById("slide4"));document.getElementById("img-BIGupload10").parentNode.removeChild(document.getElementById("img-BIGupload10")) = "";</script>');
             }
             if($ad_image5 != null){
               echo('<script>document.getElementById("img-upload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'");document.getElementById("img-BIGupload5").setAttribute("src", "data:image/jpeg;base64,'.$ad_image5.'"); z++;</script>');
             }
             else{
-              echo('<script>document.getElementById("slide5").parentNode.removeChild(document.getElementById("slide5"));document.getElementById("img-BIGupload5").innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide5").parentNode.removeChild(document.getElementById("slide5"));document.getElementById("img-BIGupload11").parentNode.removeChild(document.getElementById("img-BIGupload11")) = "";</script>');
             }
             if($ad_image6 != null){
               echo('<script>document.getElementById("img-upload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'");document.getElementById("img-BIGupload6").setAttribute("src", "data:image/jpeg;base64,'.$ad_image6.'"); z++;</script>');
             }
             else{
-              echo('<script>document.getElementById("slide6").parentNode.removeChild(document.getElementById("slide6"));document.getElementById("img-BIGupload6").innerHTML = "";</script>');
+              echo('<script>document.getElementById("slide6").parentNode.removeChild(document.getElementById("slide6"));document.getElementById("img-BIGupload12").parentNode.removeChild(document.getElementById("img-BIGupload12")) = "";</script>');
             }
             if($row['poster_id'] != @$_SESSION['user']){
                 $newViews = $row['views'] + 1;

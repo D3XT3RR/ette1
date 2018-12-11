@@ -16,7 +16,7 @@ session_start();
   <!-- CSS -->
   <link rel="stylesheet" href="style/w3.css">
   <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" type="text/css" href="style/passwdReset.css">
+  <link rel="stylesheet" href="style/passwdReset.css">
   
 </head>
 
@@ -40,13 +40,13 @@ session_start();
   <section>
     <div class=" container auto">
       <div id="passwdReset">
-        <div id="reshead"> Resetowanie hasła do ETTE</div>
+        <div id="reshead">Resetowanie hasła do ETTE</div>
         <div id="reset">
         <form method="post" target="">
           <input type="text" name="mail" placeholder="E-mail">
           <input type="submit" value="RESETUJ">
         </form>
-        <div id="informacja">Po kliknięcu zostaniesz przekierowany na następną stronę, gdzie trzeba wpisać kod resetowania hasła, który dostaniesz na maila. </div>
+        <div id="informacja">Podaj mail, który został użyty podczas tworzenia konta</div>
       </div>
     </div>
   </section>

@@ -84,89 +84,120 @@ session_start();
           <!-- Pierwszy Rząd -->
             <div class="row">
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Praca">Praca </a></div>
+                <a class="categoryA" href="search.php?kat=Praca">
+                  <div class="titleBOX">Praca</div>
                   <img class="index_cat_photo" src="style/image/index/work.png">
+                </a>
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Nieruchomości">Nieruchomości </a></div>
-                  <img class="index_cat_photo" src="style/image/index/house.png">
+                  <a class="categoryA" href="search.php?kat=Nieruchomości">
+                    <div class="titleBOX">Nieruchomości </div>
+                    <img class="index_cat_photo" src="style/image/index/house.png">
+                  </a>
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Motoryzacja"> Motoryzacja </a></div>
+                <a class="categoryA" href="search.php?kat=Motoryzacja">
+                  <div class="titleBOX"> Motoryzacja</div>
                   <img class="index_cat_photo" src="style/image/index/car.png">
+                </a>
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Elektronika"> Elektronika </a></div>
-                  <img class="index_cat_photo" src="style/image/index/electronics.png">
+                  <a class="categoryA" href="search.php?kat=Elektronika">
+                    <div class="titleBOX"> Elektronika </div>
+                    <img class="index_cat_photo" src="style/image/index/electronics.png">
+                  </a>
               </div>
             </div>
             <!-- Drugi Rząd -->
             <div class="row">
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Dom+i+ogród"> Dom i Ogród </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Dom+i+ogród">
+                    <div class="titleBOX">Dom i Ogród</div>
+                    <img class="index_cat_photo" src="style/image/index/electronics.png">
+                  </a>
+                  
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Moda"> Moda </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Moda">
+                    <div class="titleBOX">Moda</div>
+                    <img class="index_cat_photo" src="style/image/index/work.png">
+                  </a>
+                  
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Zwierzęta"> Zwierzęta </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Zwierzęta">
+                    <div class="titleBOX">Zwierzęta</div>
+                    <img class="index_cat_photo" src="style/image/index/house.png">
+                  </a>
+                  
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Rolnictwo"> Rolnictwo </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Rolnictwo">
+                    <div class="titleBOX">Rolnictwo</div>
+                    <img class="index_cat_photo" src="style/image/index/car.png">
+                  </a>
+                  
               </div>
             </div>
             <!-- Trzeci Rząd -->
             <div class="row">
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Dzieci"> Dla Dzieci </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Dzieci">
+                    <div class="titleBOX">Dla Dzieci</div>
+                    <img class="index_cat_photo" src="style/image/index/car.png">
+                  </a>
+                  
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Hobby+i+sport"> Hobby i Sport </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                <a class="categoryA" href="search.php?kat=Hobby+i+sport">
+                  <div class="titleBOX">Hobby i Sport</div>
+                  <img class="index_cat_photo" src="style/image/index/electronics.png">
+                </a>
+                  
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Muzyka"> Muzyka </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Muzyka">
+                    <div class="titleBOX">Muzyka</div>
+                    <img class="index_cat_photo" src="style/image/index/work.png">
+                  </a>
+                  
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Edukacja"> Edukacja </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Edukacja">
+                    <div class="titleBOX">Edukacja</div>
+                    <img class="index_cat_photo" src="style/image/index/house.png">
+                  </a>
+                  
               </div>
             </div>
             <!-- Czwarty Rząd -->
             <div class="row">
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Firmy+i+usługi"> Firmy i Usługi </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Firmy+i+usługi">
+                    <div class="titleBOX">Firmy i Usługi</div>
+                    <img class="index_cat_photo" src="style/image/index/house.png">
+                  </a>
+                  
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Oddam+za+darmo"> Oddam za Darmo </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Oddam+za+darmo">
+                    <div class="titleBOX">Oddam za Darmo</div>
+                    <img class="index_cat_photo" src="style/image/index/car.png">
+                  </a>
+                  
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Zamienię"> Zamienię </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Zamienię">
+                    <div class="titleBOX">Zamienię</div>
+                    <img class="index_cat_photo" src="style/image/index/electronics.png">
+                  </a>
               </div>
               <div class="col-sm-3">
-                  <div class="titleBOX"><a class="categoryA" href="search.php?kat=Różne"> Różne </a></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                  <a class="categoryA" href="search.php?kat=Różne">
+                    <div class="titleBOX">Różne</div>
+                    <img class="index_cat_photo" src="style/image/index/work.png">
+                  </a>
+                  
               </div>
             </div>
 

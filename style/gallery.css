@@ -75,6 +75,8 @@
   display: flex;
   flex-direction: row;
   height: 150px;
+  background-color: #e2e2e2;
+  padding-top: 15px; 
 }
 
 .rows:after {
@@ -85,12 +87,14 @@
 
 /* Six columns side by side */
 .columns {
+  display: flex;
+  justify-content: center;
   padding: 0;
-  margin: 0 0;
-  height: 150px;
-  width: 150px;
+  margin-right: 5px;
+  height: 120px;
+  width: 120px;
   text-align: center;
-  background-color: #e2e2e2;
+  background-color: #a6a6a6;
   line-height: 150px;
   font-weight: bold;
   color: #666666;
@@ -110,7 +114,8 @@
 
 /* Add a transparency effect for thumnbail images */
 .demo {
-  opacity: 0.6;
+  opacity: 0.6
+  
 }
 
 .active,
