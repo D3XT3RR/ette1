@@ -113,7 +113,7 @@ if(mysqli_num_rows($query) == 0){
 $result = mysqli_fetch_assoc($query);
 $status = 'verified';
 $result2 = secure_query($link,"UPDATE login SET Reset = ?, EmailStatus = ? WHERE Email = ?", $t = array('sss'), $a = array(&$reset, &$status, &$mail));
-if($result2 !== false){
+if($result2 !== null){
     $subject="Resetowanie hasla";
     $from = "noreply@i-ette.de";
     $body="<h3>Resetowanie hasła do ETTE dla użytkownika: ".$result['Login']."</h3><br/> <a target='_blank' href='http://i-ette.de/page/passwordSet.php?code=".$reset."'>Skorzystaj z tego linku aby zresetować swoje hasło</a>";
