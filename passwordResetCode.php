@@ -43,10 +43,10 @@ session_start();
         <div id="reshead">Resetowanie hasła do ETTE</div>
         <div id="reset">
         <form method="post" target="">
-          <input type="text" name="mail" placeholder="E-mail">
+          <input type="text" name="code" placeholder="Kod resetujący hasło">
           <input type="submit" value="RESETUJ">
         </form>
-        <div id="informacja">Podaj mail, który został użyty podczas tworzenia konta</div>
+        <div id="informacja">Podaj kod wysłany na Twój adres e-mail</div>
       </div>
     </div>
   </section>
@@ -93,9 +93,19 @@ session_start();
 <?php
 require 'php/connect.php';
 require 'php/secure_query.php';
-if(!isset($_POST['mail'])){
+if(!isset($_POST['code'])){
   die();
 }
+$code = $_POST['code'];
+$find_code = secure_query($link, "SELECT * FROM login WHERE Reset = ?", $t = array('s'), $a = array(&$code));
+if(mysqli_num_rows($find_code) > 0){
+  echo("<script type='text/javascript'>window.location='passwordSet.php?code=".$code."';</script>");
+}
+else{
+  echo "<script type='text/javascript'>document.getElementById('informacja').innerHTML = 'Kod nie jest poprawny';</script>";
+  die();
+}
+
 $mail = $_POST['mail'];
 $reset = md5(rand(0, 100000000));
 $find_reset = mysqli_query($link, "SELECT Reset FROM login WHERE Reset = '$reset'");
@@ -122,7 +132,7 @@ if($result2 !== null){
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
     mail($to,$subject,$body,$headers);
     //echo "You are registered! :) <br />";
-    echo "<script type='text/javascript'>document.getElementById('informacja').innerHTML = 'Email z linkiem został wysłany na Twoje konto'; setTimeout(function(){ window.location='passwordResetCode.php'; }, 3000);;</script>";
+    echo "<script type='text/javascript'>document.getElementById('informacja').innerHTML = 'Email z linkiem został wysłany na Twoje konto';</script>";
 }
     //echo "<script type='text/javascript'>document.getElementById('informacja').innerHTML = 'Nie ma konta z takim adresem email';</script>";
     
