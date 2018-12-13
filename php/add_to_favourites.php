@@ -15,6 +15,7 @@
 				if(!in_array($ad_id, $fav_arr)){
 					array_push($fav_arr, $ad_id);
 					$fav_arr_imp = implode(",",$fav_arr);
+					$fav_arr_imp = rtrim($fav_arr_imp,',');
 					secure_query($link,"UPDATE login SET Favourites = ? WHERE ID = ?",$t=array('si'),$a= array(&$fav_arr_imp, &$user_id));
 				}
 			}
@@ -23,6 +24,7 @@
 					$index = array_search($ad_id, $fav_arr);
 					unset($fav_arr[$index]);
 					$fav_arr_imp = implode(",",$fav_arr);
+					$fav_arr_imp = rtrim($fav_arr_imp,',');
 					secure_query($link,"UPDATE login SET Favourites = ? WHERE ID = ?",$t=array('si'),$a= array(&$fav_arr_imp, &$user_id));
 				}
 			}
