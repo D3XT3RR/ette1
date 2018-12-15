@@ -1,47 +1,49 @@
 .row{
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 
 }
 
-.col-sm-3{
+
+.col{
 	flex-direction: column;
-	margin: 5px;
+	width: 24%;
+
 }
 
-.col-sm-3:hover .categoryA{
-	font-size: 23px;
+.col:hover .categoryA{
+	font-size: 17px;
 	text-shadow: 2px 2px 5px #595959;
 	transition: all 0.8s ease;
 
 }
 
+
 .index_cat_photo{
-	width: 140px;
-	height: auto;
+	width: 50px;
+	height: 50px;
 	margin: 0 10px;
 }
 
-
 .titleBOX{
-	width: 220px;
+	width: 100px;
 	height: 40px;
 	padding-top: 13px;
 
 }
+
 .categoryA{
 	display: flex;
 	flex-direction: row;
-	font-size: 20px;
+	padding: 5px 0;
+	border-radius: 40px; 
+	font-size: 15px;
 	transition: all 0.8s ease;	
 	background-color: white;
+	text-decoration: none;
+	font-weight: bold;
 
-}
-
-.categoryA:hover{
-	font-size: 23px;
-	text-shadow: 2px 2px 5px #595959;
-	transition: all 0.8s ease;
 }
 
 

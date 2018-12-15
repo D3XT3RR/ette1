@@ -26,7 +26,7 @@ session_start();
   <!-- CSS -->
   <link rel="stylesheet" href="style/w3.css">
   <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="style/indextest.css">
+  <link rel="stylesheet" href="style/index.css">
   </head>
 
 <body>
@@ -94,138 +94,124 @@ session_start();
       <div class="container">
           <!-- Pierwszy Rząd -->
             <div class="row">
-              <div class="col">
+              <div class="col-sm-3">
                 <a class="categoryA" href="search.php?kat=Praca">
-                  <img class="index_cat_photo" src="style/image/index/work.png">
                   <div class="titleBOX">Praca</div>
-                  
+                  <img class="index_cat_photo" src="style/image/index/work.png">
                 </a>
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Nieruchomości">
-                    <img class="index_cat_photo" src="style/image/index/house.png">
                     <div class="titleBOX">Nieruchomości </div>
-                    
+                    <img class="index_cat_photo" src="style/image/index/house.png">
                   </a>
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                 <a class="categoryA" href="search.php?kat=Motoryzacja">
-                  <img class="index_cat_photo" src="style/image/index/car.png">
                   <div class="titleBOX"> Motoryzacja</div>
-                  
+                  <img class="index_cat_photo" src="style/image/index/car.png">
                 </a>
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Elektronika">
+                    <div class="titleBOX"> Elektronika </div>
                     <img class="index_cat_photo" src="style/image/index/electronics.png">
-                    <div class="titleBOX"> Elektronika </div> 
                   </a>
               </div>
             </div>
             <!-- Drugi Rząd -->
             <div class="row">
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Dom+i+ogród">
-                    <img class="index_cat_photo" style="margin-top: 10px;" src="style/image/index/garden.png">
                     <div class="titleBOX">Dom i Ogród</div>
+                    <img class="index_cat_photo" style="margin-top: 10px;" src="style/image/index/garden.png">
                   </a>
                   
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Moda">
-                    <img class="index_cat_photo" src="style/image/index/moda.png" >
                     <div class="titleBOX">Moda</div>
+                    <img class="index_cat_photo" src="style/image/index/work.png" >
                   </a>
                   
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Zwierzęta">
-                    <img class="index_cat_photo" src="style/image/index/dog.png">
                     <div class="titleBOX">Zwierzęta</div>
+                    <img class="index_cat_photo" src="style/image/index/house.png">
                   </a>
                   
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Rolnictwo">
-                    <img class="index_cat_photo" src="style/image/index/snope.png">
                     <div class="titleBOX">Rolnictwo</div>
+                    <img class="index_cat_photo" src="style/image/index/car.png">
                   </a>
                   
               </div>
             </div>
             <!-- Trzeci Rząd -->
             <div class="row">
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Dzieci">
-                    <img class="index_cat_photo" src="style/image/index/kids.png">
                     <div class="titleBOX">Dla Dzieci</div>
+                    <img class="index_cat_photo" src="style/image/index/car.png">
                   </a>
                   
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                 <a class="categoryA" href="search.php?kat=Hobby+i+sport">
-                  <img class="index_cat_photo" src="style/image/index/sport.png">
                   <div class="titleBOX">Hobby i Sport</div>
+                  <img class="index_cat_photo" src="style/image/index/electronics.png">
                 </a>
                   
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Muzyka">
-                    <img class="index_cat_photo" src="style/image/index/music.png">
                     <div class="titleBOX">Muzyka</div>
+                    <img class="index_cat_photo" src="style/image/index/work.png">
                   </a>
                   
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Edukacja">
-                    <img class="index_cat_photo" src="style/image/index/education.png">
-                    <div class="titleBOX">Edukacja</div> 
+                    <div class="titleBOX">Edukacja</div>
+                    <img class="index_cat_photo" src="style/image/index/house.png">
                   </a>
                   
               </div>
             </div>
             <!-- Czwarty Rząd -->
             <div class="row">
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Firmy+i+usługi">
-                    <img class="index_cat_photo" src="style/image/index/firmy.png">
                     <div class="titleBOX">Firmy i Usługi</div>
+                    <img class="index_cat_photo" src="style/image/index/house.png">
                   </a>
                   
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Oddam+za+darmo">
-                    <img class="index_cat_photo" src="style/image/index/free.png">
-                    <div class="titleBOX">Za Darmo</div>
+                    <div class="titleBOX">Oddam za Darmo</div>
+                    <img class="index_cat_photo" src="style/image/index/car.png">
                   </a>
                   
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Zamienię">
-                    <img class="index_cat_photo" src="style/image/index/change.png">
                     <div class="titleBOX">Zamienię</div>
+                    <img class="index_cat_photo" src="style/image/index/electronics.png">
                   </a>
               </div>
-              <div class="col">
+              <div class="col-sm-3">
                   <a class="categoryA" href="search.php?kat=Różne">
-                    <img class="index_cat_photo" src="style/image/index/various.png">
                     <div class="titleBOX">Różne</div>
+                    <img class="index_cat_photo" src="style/image/index/work.png">
                   </a>
                   
               </div>
             </div>
-            <!-- END OF C4T3G0R135 -->
 
-            <div id=latestAdds>
-              
-
-
-            </div>
-
-
-
-
-          </div>
         </div>    
   </section>
 
@@ -250,7 +236,7 @@ session_start();
       <div class="column">
         <h5>Informacje</h5> 
         <div class="row">
-          <a href="https://www.flaticon.com/free-icon/dog_141722">Informacje dotyczące przetwarzania plików cookies</a>
+          <a href="">Informacje dotyczące przetwarzania plików cookies</a>
         </div>
 
         <div class="row">

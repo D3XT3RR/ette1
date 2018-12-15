@@ -30,11 +30,8 @@
 
 }
 .categoryA{
-	display: flex;
-	flex-direction: row;
 	font-size: 20px;
 	transition: all 0.8s ease;	
-	background-color: white;
 
 }
 
@@ -43,5 +40,3 @@
 	text-shadow: 2px 2px 5px #595959;
 	transition: all 0.8s ease;
 }
-
-
