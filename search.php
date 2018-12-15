@@ -96,7 +96,8 @@ function DisplayResults($raw_results){
             $oDate = new DateTime($row['posting_date']);
             $dDate = $oDate->format("d ");
             $mDate = $mon[$oDate->format("n")-1];
-            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; ><div class="announTit"><h3>'.$row['title'].'</h3><div class="category">'.$row['category'].'</div><div class="date">'.$dDate.''.$mDate.'</div></div>');
+            $yDate = $oDate->format("Y");
+            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; ><div class="announTit"><h3>'.$row['title'].'</h3><div class="category">'.$row['category'].'</div><div class="date">'.$dDate.''.$mDate.''.$yDate.'</div></div>');
 
             $file = base64_encode( $row['image1']);
             if($file == '') {
