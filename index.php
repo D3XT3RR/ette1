@@ -14,6 +14,13 @@ session_start();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <script type="text/javascript">
+    $(window).load(function() {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut("slow");;
+  });
+  </script>
+
   <!-- CSS -->
   <link rel="stylesheet" href="style/w3.css">
   <link rel="stylesheet" href="style/style.css">
@@ -21,6 +28,7 @@ session_start();
   </head>
 
 <body>
+  <div class="se-pre-con">
   <header>
     <div class="header"> 
       <div class="auto"> 
@@ -38,8 +46,9 @@ session_start();
               <div id="4Button" class="button color"></div>
               <ul class=sub-menu>
                 <li id="aButton" class="profBtn"></li>
-                <li id="bButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
-                <li id="cButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li></li>
+                <li id="bButton" class="profBtn"></li>
+                <li id="cButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
+                <li id="dButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li>
               </ul></div>
           </div>
       </div>
@@ -347,5 +356,6 @@ session_start();
   require 'php/page_format.php';
   require 'php/reg.php';
   ?>
+</div>
 </body>
 </html>

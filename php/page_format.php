@@ -18,9 +18,12 @@
           '<a onclick=location.href=\'userAnnouns.php\' >Twoje ogłoszenia</a>';
 
           document.getElementById('bButton').innerHTML =
-          '<a onclick=location.href=\'settings.php\' >Ustawienia</a>';
+          '<a onclick=location.href=\'userFavourites.php\' >Ulubione</a>';
 
           document.getElementById('cButton').innerHTML =
+          '<a onclick=location.href=\'settings.php\' >Ustawienia</a>';
+
+          document.getElementById('dButton').innerHTML =
           '<a onclick=location.href=\'php/logout.php\' >Wyloguj</a>';
 </script>";
     }

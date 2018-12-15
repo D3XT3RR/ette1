@@ -11,7 +11,16 @@ session_start();
   <!-- FlexBox -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script type="text/javascript">
+    $(window).load(function() {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut("slow");;
+  });
+  </script>
 
   <!-- CSS -->
   <link rel="stylesheet" href="style/w3.css">
@@ -24,6 +33,7 @@ session_start();
   </head>
 
 <body>
+  <div class="se-pre-con"></div>
   <header>
     <div class="header"> 
       <div class="auto"> 

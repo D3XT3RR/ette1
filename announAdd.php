@@ -81,33 +81,34 @@ session_start();
     <div class=" container auto">
       <form id="announdAdd" method="post" action="php/announAdd.php" enctype="multipart/form-data">
         <h2>Zaczynamy!</h2>
+        <div class="rowAdd">
+          <div id="title">
+            <div id="titleTXT">Wpisz tytuł<span class="red">*</span></div>
+            <div id="tTXT"><input type="text" placeholder="Tytuł" name="AdTitle" maxlength="65" required></div>
+          </div>
 
-        <div id="title">
-          <div id="titleTXT">Wpisz tytuł<span class="red">*</span></div>
-          <div id="tTXT"><input type="text" placeholder="Tytuł" name="AdTitle" maxlength="65" required></div>
-        </div>
-
-        <div  id="category">
-          <div id="categoryTXT">Wybierz kategorię<span class="red">*</span></div>
-          <div id="cTXT">
-            <select name="Category">
-              <option value="Praca">Praca</option>
-              <option value="Nieruchomości">Nieruchomości</option>
-              <option value="Motoryzacja">Motoryzacja</option>
-              <option value="Elektronika">Elektronika</option>
-              <option value="Dom i Ogród">Dom i Ogród</option>
-              <option value="Moda">Moda</option>
-              <option value="Zwierzęta">Zwierzęta</option>
-              <option value="Rolnictwo">Rolnictwo</option>
-              <option value="Dla Dzieci">Dla Dzieci</option>
-              <option value="Hobby i Sport">Hobby i Sport</option>
-              <option value="Muzyka">Muzyka</option>
-              <option value="Edukacja">Edukacja</option>
-              <option value="Firmy i Usługi">Firmy i Usługi</option>
-              <option value="Oddam za Darmo">Oddam za Darmo</option>
-              <option value="Zamienię">Zamienię</option>
-              <option value="Różne">Różne</option>
-            </select>
+          <div  id="category">
+            <div id="categoryTXT">Wybierz kategorię<span class="red">*</span></div>
+            <div id="cTXT">
+              <select name="Category">
+                <option value="Praca">Praca</option>
+                <option value="Nieruchomości">Nieruchomości</option>
+                <option value="Motoryzacja">Motoryzacja</option>
+                <option value="Elektronika">Elektronika</option>
+                <option value="Dom i Ogród">Dom i Ogród</option>
+                <option value="Moda">Moda</option>
+                <option value="Zwierzęta">Zwierzęta</option>
+                <option value="Rolnictwo">Rolnictwo</option>
+                <option value="Dla Dzieci">Dla Dzieci</option>
+                <option value="Hobby i Sport">Hobby i Sport</option>
+                <option value="Muzyka">Muzyka</option>
+                <option value="Edukacja">Edukacja</option>
+                <option value="Firmy i Usługi">Firmy i Usługi</option>
+                <option value="Oddam za Darmo">Oddam za Darmo</option>
+                <option value="Zamienię">Zamienię</option>
+                <option value="Różne">Różne</option>
+              </select>
+            </div>
           </div>
         </div>
 
