@@ -93,12 +93,12 @@
   transition: all 0.6s ease;
 }
 
-.color:hover {
+.color:hover, .color:active, .color:focus {
   background-color: #99ccff;
   color: white;
 }
 
-.button:hover {
+.button:hover, .button:active, .button:focus {
   transition: all 0.6s ease;
 }
 
@@ -124,7 +124,9 @@ ul{
    transition: 200ms; 
 }
 
-#profmenu:hover  > ul, ul:hover, li:hover {
+#profmenu:hover  > ul, ul:hover, li:hover,
+#profmenu:active  > ul, ul:active, li:active,
+#profmenu:focus  > ul, ul:focus, li:focus {
   visibility: visible;
   position: relative;
   opacity: 1;
@@ -151,7 +153,9 @@ ul{
   transition: all 0.6s ease;
 }
 
-.profBtn:hover a{
+.profBtn:hover a,
+.profBtn:active a,
+.profBtn:focus a{
   cursor: pointer;
   background-color: #cce6ff;
   transition: all 0.6s ease;
