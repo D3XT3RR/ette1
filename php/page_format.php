@@ -7,10 +7,10 @@
        echo "<script type='text/javascript'>
 
           document.getElementById('3Button').innerHTML = 
-          '<a class=\'button \'onclick=location.href=\'announAdd.php\'>Dodaj Ogłoszenie!';
+          '<a class=\'btnHelper \'onclick=location.href=\'announAdd.php\'>Dodaj Ogłoszenie!';
 
           document.getElementById('4Button').innerHTML = 
-          '<a class=\'button \' >Twój profil';
+          '<a class=\'btnHelper \' >Twój profil';
 
           document.getElementById('aButton').innerHTML =
           '<a onclick=location.href=\'userAnnouns.php\' >Twoje ogłoszenia</a>';

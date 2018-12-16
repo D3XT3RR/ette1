@@ -26,6 +26,7 @@ session_start();
   <link rel="stylesheet" href="style/w3.css">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/search.css">
+  <link rel="stylesheet" type="text/css" href="style/mobile/styleMobile.css">
 </head>
 
 <body>
@@ -43,14 +44,17 @@ session_start();
             <div id="1Button" class="button color"></div>
             <div id="2Button" class="button color"></div>
             <div id="3Button" class="button color"> </div>
-            <div id="profmenu" class="sub-menu-parent">
+            <div id="profmenu">
               <div id="4Button" class="button color"></div>
-              <ul class=sub-menu>
+              <ul >
                 <li id="aButton" class="profBtn"></li>
-                <li id="bButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
-                <li id="cButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li></li>
-              </ul></div>
+                <li id="bButton" class="profBtn"></li>
+                <li id="cButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
+                <li id="dButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li>
+              </ul>
+            </div>
           </div>
+        </div>
       </div>
     </div>
     <div id="search" class="auto">
