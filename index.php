@@ -299,7 +299,7 @@ function DisplayResults($raw_results){
         }          
     }
 }
-DisplayResults(secure_query($link, "SELECT DISTINCT * FROM `adverts` WHERE visibility = 'active' & status = 'approved' ORDER BY posting_date DESC LIMIT 17", $t = array('sss'), $a = array(&$search, &$search, &$category)));
+DisplayResults(mysqli_query($link, "SELECT DISTINCT * FROM `adverts` WHERE visibility = 'active' & status = 'approved' ORDER BY posting_date DESC LIMIT 17"));
 
             ?>
             
