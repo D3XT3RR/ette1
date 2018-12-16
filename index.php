@@ -250,7 +250,11 @@ function DisplayResults($raw_results){
             }
             else
             {
-              $cost = $price;
+              if($price > 999)
+              {
+                $cost = (rtrim($price, '0').' tys. zł');
+              }
+              
             }
 
 
