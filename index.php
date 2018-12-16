@@ -27,6 +27,7 @@ session_start();
   <link rel="stylesheet" href="style/w3.css">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/indextest.css">
+  <link rel="stylesheet" type="text/css" href="style/searchIndex.css">
   </head>
 
 <body>
@@ -216,17 +217,96 @@ session_start();
             </div>
             <!-- END OF C4T3G0R135 -->
 
-            <div id=latestAdds>
-              
 
 
-            </div>
-
-
-
-
+</div>
           </div>
-        </div>    
+          <div id="helper">
+          <div class=" auto container" id="latestAdds">
+            <?php
+              require_once 'php/connect.php';
+require_once 'php/secure_query.php';
+mysqli_set_charset($link,"utf8");
+
+    
+
+function DisplayResults($raw_results){    
+    if(mysqli_num_rows($raw_results) > 0)      
+    {
+        while($row = mysqli_fetch_assoc($raw_results))
+        {
+          if(($row['visibility'] == 'active') && ($row['status'] == 'approved')){
+            $mon = array("Stycznia ","Lutego ","Marca ","Kwietnia ","Maja ","Czerwca ","Lipca ","Sierpnia ","Września ","Października ","Listopada ","Grudnia ");
+            $today = date("y-m-d");
+            $oDate = new DateTime($row['posting_date']);
+            $dDate = $oDate->format("d ");
+            $mDate = $mon[$oDate->format("n")-1];
+            $yDate = $oDate->format("Y");
+            $printedDate ='';
+            $cost = '';
+            $price = $row['price'];
+            if($price == '0.00'){
+              $cost = 'Za Darmo';
+            }
+            else
+            {
+              $cost = $price;
+            }
+
+
+            if($oDate->format("y-m-d") == $today)
+            {
+              $printedDate = 'Dzisiaj';
+            }
+            else
+            {
+              if (date("Y") == $yDate) {
+                $printedDate = ($dDate.''.$mDate);
+              }
+              else if (date("Y") != $yDate) {
+                $printedDate = ($dDate.''.$mDate.''.$yDate);
+              }
+            }
+            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; ><div class="announTit"><h3>'.$row['title'].'</h3><div class="category">'.$row['category'].'</div><div class="date">'.$cost.'</div></div>');
+
+            $file = base64_encode( $row['image1']);
+            if($file == '') {
+              $file = base64_encode( $row['image2']);
+              if($file == '') {
+                $file = base64_encode( $row['image3']);
+                if($file == '') {
+                  $file = base64_encode( $row['image4']);
+                  if ($file == '') {
+                    $file = base64_encode( $row['image5']);
+                    if ($file =='') {
+                      $file = base64_encode( $row['image6']);
+                      if ($file =='') {
+                        echo('<div class="announPic">BRAK ZDJĘCIA</div></a> ');
+                      }
+                      else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a>');}
+                    }
+                    else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a>');}
+                  }
+                  else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a>');}
+                }
+                else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a>');}
+              }
+              else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a>');}
+            }
+            else {echo('<div class="announPic"><img class="photo" src="data:image/jpeg;base64,'.$file.'"/></div></a>');}
+            
+          }
+        }          
+    }
+}
+DisplayResults(secure_query($link, "SELECT DISTINCT * FROM `adverts` WHERE visibility = 'active' & status = 'approved' ORDER BY posting_date DESC LIMIT 17", $t = array('sss'), $a = array(&$search, &$search, &$category)));
+
+            ?>
+            
+          </div>
+        </div>
+      </div>
+
   </section>
 
   

@@ -93,11 +93,26 @@ function DisplayResults($raw_results){
         {
           if(($row['visibility'] == 'active') && ($row['status'] == 'approved')){
             $mon = array("Stycznia ","Lutego ","Marca ","Kwietnia ","Maja ","Czerwca ","Lipca ","Sierpnia ","Września ","Października ","Listopada ","Grudnia ");
+            $today = date("y-m-d");
             $oDate = new DateTime($row['posting_date']);
             $dDate = $oDate->format("d ");
             $mDate = $mon[$oDate->format("n")-1];
             $yDate = $oDate->format("Y");
-            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; ><div class="announTit"><h3>'.$row['title'].'</h3><div class="category">'.$row['category'].'</div><div class="date">'.$dDate.''.$mDate.''.$yDate.'</div></div>');
+            $printedDate ='';
+            if($oDate->format("y-m-d") == $today)
+            {
+              $printedDate = 'Dzisiaj';
+            }
+            else
+            {
+              if (date("Y") == $yDate) {
+                $printedDate = ($dDate.''.$mDate);
+              }
+              else if (date("Y") != $yDate) {
+                $printedDate = ($dDate.''.$mDate.''.$yDate);
+              }
+            }
+            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; ><div class="announTit"><h3>'.$row['title'].'</h3><div class="category">'.$row['category'].'</div><div class="date">'.$printedDate.'</div></div>');
 
             $file = base64_encode( $row['image1']);
             if($file == '') {
