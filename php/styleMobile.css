@@ -1,0 +1,379 @@
+@media only screen and (max-width: 600px) {
+
+#helper{
+	margin-top: 0;
+}
+
+
+/*=========================================== BODY & stuff  ===========================================*/
+
+
+
+
+
+
+.auto{
+  width: 100%;
+  margin: 0 auto;
+}
+
+.categoryHelper{
+	display: none;
+}
+
+
+/*=========================================== HEADER(main)  ===========================================*/
+.header{
+  background-color: white;
+  min-height: 50px;
+}
+
+
+
+/*=========================================== HEADER(logo)  ===========================================*/
+
+
+
+.logo{
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  line-height: 50px;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: bold;
+  
+  text-decoration: none;
+}
+
+
+.blue{
+  color: #003399;
+}
+
+.red{
+  color: #993300;
+}
+
+
+
+
+
+/*=========================================== HEADER(menu)  ===========================================*/
+
+.menu{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttonPanel{
+  display: flex;
+  width: 70%;
+  height: 50px;
+}
+
+.button > a{
+  display: block;	
+  color: black;
+  width: 126px;
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.btnHelper{
+	display: flex;
+	align-self: center;
+}
+
+
+
+.color{
+  transition: all 0.6s ease;
+}
+
+.color:hover {
+  background-color: #99ccff;
+  color: white;
+}
+
+.button:hover {
+  transition: all 0.6s ease;
+}
+
+ul li {
+  color:#000;
+  text-decoration:none;
+  overflow: hidden;
+  }
+
+ul{
+	padding-left: 0;
+}
+
+
+
+#profmenu > ul {
+  visibility: hidden;
+  opacity: 0;
+  transform: scaleY(0); 
+  transform-origin: 50% 0;
+  -webkit-transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+   transition: 200ms; 
+}
+
+#profmenu:hover  > ul, ul:hover, li:hover {
+  visibility: visible;
+  position: relative;
+  opacity: 1;
+  z-index: 10;
+  margin: 0;
+  transform: scaleY(1); 
+  -webkit-transform: scaleY(1);
+
+  
+}
+
+
+
+.profBtn a{
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+  height: 50px;
+  background-color: #ffe6b3;
+  text-align: center;
+  line-height: 50px;
+  width: 126px;
+  color: black;
+  transition: all 0.6s ease;
+}
+
+.profBtn:hover a{
+  cursor: pointer;
+  background-color: #cce6ff;
+  transition: all 0.6s ease;
+}
+
+
+/*
+#profmenu > ul {
+  visibility: visible;
+  opacity: 1;
+  width: 126px;
+  z-index: 99;
+  /*
+  transform: scaleY(0); 
+  transform-origin: 100% 0;
+  -webkit-transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+   transition: 200ms; 
+  
+}
+
+#profmenu:hover  > ul, ul:hover, li:hover {
+  visibility: visible;
+  position: relative;
+  opacity: 1;
+  z-index: 10;
+  margin: 0;
+  transform: scaleY(1); 
+  -webkit-transform: scaleY(1);
+}
+
+.profBtn{
+	width: 100%;
+}
+
+.profBtn a{
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+  height: 50px;
+  background-color: #ffe6b3;
+  text-align: center;
+  vertical-align: middle;
+  color: black;
+  transition: all 0.6s ease;
+}
+
+.profBtn:hover a{
+  cursor: pointer;
+  background-color: #cce6ff;
+  transition: all 0.6s ease;
+}
+*/
+
+
+
+/*=========================================== HEADER(search)  ===========================================*/
+
+
+#search form {
+	width: 100%;
+	margin: 0 auto;
+}
+
+#sBar{
+	width:100%; 
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	background-color: #e6e6e6;
+	padding: 0 5px;
+}
+
+#sCat > select {
+	width: 100%;
+	height: 40px;
+    padding: 6px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#sText > input[type=text]{
+	width: 100%;
+    height: 40px;
+    padding: 6px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+#sBar > div {
+	z-index: 2;
+}
+
+#sSubmit > input[type=submit]{
+	padding: 6px 10px;
+    margin: 4px 0;
+	height: 40px;
+	width: 100%;
+	display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#sSubmit:hover > input[type=submit]{
+	cursor: pointer;
+}
+
+/*=========================================== SECTION  ===========================================*/
+
+section{
+  
+  background-color: #eaeaea/*#f2f2f2*/ /*gray*/;
+  min-height: 80vh;
+  padding-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+  margin-bottom: 0;
+}
+
+.required{
+  color: red;
+}
+
+/*=========================================== FOOTER ===========================================*/
+
+footer{
+  width: 100%;
+  background-image: linear-gradient(#091834, #08142b);
+  margin: 0;
+  color: gray;
+}
+
+
+footer .auto {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 7px;
+}
+
+.auto  > .column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.column > .row{
+  flex-direction: column;
+}
+
+
+.row {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.row > a{
+  font-size: 15px;
+  text-decoration: none;
+  text-align: left;
+  transition: all 0.8s ease;
+}
+
+.row > a:hover{
+  color: #f2f2f2;
+  transition: all 0.8s ease;
+}
+
+
+
+
+/*===========================================  LOADER  ===========================================*/
+
+
+
+
+#login-panel-message{
+  color: red !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
