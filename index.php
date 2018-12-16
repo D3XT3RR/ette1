@@ -91,7 +91,7 @@ session_start();
 
 
   <section>
-    <div class="auto">
+    <div class="auto categoryHelper">
       <div class="container">
           <!-- Pierwszy Rząd -->
             <div class="row">
@@ -233,9 +233,14 @@ mysqli_set_charset($link,"utf8");
 function DisplayResults($raw_results){    
     if(mysqli_num_rows($raw_results) > 0)      
     {
+      $limit = 16;
         while($row = mysqli_fetch_assoc($raw_results))
         {
+          if($limit <= 0){
+            return;
+          }
           if(($row['visibility'] == 'active') && ($row['status'] == 'approved')){
+            $limit -= 1;
             $mon = array("Stycznia ","Lutego ","Marca ","Kwietnia ","Maja ","Czerwca ","Lipca ","Sierpnia ","Września ","Października ","Listopada ","Grudnia ");
             $today = date("y-m-d");
             $oDate = new DateTime($row['posting_date']);
@@ -250,7 +255,8 @@ function DisplayResults($raw_results){
             }
             else
             {
-              $cost = $price;
+              $cost = number_format($price, 2, ',', ' ');
+              $cost .= " zł";
             }
 
 
@@ -299,7 +305,7 @@ function DisplayResults($raw_results){
         }          
     }
 }
-DisplayResults(mysqli_query($link, "SELECT DISTINCT * FROM `adverts` WHERE visibility = 'active' & status = 'approved' ORDER BY posting_date DESC LIMIT 17"));
+DisplayResults(mysqli_query($link, "SELECT DISTINCT * FROM `adverts` WHERE visibility = 'active' & status = 'approved' ORDER BY posting_date DESC"));
 
             ?>
             
