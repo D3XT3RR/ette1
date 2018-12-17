@@ -205,7 +205,7 @@ require 'php/session.php';
               die();
             }
             if(isset($_POST['AdText']) && isset($_POST['AdTitle']) && isset($_POST['Category'])){
-              $ad_text = preg_replace( "/\r\n/", "</br>", $_POST['AdText']);
+              $ad_text = preg_replace( "/\r\n/", "<br/>", $_POST['AdText']);
               $ad_title = $_POST['AdTitle'];
               $ad_category = $_POST['Category'];
               $user_session_id = $_SESSION['user'];

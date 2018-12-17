@@ -208,7 +208,7 @@ session_start();
           {
             if(($row['visibility'] == 'active' || $row['poster_id'] == @$_SESSION['user']) && (($row['status'] == 'approved') || (@$_SESSION['user'] == 1) || $row['poster_id'] == @$_SESSION['user'])){
             
-            $ad_text = str_ireplace("</br>", "\\r\\n", $row['text']);
+            $ad_text = str_ireplace("<br/>", "\\r\\n", $row['text']);
             $ad_title = $row['title'];
             $ad_image1 = @addslashes(base64_encode($row['image1']));
             $ad_image2 = @addslashes(base64_encode($row['image2']));
