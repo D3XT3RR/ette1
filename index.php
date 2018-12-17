@@ -159,7 +159,7 @@ session_start();
             <!-- Trzeci Rząd -->
             <div class="row">
               <div class="col">
-                  <a class="categoryA" href="search.php?kat=Dzieci">
+                  <a class="categoryA" href="search.php?kat=Dla+Dzieci">
                     <img class="index_cat_photo" src="style/image/index/kids.png">
                     <div class="titleBOX">Dla Dzieci</div>
                   </a>
