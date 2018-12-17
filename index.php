@@ -310,7 +310,7 @@ function DisplayResults($raw_results){
         }          
     }
 }
-DisplayResults(mysqli_query($link, "SELECT DISTINCT * FROM `adverts` WHERE visibility = 'active' & status = 'approved' ORDER BY posting_date DESC"));
+DisplayResults(mysqli_query($link, "SELECT DISTINCT * FROM `adverts` WHERE visibility = 'active' & status = 'approved' ORDER BY id DESC"));
 
             ?>
             
