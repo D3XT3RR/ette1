@@ -10,6 +10,7 @@
 		$result = secure_query($link,"SELECT Favourites FROM login WHERE ID=?",$t=array('i'),$a=array(&$user_id));
 		while($row = mysqli_fetch_row($result)){
 			$fav = $row[0];
+			$fav = rtrim($fav,',');
 			$fav_arr = explode(",",$fav);
 			if($action == 'add'){
 				if(!in_array($ad_id, $fav_arr)){
