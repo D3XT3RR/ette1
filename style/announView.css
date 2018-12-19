@@ -6,8 +6,26 @@
   width: 100%;
 }
 
+.container{
+	display: flex;
+	flex-direction: row;
+}
+
+.left{
+	width: 70%;
+}
+
+.right{
+	width: 30%;
+}
+
 
 /*=========================================== POLA TEKSTOWE  ===========================================*/
+
+#favBtn{
+	transition: all 1s ease;
+}
+
 
 #title{
 	display: flex;
@@ -85,4 +103,28 @@
 
 
 
+/*=========================================== RIGHT ===========================================*/
 
+#phoneNo{
+	height: 40px;
+	padding: 5px;
+	background-color: skyblue;
+}
+
+#priceBox{
+	height: 100px;
+	background-color: white;
+	justify-content: space-around;
+	padding: 5px;
+	margin-top: 10px; 
+}
+
+#price{
+	height: 40px;
+	padding: 5px;
+	background-color: orange;
+}
+
+#negotiation{
+	padding: 5px;
+}

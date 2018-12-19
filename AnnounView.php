@@ -99,24 +99,24 @@ session_start();
   <section>
     <div class="auto">
       <div class="container">
+        <div class="left">
           <div id="title">
             <div id="tTXT"></div>
             <?php
-		require_once 'php/secure_query.php';
-		require_once 'php/connect.php';
-		if(isset($_SESSION['user']) && isset($_GET['id'])){
-			$usr = $_SESSION['user'];
-			$result = secure_query($link, "SELECT Favourites FROM login WHERE ID = ?", $t = array('i'), $a=array(&$usr));
-			$row = mysqli_fetch_row($result);
-			$fav_arr = explode(',', $row[0]);
-			if(in_array(@$_GET['id'], $fav_arr)){
-				echo("<button title='Usuń z Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione.png' /></button>");
-			}
-			else{
-				echo("<button title='Dodaj do Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione_nie.png' /></button>");
-			}
-		}
-              
+		          require_once 'php/secure_query.php';
+		          require_once 'php/connect.php';
+		          if(isset($_SESSION['user']) && isset($_GET['id'])){
+			         $usr = $_SESSION['user'];
+			         $result = secure_query($link, "SELECT Favourites FROM login WHERE ID = ?", $t = array('i'), $a=array(&$usr));
+			         $row = mysqli_fetch_row($result);
+			         $fav_arr = explode(',', $row[0]);
+			           if(in_array(@$_GET['id'], $fav_arr)){
+				            echo("<button title='Usuń z Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione.png' /></button>");
+			           }
+			           else{
+				          echo("<button title='Dodaj do Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione_nie.png' /></button>");
+			           }
+		          } 
             ?>
           </div>
 
@@ -187,7 +187,21 @@ session_start();
             <div id="dTXT"></div>
           </div>
         </div>
+        <div class="right">
+        <div id="phoneNo">NUMER</div>
+        <div id="priceBox">
+          <div id="price">
+            CENA
+          </div>
+          <div id="negotiation">
+            NEGOCJACJA
+          </div>
+        </div>
+
+    </div>
       </div>
+    </div>
+    
 
 
 	</div>
