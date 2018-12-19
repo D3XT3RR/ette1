@@ -87,6 +87,14 @@ session_start();
           <div id="title">
             <div id="titleTXT">Wpisz tytuł<span class="red">*</span></div>
             <div id="tTXT"><input type="text" placeholder="Tytuł" name="AdTitle" maxlength="65" required></div>
+            <div id="price">
+              <label for="priceINPUT">Cena:</label>
+              <input id="priceINPUT" type="number" min="0" max="10000000" name="Price">
+            </div>
+            <div id="neg">
+              <input type="checkbox" id="negotiation" name="negotiation">
+              <label for="negotiation"> Cena do negocjacji</label>
+            </div>
           </div>
 
           <div  id="category">

@@ -95,6 +95,14 @@ require 'php/session.php';
         <form method="post" action="" enctype="multipart/form-data">
           <label>Zaczynamy!</label>
           <div id="title">
+            <div id="price">
+              <label for="priceINPUT">Cena:</label>
+              <input id="priceINPUT" type="number" min="0" max="10000000" name="Price">
+            </div>
+            <div id="neg">
+              <input type="checkbox" id="negotiation" name="negotiation">
+              <label for="negotiation"> Cena do negocjacji</label>
+            </div>
             <div id="titleTXT">Wpisz tytuł<span class="required">*</span></div>
             <div id="tTXT"><input type="text" placeholder="Tytuł" name="AdTitle" required></div>
           </div>
