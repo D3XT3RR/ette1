@@ -110,10 +110,10 @@ session_start();
 			$row = mysqli_fetch_row($result);
 			$fav_arr = explode(',', $row[0]);
 			if(in_array(@$_GET['id'], $fav_arr)){
-				echo("<button title='Usuń z Ulubionych' onclick='RemoveFromFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione.png'</button>");
+				echo("<button title='Usuń z Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione.png' /></button>");
 			}
 			else{
-				echo("<button title='Dodaj do Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione_nie.png'</button>");
+				echo("<button title='Dodaj do Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione_nie.png' /></button>");
 			}
 		}
               

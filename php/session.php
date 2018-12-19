@@ -4,7 +4,7 @@ require_once 'connect.php';
 if (isset($_SESSION['user'])) {
     // logged in
 } else {
-    echo "<script type='text/javascript'>document.getElementById('register').style.display='block';</script>";
+    echo "<script type='text/javascript'>window.location='./index.php?redirected=reg_true'</script>";
 }
 /*
 
