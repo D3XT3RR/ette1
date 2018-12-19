@@ -61,6 +61,14 @@
 
 /*=========================================== HEADER(menu)  ===========================================*/
 
+button{
+  border: none;
+  background-color: transparent;
+  height: 50px;
+  padding: 0;
+
+}
+
 .menu{
   display: flex;
   justify-content: flex-end;
@@ -68,6 +76,7 @@
 
 .buttonPanel{
   display: flex;
+  justify-content: flex-end;
   width: 70%;
   height: 50px;
 }
@@ -81,6 +90,9 @@
   height: 50px;
   cursor: pointer;
 }
+
+
+
 
 .btnHelper{
 	display: flex;
