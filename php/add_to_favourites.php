@@ -5,8 +5,7 @@
 	
 	$ad_id = @$_GET['id'];
 	$user_id = @$_SESSION['user'];
-	$action = @$_GET['action'];
-	if(!empty($ad_id) && !empty($user_id) && is_numeric($ad_id) && !empty($action)){
+	if(!empty($ad_id) && !empty($user_id) && is_numeric($ad_id){
 		$result = secure_query($link,"SELECT Favourites FROM login WHERE ID=?",$t=array('i'),$a=array(&$user_id));
 		while($row = mysqli_fetch_row($result)){
 			$fav = $row[0];
