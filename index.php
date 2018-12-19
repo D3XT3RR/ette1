@@ -276,7 +276,7 @@ function DisplayResults($raw_results){
                 $printedDate = ($dDate.''.$mDate.''.$yDate);
               }
             }
-            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; ><div class="announTit"><h3>'.$row['title'].'</h3><div class="category">'.$row['category'].'</div><div class="date">'.$cost.'</div></div>');
+            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; ><div class="announTit"><div class="column"><h3>'.$row['title'].'</h3><div class="category">'.$row['category'].'</div></div><div class="price">'.$cost.'</div></div>');
 
             $file = base64_encode( $row['image1']);
             if($file == '') {
