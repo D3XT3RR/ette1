@@ -28,7 +28,7 @@ session_start();
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/indextest.css">
   <link rel="stylesheet" type="text/css" href="style/searchIndex.css">
-  <link rel="stylesheet" type="text/css" href="style/mobile/styleMobile.css">
+  <link rel="stylesheet" type="text/css" href="style/mobile/styleMobile1.css">
   </head>
 
 <body>
@@ -43,16 +43,14 @@ session_start();
             <div class="blue">E</div>
           </a>
           <div class="buttonPanel">
-            <div id="1Button" class="button color"></div>
-            <div id="2Button" class="button color"></div>
-            <div id="3Button" class="button color"> </div>
+            <div id="3Button" class="button color"></div>
             <div id="profmenu">
-              <div id="4Button" class="button color"></div>
+              <button id="4Button" class="button color"></button>
               <ul >
-                <li id="aButton" class="profBtn"></li>
-                <li id="bButton" class="profBtn"></li>
-                <li id="cButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
-                <li id="dButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li>
+                <li id="aButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
+                <li id="bButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li>
+                <li id="cButton" class="profBtn"></li>
+                <li id="dButton" class="profBtn"></li>
               </ul>
             </div>
           </div>
@@ -114,14 +112,14 @@ session_start();
               <div class="col">
                 <a class="categoryA" href="search.php?kat=Motoryzacja">
                   <img class="index_cat_photo" src="style/image/index/car.png">
-                  <div class="titleBOX"> Motoryzacja</div>
+                  <div class="titleBOX">Motoryzacja</div>
                   
                 </a>
               </div>
               <div class="col">
                   <a class="categoryA" href="search.php?kat=Elektronika">
                     <img class="index_cat_photo" src="style/image/index/electronics.png">
-                    <div class="titleBOX"> Elektronika </div> 
+                    <div class="titleBOX">Elektronika </div> 
                   </a>
               </div>
             </div>
@@ -129,7 +127,7 @@ session_start();
             <div class="row">
               <div class="col">
                   <a class="categoryA" href="search.php?kat=Dom+i+ogród">
-                    <img class="index_cat_photo" style="margin-top: 10px;" src="style/image/index/garden.png">
+                    <img class="index_cat_photo" src="style/image/index/garden.png">
                     <div class="titleBOX">Dom i Ogród</div>
                   </a>
                   

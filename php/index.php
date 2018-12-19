@@ -129,7 +129,7 @@ session_start();
             <div class="row">
               <div class="col">
                   <a class="categoryA" href="search.php?kat=Dom+i+ogród">
-                    <img class="index_cat_photo" style="margin-top: 10px;" src="style/image/index/garden.png">
+                    <img class="index_cat_photo" src="style/image/index/garden.png">
                     <div class="titleBOX">Dom i Ogród</div>
                   </a>
                   

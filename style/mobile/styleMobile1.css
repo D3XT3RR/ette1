@@ -1,32 +1,7 @@
-@font-face{
-  font-family: Lato;
-  src: url(font/Lato-Light.ttf);
-  font-weight: normal;
-}
-@font-face{
-  font-family: Lato;
-  src:url(font/Lato-Regular.ttf);
-  font-weight: bold;
-}
+@media only screen and (max-width: 600px) {
 
-body {
-/*background-image: url("bg.png");*/
-background-color: white;
-background-repeat: no-repeat;
-background-size: auto;
-background-attachment: fixed;
-font-family: Lato;
-}
-
-@media only screen and (min-width: 768px) {
-
-*{
- 
-}
-
-
-.err{
-  color: red;
+#helper{
+	margin-top: 0;
 }
 
 
@@ -38,8 +13,12 @@ font-family: Lato;
 
 
 .auto{
-  width: 900px;
+  width: 100%;
   margin: 0 auto;
+}
+
+.categoryHelper{
+	display: none;
 }
 
 
@@ -57,13 +36,13 @@ font-family: Lato;
 
 .logo{
   display: flex;
+  flex: 1;
   justify-content: flex-start;
-  flex: 3;
   line-height: 50px;
   font-size: 40px;
   font-style: italic;
   font-weight: bold;
-  margin-left: 10px;
+  
   text-decoration: none;
 }
 
@@ -82,6 +61,14 @@ font-family: Lato;
 
 /*=========================================== HEADER(menu)  ===========================================*/
 
+button{
+  border: none;
+  background-color: transparent;
+  height: 50px;
+  padding: 0;
+
+}
+
 .menu{
   display: flex;
   justify-content: flex-end;
@@ -90,32 +77,29 @@ font-family: Lato;
 .buttonPanel{
   display: flex;
   justify-content: flex-end;
-  height: 50px;
-  width: 89%;
-}
-
-button{
-  border: none;
-  background-color: transparent;
-  width: 180px;
+  width: 70%;
   height: 50px;
 }
 
-button:active, button:hover{
-  border: none;
-}
-
-.button a {
+.button > a{
+  display: block;	
   color: black;
-  display: block;
-  flex-direction: row;
-  width: 180px;
-  height: 50px;
-  line-height: 50px;
+  width: 126px;
   text-align: center;
-  font-size: 16px;
+  line-height: 50px;
+  height: 50px;
   cursor: pointer;
 }
+
+
+
+
+.btnHelper{
+	display: flex;
+	align-self: center;
+}
+
+
 
 .color{
   transition: all 0.6s ease;
@@ -131,12 +115,14 @@ button:active, button:hover{
 }
 
 ul li {
-  display:block;
   color:#000;
   text-decoration:none;
-  
-}
+  overflow: hidden;
+  }
 
+ul{
+	padding-left: 0;
+}
 
 
 
@@ -172,7 +158,7 @@ ul li {
   background-color: #ffe6b3;
   text-align: center;
   line-height: 50px;
-  width: 100%;
+  width: 126px;
   color: black;
   transition: all 0.6s ease;
 }
@@ -184,32 +170,75 @@ ul li {
 }
 
 
+/*
+#profmenu > ul {
+  visibility: visible;
+  opacity: 1;
+  width: 126px;
+  z-index: 99;
+  /*
+  transform: scaleY(0); 
+  transform-origin: 100% 0;
+  -webkit-transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+   transition: 200ms; 
+  
+}
+
+#profmenu:hover  > ul, ul:hover, li:hover {
+  visibility: visible;
+  position: relative;
+  opacity: 1;
+  z-index: 10;
+  margin: 0;
+  transform: scaleY(1); 
+  -webkit-transform: scaleY(1);
+}
+
+.profBtn{
+	width: 100%;
+}
+
+.profBtn a{
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+  height: 50px;
+  background-color: #ffe6b3;
+  text-align: center;
+  vertical-align: middle;
+  color: black;
+  transition: all 0.6s ease;
+}
+
+.profBtn:hover a{
+  cursor: pointer;
+  background-color: #cce6ff;
+  transition: all 0.6s ease;
+}
+*/
+
 
 
 /*=========================================== HEADER(search)  ===========================================*/
 
 
 #search form {
-	width: 900px;
+	width: 100%;
 	margin: 0 auto;
 }
 
 #sBar{
 	width:100%; 
-	height: 50px;
 	display: flex;
-	padding-left : 6px; 
+	flex-direction: column;
 	justify-content: flex-start;
 	background-color: #e6e6e6;
-}
-
-form > #sBar > div{
-	flex-direction: row;
-	width: 350px;
+	padding: 0 5px;
 }
 
 #sCat > select {
-	width: 95%;
+	width: 100%;
 	height: 40px;
     padding: 6px 10px;
     margin: 4px 0;
@@ -220,7 +249,7 @@ form > #sBar > div{
 }
 
 #sText > input[type=text]{
-    width: 95%;
+	width: 100%;
     height: 40px;
     padding: 6px 10px;
     margin: 4px 0;
@@ -231,11 +260,6 @@ form > #sBar > div{
 }
 
 
-
-#sSubmit > input[type=submit]{
-
-}
-
 #sBar > div {
 	z-index: 2;
 }
@@ -244,7 +268,7 @@ form > #sBar > div{
 	padding: 6px 10px;
     margin: 4px 0;
 	height: 40px;
-	width: 80px;
+	width: 100%;
 	display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -276,7 +300,6 @@ section{
 
 footer{
   width: 100%;
-  height: 250px;
   background-image: linear-gradient(#091834, #08142b);
   margin: 0;
   color: gray;
@@ -285,7 +308,8 @@ footer{
 
 footer .auto {
     display: flex;
-    padding-top: 30px;
+    flex-direction: column;
+    padding: 30px 7px;
 }
 
 .auto  > .column {
@@ -295,7 +319,7 @@ footer .auto {
 }
 
 .column > .row{
-  flex-direction: row;
+  flex-direction: column;
 }
 
 
@@ -321,21 +345,47 @@ footer .auto {
 
 /*===========================================  LOADER  ===========================================*/
 
-.no-js #loader { display: none;  }
-.js #loader { display: block; position: absolute; left: 100px; top: 0; }
-.se-pre-con {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  background: url(images/loader-64x/Preloader_1.gif) center no-repeat #fff;
-}
+
 
 
 #login-panel-message{
   color: red !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

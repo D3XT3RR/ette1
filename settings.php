@@ -31,16 +31,14 @@ session_start();
             <div class="blue">E</div>
           </a>
           <div class="buttonPanel">
-            <div id="1Button" class="button color"></div>
-            <div id="2Button" class="button color"></div>
-            <div id="3Button" class="button color"> </div>
+            <div id="3Button" class="button color"></div>
             <div id="profmenu">
-              <div id="4Button" class="button color"></div>
+              <button id="4Button" class="button color"></button>
               <ul >
-                <li id="aButton" class="profBtn"></li>
-                <li id="bButton" class="profBtn"></li>
-                <li id="cButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
-                <li id="dButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li>
+                <li id="aButton" class="profBtn"><a onclick="document.getElementById('login').style.display='block'">Zaloguj się</a></li>
+                <li id="bButton" class="profBtn"><a onclick="document.getElementById('register').style.display='block'">Zarejestruj się</a></li>
+                <li id="cButton" class="profBtn"></li>
+                <li id="dButton" class="profBtn"></li>
               </ul>
             </div>
           </div>
