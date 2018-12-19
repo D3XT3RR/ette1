@@ -16,7 +16,7 @@ require 'php/session.php';
   <!-- CSS -->
   <link rel="stylesheet" href="style/w3.css">
   <link rel="stylesheet" href="style/style.css">  
-  <link rel="stylesheet" href="style/userAnnouns.css">
+  <link rel="stylesheet" href="style/userFavourites.css">
   <link rel="stylesheet" href="style/button.css">
   <link rel="stylesheet" type="text/css" href="style/mobile/styleMobile.css">
 
@@ -105,7 +105,7 @@ require 'php/session.php';
           Tytuł
         </div>
 
-        <div class="status">
+        <div class="status" style="padding-right: 35px;">
           Status
         </div>
       </div>

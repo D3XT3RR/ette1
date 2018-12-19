@@ -1,0 +1,181 @@
+section{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.search-container{
+  display: flex;
+}
+
+.search{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  
+}
+
+
+/*=========================================== ROWS  ===========================================*/
+
+.addhead{
+flex-direction: row;
+margin: 10px;
+border-bottom: 1px solid gray;
+width: 100%;
+}
+
+.addbody {
+display: flex;
+flex-direction: row;
+padding:10px;
+border-bottom: 1px solid gray;
+width: 100%;
+background-color: #f8f8f8;
+}
+
+.addfoot{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+margin: 10px;
+width: 100%;
+}
+.adfooterdata{
+  padding: 0px 10px; border-right: 1px solid gray;
+}
+
+
+/*=========================================== COLUMNS ===========================================*/
+
+.check {
+
+width: 20px;
+margin-left: 10px;
+margin-right: 10px;
+
+}
+
+.date {
+
+width: 130px;
+}
+
+.title {
+
+width: 400px;
+text-align: left;
+}
+
+.price {
+
+margin-right: 50px;
+
+}
+
+.status {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 280px;
+margin-right: 0px;
+padding-right: auto;
+padding-left: auto;
+}
+
+
+.status > a > .inactive{
+  width: 110px;
+  border-color: #2eb82e;
+  background-color: #2eb82e;
+  color: white;
+  transition: all 0.1s ease;
+}
+
+.status > a > .active{
+  width: 110px;  
+  border-color: #ff471a;
+  background-color: #ff471a;
+  color: white;
+  transition: all 0.1s ease;
+  
+}
+
+
+.status > a > .active:hover{
+  border-color: #2eb82e;
+  background-color: #2eb82e;
+  color: white;
+  transition: all 0.1s ease;
+}
+
+.status > a > .inactive:hover{  
+  border-color: #ff471a;
+  background-color: #ff471a;
+  color: white;
+  transition: all 0.1s ease;
+  
+}
+
+
+.status > a > .edit{  
+  width: 70px;
+  border-color: #00BFFF;
+  background-color: #00BFFF;
+  color:    #00BFFF;
+  transition: all 0.1s ease;
+  
+}
+
+
+
+.status > a > .edit:hover{  
+  border-color:   #00BFFF;
+  background-color:   #00BFFF;
+  color: white;
+  transition: all 0.1s ease;
+  
+}
+
+
+.edit span img{  
+  height: 14px;
+  width: auto;
+  
+}
+
+.view span img{  
+  height: 14px;
+  width: auto;
+  
+}
+
+.status > a > .view{  
+  width: 90px;
+  border-color: #292F33;
+  background-color: #292F33;
+  color:    #00BFFF;
+  transition: all 0.1s ease;
+  
+}
+
+
+
+.status > a > .view:hover{  
+  border-color:   #00BFFF;
+  background-color:   #00BFFF;
+  color: white;
+  transition: all 0.1s ease;
+  
+}
+
+
+background: transparent;

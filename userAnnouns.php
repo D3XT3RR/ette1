@@ -18,7 +18,7 @@ require 'php/session.php';
   <link rel="stylesheet" href="style/style.css">  
   <link rel="stylesheet" href="style/userAnnouns.css">
   <link rel="stylesheet" href="style/button.css">
-  <link rel="stylesheet" type="text/css" href="style/mobile/styleMobile.css">
+  <link rel="stylesheet" type="text/css" href="style/mobile/styleMobile1.css">
 
     <script type="text/javascript">
   function toggle(source) {
@@ -105,7 +105,7 @@ require 'php/session.php';
           Tytuł
         </div>
 
-        <div class="status">
+        <div class="status" style="justify-content: center;">
           Status
         </div>
       </div>
