@@ -229,8 +229,21 @@ session_start();
             $ad_image5 = @addslashes(base64_encode($row['image5']));
             $ad_image6 = @addslashes(base64_encode($row['image6']));
             $ad_category = $row['category'];
+            $poster_id = $row['poster_id'];
             $post_date = $row['posting_date'];
             echo("<script>document.getElementById('tTXT').innerHTML='".$ad_title."';document.getElementById('cTXT').innerHTML = '".$ad_category."';document.getElementById('dTXT').innerHTML = '".$ad_text."';</script>");
+            $negotiation = $row['negotiation'];
+            $n_text = "cena do negocjacji";
+            if($negotiation == 0){
+              $n_text = "cena nie do negocjacji";
+            }
+            echo("<script>document.getElementById('negotiation').innerHTML='".$n_text."'</script>");
+            $price = $row['price'];
+            echo("<script>document.getElementById('price').innerHTML='".$price." zł'</script>");
+            $contact = mysqli_query($link,"SELECT Contact_Phone_Number FROM login WHERE id = '$poster_id'");
+            $contact_num = mysqli_fetch_assoc($contact);
+            echo("<script>document.getElementById('phoneNo').innerHTML='".$contact_num['Contact_Phone_Number']."'</script>");
+
         if($ad_image1 != null){
               echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'");document.getElementById("img-BIGupload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'");var z = 1;</script>');
             }
