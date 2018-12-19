@@ -450,6 +450,9 @@ DisplayResults(mysqli_query($link, "SELECT DISTINCT * FROM `adverts` WHERE visib
     if($red == "true"){
       echo "<script type='text/javascript'>document.getElementById('login').style.display='block'</script>";
     }
+    else if($red == "reg_true"){
+       echo "<script type='text/javascript'>document.getElementById('register').style.display='block'</script>";
+    }
   }
   if(isset($_GET['error'])){
     $err = $_GET['error'];

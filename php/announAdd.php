@@ -57,6 +57,6 @@ if(isset($_SESSION['user'])){
     }
 }
 else{
-    echo "Musisz się zalogować by dodać ogłoszenie";
+    echo "<script type='text/javascript'>alert('Musisz się zalogować aby dodać ogłoszenie');window.location.href = '../index.php';</script>";
 }
 ?>
