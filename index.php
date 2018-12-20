@@ -255,11 +255,8 @@ function DisplayResults($raw_results){
             }
             else
             {
-              if($price > 999)
-              {
               $cost = number_format($price, 0, ',', ' ');
               $cost .= " zł";
-            }
             }
 
 

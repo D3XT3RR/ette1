@@ -97,10 +97,10 @@ require 'php/session.php';
           <div id="title">
             <div id="price">
               <label for="priceINPUT">Cena:</label>
-              <input id="priceINPUT" type="number" min="0" max="10000000" name="Price">
+              <input id="priceINPUT" type="number" min="0" max="10000000" name="price">
             </div>
             <div id="neg">
-              <input type="checkbox" id="negotiation" name="negotiation">
+              <input type="checkbox"  name="negotiation" value="1">
               <label for="negotiation"> Cena do negocjacji</label>
             </div>
             <div id="titleTXT">Wpisz tytuł<span class="required">*</span></div>
@@ -214,6 +214,11 @@ require 'php/session.php';
               $ad_text = preg_replace( "/\r\n/", "<br/>", $_POST['AdText']);
               $ad_title = $_POST['AdTitle'];
               $ad_category = $_POST['Category'];
+              $price = $_POST['price'];
+              $negotiation = 0;
+              if(isset($_POST['negotiation'])){
+                $negotiation = 1;
+              }
               $user_session_id = $_SESSION['user'];
               $ad_image1 = @addslashes(file_get_contents($_FILES['image1']['tmp_name']));
               $ad_image2 = @addslashes(file_get_contents($_FILES['image2']['tmp_name']));
@@ -226,7 +231,7 @@ require 'php/session.php';
 
               $link->set_charset("utf8");
 
-              $result = mysqli_query($link, "UPDATE adverts SET title='$ad_title', text='$ad_text', category='$ad_category' WHERE id='$ad_id'") or die(mysqli_error($link));
+              $result = mysqli_query($link, "UPDATE adverts SET title='$ad_title', text='$ad_text', category='$ad_category', price='$price', negotiation='$negotiation' WHERE id='$ad_id'") or die(mysqli_error($link));
               //update photos
               if($ad_image1 != null){
                 $result1 = mysqli_query($link, "UPDATE adverts SET image1='$ad_image1' WHERE id='$ad_id'") or die(mysqli_error($link));
@@ -281,7 +286,12 @@ require 'php/session.php';
               $ad_image6 = @addslashes(base64_encode($row['image6']));
               $ad_category = $row['category'];
               $post_date = $row['posting_date'];
-              echo("<script>document.getElementsByName('AdTitle')[0].value='".$ad_title."';document.getElementsByName('Category')[0].value = '".$ad_category."';document.getElementsByName('AdText')[0].innerHTML = '".$ad_text."';</script>");
+              $price = $row['price'];
+              $negotiation = $row['negotiation'];
+              echo("<script>document.getElementsByName('AdTitle')[0].value='".$ad_title."';document.getElementsByName('Category')[0].value = '".$ad_category."';document.getElementsByName('AdText')[0].innerHTML = '".$ad_text."';document.getElementsByName('price')[0].value='".$price."';</script>");
+              if($negotiation == 1){
+                echo("<script>document.getElementsByName('negotiation')[0].checked=true;</script>");
+              }
               echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'")</script>');
               echo('<script>document.getElementById("img-upload2").setAttribute("src", "data:image/jpeg;base64,'.$ad_image2.'")</script>');
               echo('<script>document.getElementById("img-upload3").setAttribute("src", "data:image/jpeg;base64,'.$ad_image3.'")</script>');

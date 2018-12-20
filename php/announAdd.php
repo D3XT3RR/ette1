@@ -15,6 +15,11 @@ if(isset($_SESSION['user'])){
         $ad_image6 = @file_get_contents($_FILES['image6']['tmp_name']);
         $ad_category = $_POST['Category'];
         $user_session_id = $_SESSION['user'];
+        $price = $_POST['price'];
+        $negotiation = 0;
+        if(isset($_POST['negotiation'])){
+            $negotiation = 1;
+        }
         //$current_user_id = $_SESSION['user_id'];
         date_default_timezone_set('Europe/Berlin'); // CDT
         $current_date = date('Y-m-d');
@@ -29,7 +34,7 @@ if(isset($_SESSION['user'])){
             $advisibility = 'active';
             $startviews = 0;
 			$null = "";
-            $result = secure_query($link, "INSERT INTO adverts (image1,image2,image3,image4,image5,image6,title,text,category,poster_id,posting_date,views,status,visibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $t = array("bbbbbbsssisiss"), $a = array(&$null, &$null, &$null, &$null, &$null, &$null, &$ad_title,&$ad_text, &$ad_category, &$user_session_id, &$current_date, &$startviews, &$adstatus, &$advisibility), $i = array($ad_image1, $ad_image2, $ad_image3, $ad_image4, $ad_image5, $ad_image6));
+            $result = secure_query($link, "INSERT INTO adverts (image1,image2,image3,image4,image5,image6,price,negotiation,title,text,category,poster_id,posting_date,views,status,visibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $t = array("bbbbbbdisssisiss"), $a = array(&$null, &$null, &$null, &$null, &$null, &$null, &$price, &$negotiation, &$ad_title,&$ad_text, &$ad_category, &$user_session_id, &$current_date, &$startviews, &$adstatus, &$advisibility), $i = array($ad_image1, $ad_image2, $ad_image3, $ad_image4, $ad_image5, $ad_image6));
             $message = "Twoj post został wysłany do weryfikacji. Dostaniesz informacje, gdy zostanie zatwierdzony.";
             $last_id = mysqli_insert_id($link);
 
@@ -50,7 +55,7 @@ if(isset($_SESSION['user'])){
             $advisibility = 'active';
             $startviews = 0;
 			$null = "";
-            $result = secure_query($link, "INSERT INTO adverts (image1,image2,image3,image4,image5,image6,title,text,category,poster_id,posting_date,views,status,visibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $t = array("bbbbbbsssisiss"), $a = array(&$null, &$null, &$null, &$null, &$null, &$null, &$ad_title,&$ad_text, &$ad_category, &$user_session_id, &$current_date, &$startviews, &$adstatus, &$advisibility), $i = array($ad_image1, $ad_image2, $ad_image3, $ad_image4, $ad_image5, $ad_image6));
+            $result = secure_query($link, "INSERT INTO adverts (image1,image2,image3,image4,image5,image6,price,negotiation,title,text,category,poster_id,posting_date,views,status,visibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $t = array("bbbbbbdisssisiss"), $a = array(&$null, &$null, &$null, &$null, &$null, &$null, &$price, &$negotiation, &$ad_title,&$ad_text, &$ad_category, &$user_session_id, &$current_date, &$startviews, &$adstatus, &$advisibility), $i = array($ad_image1, $ad_image2, $ad_image3, $ad_image4, $ad_image5, $ad_image6));
             $message = "Post został opublikowany!";
             echo "<script type='text/javascript'>alert('$message');window.location.href = '../index.php';</script>";
         }
