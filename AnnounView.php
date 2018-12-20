@@ -100,29 +100,30 @@ session_start();
     <div class="auto">
       <div class="container">
         <div class="left">
-          <div id="title">
-            <div id="tTXT"></div>
-            <?php
-		          require_once 'php/secure_query.php';
-		          require_once 'php/connect.php';
-		          if(isset($_SESSION['user']) && isset($_GET['id'])){
-			         $usr = $_SESSION['user'];
-			         $result = secure_query($link, "SELECT Favourites FROM login WHERE ID = ?", $t = array('i'), $a=array(&$usr));
-			         $row = mysqli_fetch_row($result);
-			         $fav_arr = explode(',', $row[0]);
-			           if(in_array(@$_GET['id'], $fav_arr)){
-				            echo("<button title='Usuń z Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione.png' /></button>");
-			           }
-			           else{
-				          echo("<button title='Dodaj do Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione_nie.png' /></button>");
-			           }
-		          } 
+          <div id="containerTit">
+          <div id="leftTit">
+            <div id="title"><div id="tTXT"></div></div>
+            <div id="category"><div id="cTXT"></div></div>
+          </div>
+          <div id="rightTit">
+          <?php
+              require_once 'php/secure_query.php';
+              require_once 'php/connect.php';
+              if(isset($_SESSION['user']) && isset($_GET['id'])){
+               $usr = $_SESSION['user'];
+               $result = secure_query($link, "SELECT Favourites FROM login WHERE ID = ?", $t = array('i'), $a=array(&$usr));
+               $row = mysqli_fetch_row($result);
+               $fav_arr = explode(',', $row[0]);
+                 if(in_array(@$_GET['id'], $fav_arr)){
+                    echo("<button title='Usuń z Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione.png' /></button>");
+                 }
+                 else{
+                  echo("<button title='Dodaj do Ulubionych' onclick='AddToFavourites(".@$_GET['id'].")'><img id='favBtn' src='style/image/ulubione_nie.png' /></button>");
+                 }
+              } 
             ?>
-          </div>
-
-          <div id="category">
-            <div id="cTXT"></div>
-          </div>
+            </div>
+            </div>
           <div id="photos">
            <div class="containerPhoto">
               <div class="mySlides photoBox" id="slide1">
@@ -188,14 +189,16 @@ session_start();
           </div>
         </div>
         <div class="right">
-        <div id="phoneNo">NUMER</div>
+        <div id="numberBox">
+          <div id="numberCOM">Numer telefonu:</div>
+          <div id="phoneNo">NUMER</div>
+
+        </div>
+        
         <div id="priceBox">
-          <div id="price">
-            CENA
-          </div>
-          <div id="negotiation">
-            NEGOCJACJA
-          </div>
+          <div id="priceCOM">Cena:</div>
+          <div id="price"></div>
+          <div id="negotiation"></div>
         </div>
 
     </div>
@@ -235,14 +238,31 @@ session_start();
             $negotiation = $row['negotiation'];
             $n_text = "cena do negocjacji";
             if($negotiation == 0){
-              $n_text = "cena nie do negocjacji";
+              $n_text = "";
+              echo("<script>
+                    document.getElementById('negotiation').style.display = 'none';
+                    document.getElementById('price').style.borderRadius = '0 0 10px 10px';
+                  </script>");
             }
-            echo("<script>document.getElementById('negotiation').innerHTML='".$n_text."'</script>");
+            else{
+              echo("<script>document.getElementById('negotiation').innerHTML='".$n_text."'</script>");
+            }
             $price = $row['price'];
-            echo("<script>document.getElementById('price').innerHTML='".$price." zł'</script>");
+            if($price == '0.00'){
+              $cost = 'Za Darmo';
+            }
+            else
+            {
+              $cost = number_format($price, 0, ',', ' ');
+              $cost .= " zł";
+            }
+            echo("<script>document.getElementById('price').innerHTML='".$cost."'</script>");
             $contact = mysqli_query($link,"SELECT Contact_Phone_Number FROM login WHERE id = '$poster_id'");
             $contact_num = mysqli_fetch_assoc($contact);
-            echo("<script>document.getElementById('phoneNo').innerHTML='".$contact_num['Contact_Phone_Number']."'</script>");
+            $num = $contact_num['Contact_Phone_Number'];
+            $num = number_format($num, 0, ',', ' ');
+
+            echo("<script>document.getElementById('phoneNo').innerHTML='".$num."'</script>");
 
         if($ad_image1 != null){
               echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'");document.getElementById("img-BIGupload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'");var z = 1;</script>');
@@ -348,129 +368,17 @@ for(var x1 = 0; x1 <= z; x1++){
 
 
 
-  <footer>
-    <div class="auto">
-      <div class="column">
-        <h5>Media Społecznościowe</h5>
-        <div class="row"><a href="http://facebook.pl" target="_blank">Facebook</a></div>
-        <div class="row"><a href="http://www.instagram.com" target="_blank">Instagram</a></div>
-        <div class="row"><a href="http://twitter.com" target="_blank">Twitter</a></div>
-      </div>
-
-      <div class="column">
-        <h5>Kontakt</h5>
-        <div class="row"><a href="mailto:przykladowy.email@ette.de">przykladowy.email@ette.de</a></div>
-        <div class="row"><a href="https://goo.gl/maps/oMKDB2XsR8D2" target="_blank">rondo Wiatraczna<br>
-        03-982 Warszawa</a></div>
-
-      </div>
-
-      <div class="column">
-        <h5>Informacje</h5> 
-        <div class="row">
-          <a href="">Informacje dotyczące przetwarzania plików cookies</a>
-        </div>
-
-        <div class="row">
-          <a href="">Dane diagnostyczne</a>
-        </div>
-
-        <div class="row">
-          
-        </div>
-      </div>
-    </div>
-  </footer>
+  <?php
+include "php/footer.php";
+include "php/modal.php";
+?>
 
 
 
     
 
 
-<!-- Modal Login -->
 
-
-  <div id="login" class="w3-modal">
-    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:700px">
-
-      <div class="w3-center"><br>
-        <span onclick="document.getElementById('login').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Zamknij okno">&times;</span>
-        <h2>Dobrze Cię widzieć!</h2>
-      </div>
-
-      <form method="post" action="php/login.php">
-        <div class="w3-section">
-          <label><b>Login</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Wpisz Login" name="login" required>
-          <label><b>Hasło</b></label>
-          <input class="w3-input w3-border" type="password" placeholder="Wpisz Hasło" name="password" required>
-          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Zaloguj</button>
-          <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Zapamiętaj mnie
-        </div>
-      </form>
-
-      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-        <button onclick="document.getElementById('login').style.display='none'" type="button" class="w3-button w3-red">Anuluj</button>
-        <span class="w3-right w3-padding w3-hide-small"><a onclick=location.href="passwordReset.php" style="cursor:pointer;">Nie pamiętasz hasła?</a></span>
-        <span class="w3-right w3-padding w3-hide-small"><a onclick="document.getElementById('login').style.display='none'; document.getElementById('register').style.display='block'" style="cursor:pointer;">Nie masz konta?</a></span>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal Rejestracja -->
-
-  <div id="register" class="w3-modal">
-    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:700px">
-
-      <div class="w3-center"><br>
-        <span onclick="document.getElementById('register').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Zamknij okno">&times;</span>
-        <h2> Zaczynajmy!</h2>
-
-      </div>
-
-      <form method="post" action="">
-        <div class="w3-section">
-          <label><b>Login</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Wpisz Login" name="RegLogin" required>
-          <div id="loginErr" class="err"></div><br>
-
-          <label><b>E-Mail</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Wpisz E-Mail" name="RegMail" required>
-          <div id="mailErr" class="err"></div><br>
-
-          <label><b>Twoje hasło</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Hasło" name="RegPasswd" required>
-          <div id="passErr" class="err"></div><br>
-
-          <label><b>Powtórz hasło</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Powtórz hasło" name="RegPasswd2" required>
-          <div id="pass2Err" class="err"></div><br>
-
-          <label><b>Numer telefonu</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Numer telefonu" name="RegPhone" required>
-          <div id="phoneErr" class="err"></div><br>
-          
-          <input type="checkbox" name="RegReg" id="reg" required><label for="reg"><b>Akceptuję <a href="pliki/regulamin.pdf" target="_blank" title="Kliknij by zapoznać się z regulaminem ETTE">regulamin</a> strony ETTE</b></label><br /><br />
-          
-          <input type="checkbox"  name="RegRodo" id="rodo" required><label for="rodo"><b>Akceptuję <a href="pliki/rodo.pdf" target="_blank" title="Kliknij by zapoznać się z RODO">RODO</a></b></label><br /><br />
-
-          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Zakończ rejestrację!</button>
-        </div>
-      </form>
-
-      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-        <button onclick="document.getElementById('register').style.display='none'" type="button" class="w3-button w3-red">Anuluj</button>
-        <span class="w3-right w3-padding w3-hide-small"><a onclick="document.getElementById('register').style.display='none'; document.getElementById('login').style.display='block'" style="cursor:pointer;">Masz już konto?</a></span>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- Modal END -->
 
 
 <?php

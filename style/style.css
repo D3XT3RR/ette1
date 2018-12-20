@@ -18,6 +18,10 @@ background-attachment: fixed;
 font-family: Lato;
 }
 
+.w3-section{
+  padding: 0 10px;
+}
+
 @media only screen and (min-width: 768px) {
 
 *{
