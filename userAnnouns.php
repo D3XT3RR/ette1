@@ -175,7 +175,7 @@ function DisplayResults($connectionLink, $query){
           $visible;
           $action;
           $verify = mysqli_query($connectionLink,"SELECT visibility FROM adverts WHERE id = '$id_of_ad'") or die(mysqli_error($link));
-		  $fav_count = mysqli_fetch_row(mysqli_query($connectionLink,"SELECT COUNT(ID) FROM login WHERE Favourites LIKE '".$id_of_ad."' "))[0];
+		  $fav_count = mysqli_fetch_row(mysqli_query($connectionLink,"SELECT COUNT(ID) FROM login WHERE Favourites LIKE '%".$id_of_ad."%' "))[0];
           $row2 = mysqli_fetch_assoc($verify);
           //  $active = mysqli_query($connectionLink, "UPDATE adverts SET visibility = 'active' WHERE id = '$id_of_ad'");
           //  $inactive = mysqli_query($connectionLink, "UPDATE adverts SET visibility = 'inactive' WHERE id = '$id_of_ad'");
