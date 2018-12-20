@@ -83,7 +83,7 @@ margin-right: 50px;
 
 .status {
 display: flex;
-justify-content: space-between;
+justify-content: flex-end;
 align-items: center;
 width: 280px;
 margin-right: 0px;

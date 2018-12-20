@@ -27,7 +27,7 @@ session_start();
   <link rel="stylesheet" href="style/w3.css">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/indextest.css">
-  <link rel="stylesheet" type="text/css" href="style/mobile/styleMobile1.css">
+  <link rel="stylesheet" type="text/css" href="style/mobile/styleMobile.css">
   <link rel="stylesheet" type="text/css" href="style/mobile/indexMobile.css">
   </head>
 
