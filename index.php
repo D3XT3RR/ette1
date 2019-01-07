@@ -187,11 +187,14 @@ session_start();
             </div>
             <!-- Czwarty Rząd -->
             <div class="row">
-              <div class="col">
-                  <a class="categoryA" href="search.php?kat=Firmy+i+usługi">
+              <div class="col robo">
+                <div class="kontrakty">
+                  <div class="categoryA">
                     <img class="index_cat_photo" src="style/image/index/firmy.png">
                     <div class="titleBOX">Firmy i Usługi</div>
-                  </a>
+                  </div>
+                   <a class="podkategoria" href="search.php?kat=Firmy+i+usługi">Kontrakty</a>
+                </div>
                   
               </div>
               <div class="col">
