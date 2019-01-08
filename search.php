@@ -90,6 +90,7 @@ session_start();
 
   <section>
     <div class="auto">
+
 <?php
 require_once 'php/connect.php';
 require_once 'php/secure_query.php';
@@ -97,6 +98,14 @@ mysqli_set_charset($link,"utf8");
 
 $search = @$_GET['search'];
 $category = @$_GET['kat'];
+$categoryLOC = "<a href='search.php?kat=".$category."'>".$category."</a>";
+$home = "<a href='/'>Strona Główna</a>";
+if ($search == ""){
+  echo ("<div class='location'>".$home." > ".$categoryLOC."</div>");
+}
+else{
+  echo ("<div class='location'>".$home." > ".$categoryLOC." > ".$search."</div>");
+}
 
 function DisplayResults($raw_results){    
     if(mysqli_num_rows($raw_results) > 0)      
@@ -124,7 +133,24 @@ function DisplayResults($raw_results){
                 $printedDate = ($dDate.''.$mDate.''.$yDate);
               }
             }
-            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; ><div class="announTit"><h3>'.$row['title'].'</h3><div class="category">'.$row['category'].'</div><div class="date">'.$printedDate.'</div></div>');
+            $price = $row['price'];
+            if($price == '0.00'){
+              $cost = 'Za Darmo';
+            }
+            else
+            {
+              $cost = number_format($price, 0, ',', ' ');
+              $cost .= " zł";
+            }
+            echo('<a class="announ" href="AnnounView.php?id='.$row['id'].'"; >
+                    <div class="announTit">
+                      <div class="row">
+                        <h3>'.$row['title'].'</h3>
+                        <h3>'.$cost.'</h3>
+                      </div>
+                      <div class="category">'.$row['category'].'</div>
+                      <div class="date">'.$printedDate.'</div>
+                    </div>');
 
             $file = base64_encode( $row['image1']);
             if($file == '') {

@@ -93,22 +93,16 @@ require 'php/session.php';
     <div class="auto">
       <div class="container">
         <form method="post" action="" enctype="multipart/form-data">
-          <label>Zaczynamy!</label>
+          <h2>Edytuj swoje ogłoszenie!</h2>
+          <div class="rowAdd">
           <div id="title">
-            <div id="price">
-              <label for="priceINPUT">Cena:</label>
-              <input id="priceINPUT" type="number" min="0" max="10000000" name="price">
-            </div>
-            <div id="neg">
-              <input type="checkbox"  name="negotiation" value="1">
-              <label for="negotiation"> Cena do negocjacji</label>
-            </div>
-            <div id="titleTXT">Wpisz tytuł<span class="required">*</span></div>
-            <div id="tTXT"><input type="text" placeholder="Tytuł" name="AdTitle" required></div>
-          </div>
+            <label for="AdTitle" id="titleTXT">Wpisz tytuł<span class="red">*</span></label>
+            <div id="tTXT"><input type="text" placeholder="Tytuł" id="AdTitle" name="AdTitle" maxlength="65" required></div>
 
+            
+          </div>
           <div  id="category">
-            <div id="categoryTXT">Wybierz kategorię<span class="required">*</span></div>
+            <div id="categoryTXT">Wybierz kategorię<span class="red">*</span></div>
             <div id="cTXT">
               <select name="Category">
                 <option value="Praca">Praca</option>
@@ -130,7 +124,31 @@ require 'php/session.php';
               </select>
             </div>
           </div>
-
+        </div>
+        
+              <div id="price">
+                <label for="priceINPUT" id="priceTXT">Cena</label>
+                <div class="row">
+                  <input id="priceINPUT" placeholder=" Minimalna - 0zł , Maksymalna 10000000 zł" type="number" min="0" max="10000000" name="price"><label id="PLN" for="priceINPUT">&nbsp;PLN</label>
+                  <div id="neg">
+                    <div class="span">
+                      <input type="checkbox" id="negotiation" name="negotiation" value="1">
+                      <label for="negotiation"> Do negocjacji</label>
+                    </div>
+                    <div id="radio">
+                      <div class="span">
+                        <input type="radio" id="rBrutto" name="tax" checked>
+                        <label for="rBrutto">brutto</label>
+                      </div>
+                      <div class="span">
+                        <input type="radio" id="rNetto" name="tax">
+                        <label for="rNetto">netto</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
           <div id="desc">
             <div id="descTXT">Opis<span class="required">*</span></div>
             <div id="dTXT">

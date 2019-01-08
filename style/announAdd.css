@@ -14,6 +14,12 @@ section{
     flex-direction: column;
 }
 
+.row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
 /*=========================================== RowAdd  ===========================================*/
 
 .rowAdd{
@@ -26,7 +32,7 @@ section{
 
 #title{
 width: 50%;
-height: 15vh;
+height: 10vh;
 margin: 10px 0px;
 }
 
@@ -66,6 +72,56 @@ margin: 10px 0px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+
+}
+
+/*=========================================== CENA  ===========================================*/
+
+#price{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+
+}
+
+#priceTXT{
+    font-size: 22px;
+}
+
+#priceINPUT{
+    width: 40%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#PLN{
+    line-height: 52px;
+}
+
+#neg{
+    font-size: 17px;
+    line-height: 52px;
+    width: 60%;
+    display: flex;
+    margin-left: 40px; 
+    justify-content: flex-start;
+}
+
+#neg > input[type=radio]{
+
+}
+
+#radio{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: space-around;
+    margin-left: 40px; 
 
 }
 
