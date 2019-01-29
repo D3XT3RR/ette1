@@ -65,6 +65,7 @@ session_start();
 
           <div id="sCat">
             <select name="kat">
+              <option id="grey" value="" selected hidden disabled>W jakiej kategorii szukasz?</option>
               <option value="Praca">Praca</option>
               <option value="Nieruchomości">Nieruchomości</option>
               <option value="Motoryzacja">Motoryzacja</option>

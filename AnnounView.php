@@ -104,6 +104,7 @@ session_start();
           <div id="leftTit">
             <div id="title"><div id="tTXT"></div></div>
             <div id="category"><div id="cTXT"></div></div>
+            <div id="data"><div id="dataTXT"></div></div>
           </div>
           <div id="rightTit">
           <?php
@@ -222,6 +223,27 @@ session_start();
           while($row = mysqli_fetch_assoc($raw_results))
           {
             if(($row['visibility'] == 'active' || $row['poster_id'] == @$_SESSION['user']) && (($row['status'] == 'approved') || (@$_SESSION['user'] == 1) || $row['poster_id'] == @$_SESSION['user'])){
+
+            $mon = array("Stycznia ","Lutego ","Marca ","Kwietnia ","Maja ","Czerwca ","Lipca ","Sierpnia ","Września ","Października ","Listopada ","Grudnia ");
+            $today = date("y-m-d");
+            $oDate = new DateTime($row['posting_date']);
+            $dDate = $oDate->format("d ");
+            $mDate = $mon[$oDate->format("n")-1];
+            $yDate = $oDate->format("Y");
+            $printedDate ='';
+            if($oDate->format("y-m-d") == $today)
+            {
+              $printedDate = 'Dzisiaj';
+            }
+            else
+            {
+              if (date("Y") == $yDate) {
+                $printedDate = ($dDate.''.$mDate);
+              }
+              else if (date("Y") != $yDate) {
+                $printedDate = ($dDate.''.$mDate.''.$yDate);
+              }
+            }  
             
             $ad_text = str_ireplace("<br/>", "\\r\\n", $row['text']);
             $ad_title = $row['title'];
@@ -234,7 +256,7 @@ session_start();
             $ad_category = $row['category'];
             $poster_id = $row['poster_id'];
             $post_date = $row['posting_date'];
-            echo("<script>document.getElementById('tTXT').innerHTML='".$ad_title."';document.getElementById('cTXT').innerHTML = '".$ad_category."';document.getElementById('dTXT').innerHTML = '".$ad_text."';</script>");
+            echo("<script>document.getElementById('dataTXT').innerHTML='".$printedDate."';document.getElementById('tTXT').innerHTML='".$ad_title."';document.getElementById('cTXT').innerHTML = '".$ad_category."';document.getElementById('dTXT').innerHTML = '".$ad_text."';</script>");
             $negotiation = $row['negotiation'];
             $n_text = "cena do negocjacji";
             if($negotiation == 0){
