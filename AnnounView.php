@@ -30,6 +30,7 @@ session_start();
   <link rel="stylesheet" type="text/css" href="style/mobile/styleMobile.css">
 
   <script type="text/javascript" src="js/favourites.js"></script>
+   <script type="text/javascript" src="js/phoneNumber.js"></script>
   <script type="text/javascript" src="js/gallery.js"></script>
   </head>
 
@@ -192,7 +193,9 @@ session_start();
         <div class="right">
         <div id="numberBox">
           <div id="numberCOM">Numer telefonu:</div>
-          <div id="phoneNo">NUMER</div>
+          <?php
+           echo("<div id='phoneNo'><button onclick='ShowPhoneNo(".@$_GET['id'].")'>Pokaż nr telefonu</button></div>"); 
+            ?>
 
         </div>
         
@@ -279,12 +282,12 @@ session_start();
               $cost .= " zł";
             }
             echo("<script>document.getElementById('price').innerHTML='".$cost."'</script>");
-            $contact = mysqli_query($link,"SELECT Contact_Phone_Number FROM login WHERE id = '$poster_id'");
-            $contact_num = mysqli_fetch_assoc($contact);
-            $num = $contact_num['Contact_Phone_Number'];
-            $num = number_format($num, 0, ',', ' ');
+            //$contact = mysqli_query($link,"SELECT Contact_Phone_Number FROM login WHERE id = '$poster_id'");
+            //$contact_num = mysqli_fetch_assoc($contact);
+            //$num = $contact_num['Contact_Phone_Number'];
+            //$num = number_format($num, 0, ',', ' ');
 
-            echo("<script>document.getElementById('phoneNo').innerHTML='".$num."'</script>");
+            //echo("<script>document.getElementById('phoneNo').innerHTML='".$num."'</script>");
 
         if($ad_image1 != null){
               echo('<script>document.getElementById("img-upload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'");document.getElementById("img-BIGupload1").setAttribute("src", "data:image/jpeg;base64,'.$ad_image1.'");var z = 1;</script>');
