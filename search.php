@@ -90,6 +90,70 @@ session_start();
 
   <section>
     <div class="auto">
+      <div id="sortowanie">
+        <form action="" method="GET">
+        <div class="sortCOL">
+          <div class="sortROW">
+            <div id="sortCena">
+            <label for="sortCenaRange"></label>
+            </div>
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+        </div>
+        <div class="sortCOL">
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+        </div>
+        <div class="sortCOL">
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+        </div>
+        <div class="sortCOL">
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+          <div class="sortROW">
+            
+          </div>
+        </div>
+      </form>
+
+      </div>
 
 <?php
 require_once 'php/connect.php';
